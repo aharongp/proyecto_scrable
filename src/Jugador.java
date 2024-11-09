@@ -1,6 +1,4 @@
-package Proyect;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Jugador {
     private String alias;            // Alias del jugador
