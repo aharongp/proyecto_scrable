@@ -43,6 +43,10 @@ public class Jugador {
         return playerCharacters;
     }
 
+    public void addCharacters(ArrayList<Character> newCharacters){
+        this.playerCharacters.addAll(newCharacters);
+    }
+
     public void clearPlayerCharacters(ArrayList<Character> playerCharacters) {
         this.playerCharacters.clear();
     }

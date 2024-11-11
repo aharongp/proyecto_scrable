@@ -15,6 +15,8 @@ public class Partida {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.tablero = new Character[15][15];
+        this.score1 = 0;
+        this.score2 = 0;
         this.turnoActual = 1;
     }
 
@@ -25,9 +27,14 @@ public class Partida {
 
     public void iniciarPartida(){
         SpanishBag bag = new SpanishBag();
+        jugador1.addCharacters(bag.get(7));
+        jugador2.addCharacters(bag.get(7));
+        long tiempoInicial = System.currentTimeMillis();
         while (!finalizarPartida()){
 
         }
+        long tiempoFinal = System.currentTimeMillis();
+        this.tiempoPartida = tiempoFinal - tiempoFinal;
     }
 
     public boolean finalizarPartida(){
