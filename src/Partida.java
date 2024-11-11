@@ -5,14 +5,16 @@ import java.util.Random;
 public class Partida {
     private Jugador jugador1;
     private Jugador jugador2;
-    private String[][] tablero;
+    private int score1;
+    private int score2;
+    private Character[][] tablero;
     private int turnoActual;
     private long tiempoPartida;
 
     public Partida(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
-        this.tablero = new String[15][15];
+        this.tablero = new Character[15][15];
         this.turnoActual = 1;
     }
 
@@ -22,11 +24,15 @@ public class Partida {
     }
 
     public void iniciarPartida(){
+        SpanishBag bag = new SpanishBag();
+        while (!finalizarPartida()){
 
+        }
     }
 
-    public void finalizarPartida(){
+    public boolean finalizarPartida(){
 
+        return false;
     }
 
     public void guardarPartida(){

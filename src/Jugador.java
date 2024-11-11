@@ -4,7 +4,8 @@ public class Jugador {
     private String alias;            // Alias del jugador
     private String email;            // Correo electrónico del jugador
     private int score;               // Puntaje total del jugador
-    private List<String> palabrasJugadas; // Lista de palabras jugadas por el jugador
+    private int palabrasJugadas; // Lista de palabras jugadas por el jugador
+    private ArrayList<Character> playerCharacters;
     private int tiempoTotalJugado;   // Tiempo total jugado en segundos
 
     // Constructor
@@ -12,7 +13,8 @@ public class Jugador {
         this.alias = alias;
         this.email = email;
         this.score = 0;
-        this.palabrasJugadas = new ArrayList<>();
+        this.palabrasJugadas = 0;
+        this.playerCharacters = new ArrayList<Character>();
         this.tiempoTotalJugado = 0;
     }
 
@@ -29,12 +31,20 @@ public class Jugador {
         return score;
     }
 
-    public List<String> getPalabrasJugadas() {
+    public int getPalabrasJugadas() {
         return palabrasJugadas;
     }
 
     public int getTiempoTotalJugado() {
         return tiempoTotalJugado;
+    }
+
+    public ArrayList<Character> getPlayerCharacters() {
+        return playerCharacters;
+    }
+
+    public void clearPlayerCharacters(ArrayList<Character> playerCharacters) {
+        this.playerCharacters.clear();
     }
 
     // Método para agregar puntaje
@@ -43,8 +53,8 @@ public class Jugador {
     }
 
     // Método para agregar una palabra jugada
-    public void agregarPalabraJugadas(String palabra) {
-        palabrasJugadas.add(palabra);
+    public void sumarPalabraJugada(String palabra) {
+        this.palabrasJugadas +=1 ;
     }
 
     // Método para aumentar el tiempo total jugado
