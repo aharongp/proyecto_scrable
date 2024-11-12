@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se crea la clase Tablero">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se crea la clase Tablero" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,12 +28,12 @@
     &quot;assignee&quot;: &quot;PanzerOg&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/aharongp/proyecto_scrable.git&quot;,
-    &quot;accountId&quot;: &quot;800a5d7b-dbcd-4fc8-83a6-d6c8570ab918&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/aharongp/proyecto_scrable.git",
+    "accountId": "ad152912-45d5-4ac7-a84f-9d9d4e227420"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.jdks/openjdk-23/lib/src.zip!/java.base/java/lang/Object.java" root0="SKIP_INSPECTION" />
   </component>
@@ -78,6 +76,9 @@
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Windows 10 pro\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="" />
@@ -85,7 +86,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730665316181</updated>
-      <workItem from="1731373480380" duration="739000" />
+      <workItem from="1731373480380" duration="814000" />
     </task>
     <task id="LOCAL-00001" summary="Se creo la Clase Character(Fichas),se Clase SpanishBag que implementa la interfaz CharctersBag, y se creo una clase que prueba los metodos implementados en SpanishBag">
       <option name="closed" value="true" />
@@ -119,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731374076351</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="se crea la clase Tablero">
+      <option name="closed" value="true" />
+      <created>1731374228408</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731374228408</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
