@@ -39,4 +39,24 @@ public class Tablero {
         return true;
     }
 
+    private boolean esPosicionValida(String palabra, int fila, int columna, boolean horizontal) {
+        if (horizontal) {
+            if (columna + palabra.length() > TAMANO) return false;
+        } else {
+            if (fila + palabra.length() > TAMANO) return false;
+        }
+
+        for (int i = 0; i < palabra.length(); i++) {
+            if (horizontal) {
+                if (tablero[fila][columna + i] != ' ' && tablero[fila][columna + i] != palabra.charAt(i)) {
+                    return false;
+                }
+            } else {
+                if (tablero[fila + i][columna] != ' ' && tablero[fila + i][columna] != palabra.charAt(i)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
