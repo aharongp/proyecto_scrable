@@ -14,4 +14,16 @@ public class Tablero {
             }
         }
     }
+
+    public void mostrarTablero() {
+        for (int i = 0; i < TAMANO; i++) {
+            for (int j = 0; j < TAMANO; j++) {
+                System.out.print("|" + tablero[i][j]);
+            }
+            System.out.println("|");
+        }
+    }
+
+
+
 }
