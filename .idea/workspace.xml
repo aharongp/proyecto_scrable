@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se crea la clase Tablero" />
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +39,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.jdks/openjdk-23/lib/src.zip!/java.base/java/lang/Object.java" root0="SKIP_INSPECTION" />
   </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="19" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -63,7 +68,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/Jose Alejandro/IdeaProjects/SCRABBLE-UCAB-Git/src/Main.java",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -86,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730665316181</updated>
-      <workItem from="1731373480380" duration="814000" />
+      <workItem from="1731373480380" duration="1604000" />
     </task>
     <task id="LOCAL-00001" summary="Se creo la Clase Character(Fichas),se Clase SpanishBag que implementa la interfaz CharctersBag, y se creo una clase que prueba los metodos implementados en SpanishBag">
       <option name="closed" value="true" />
@@ -128,7 +133,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731374228408</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="se crea la clase Tablero">
+      <option name="closed" value="true" />
+      <created>1731374313030</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731374313030</updated>
+    </task>
+    <task id="LOCAL-00007" summary="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero">
+      <option name="closed" value="true" />
+      <created>1731374570070</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731374570070</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +170,7 @@
     <MESSAGE value="Se creo la Clase Character(Fichas),se Clase SpanishBag que implementa la interfaz CharctersBag, y se creo una clase que prueba los metodos implementados en SpanishBag" />
     <MESSAGE value="una parte de la clase partida" />
     <MESSAGE value="se crea la clase Tablero" />
-    <option name="LAST_COMMIT_MESSAGE" value="se crea la clase Tablero" />
+    <MESSAGE value="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero" />
   </component>
 </project>
