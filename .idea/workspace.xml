@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,12 +61,14 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/POO ejercicios/Ejemplo del Proyecto",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/Jose Alejandro/IdeaProjects/SCRABBLE-UCAB-Git/src/Main.java",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -91,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730665316181</updated>
-      <workItem from="1731373480380" duration="1604000" />
+      <workItem from="1731373480380" duration="2116000" />
     </task>
     <task id="LOCAL-00001" summary="Se creo la Clase Character(Fichas),se Clase SpanishBag que implementa la interfaz CharctersBag, y se creo una clase que prueba los metodos implementados en SpanishBag">
       <option name="closed" value="true" />
@@ -149,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731374570070</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero">
+      <option name="closed" value="true" />
+      <created>1731375472918</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1731375472918</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +179,11 @@
     <MESSAGE value="una parte de la clase partida" />
     <MESSAGE value="se crea la clase Tablero" />
     <MESSAGE value="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero" />
-    <option name="LAST_COMMIT_MESSAGE" value="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero" />
+    <MESSAGE value="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
