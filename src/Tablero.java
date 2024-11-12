@@ -59,4 +59,13 @@ public class Tablero {
         }
         return true;
     }
+
+    public boolean hayLetrasEnElCentro() {
+        return tablero[7][7] != ' ';
+    }
+
+    public char[][] getTablero() {
+        return tablero;
+    }
+
 }
