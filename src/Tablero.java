@@ -24,6 +24,19 @@ public class Tablero {
         }
     }
 
+    public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal) {
+        if (!esPosicionValida(palabra, fila, columna, horizontal)) {
+            return false;
+        }
 
+        for (int i = 0; i < palabra.length(); i++) {
+            if (horizontal) {
+                tablero[fila][columna + i] = palabra.charAt(i);
+            } else {
+                tablero[fila + i][columna] = palabra.charAt(i);
+            }
+        }
+        return true;
+    }
 
 }
