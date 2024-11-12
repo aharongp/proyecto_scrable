@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730665316181</updated>
-      <workItem from="1731373480380" duration="2116000" />
+      <workItem from="1731373480380" duration="3539000" />
     </task>
     <task id="LOCAL-00001" summary="Se creo la Clase Character(Fichas),se Clase SpanishBag que implementa la interfaz CharctersBag, y se creo una clase que prueba los metodos implementados en SpanishBag">
       <option name="closed" value="true" />
@@ -157,7 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731375472918</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="se agrega un metodo en la clase Tablero para validar si la posicion es valida para colocar la palabra">
+      <option name="closed" value="true" />
+      <created>1731375746864</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1731375746864</updated>
+    </task>
+    <task id="LOCAL-00010" summary="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero">
+      <option name="closed" value="true" />
+      <created>1731375998541</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1731375998541</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,7 +198,9 @@
     <MESSAGE value="se crea la clase Tablero" />
     <MESSAGE value="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero" />
     <MESSAGE value="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
-    <option name="LAST_COMMIT_MESSAGE" value="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
+    <MESSAGE value="se agrega un metodo en la clase Tablero para validar si la posicion es valida para colocar la palabra" />
+    <MESSAGE value="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero" />
+    <option name="LAST_COMMIT_MESSAGE" value="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
