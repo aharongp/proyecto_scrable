@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se elimino la clase Jugadores" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730665316181</updated>
-      <workItem from="1731373480380" duration="3539000" />
+      <workItem from="1731373480380" duration="3655000" />
     </task>
     <task id="LOCAL-00001" summary="Se creo la Clase Character(Fichas),se Clase SpanishBag que implementa la interfaz CharctersBag, y se creo una clase que prueba los metodos implementados en SpanishBag">
       <option name="closed" value="true" />
@@ -175,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731375998541</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="se elimino la clase Jugadores">
+      <option name="closed" value="true" />
+      <created>1731379663279</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1731379663279</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,7 +206,8 @@
     <MESSAGE value="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
     <MESSAGE value="se agrega un metodo en la clase Tablero para validar si la posicion es valida para colocar la palabra" />
     <MESSAGE value="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero" />
-    <option name="LAST_COMMIT_MESSAGE" value="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero" />
+    <MESSAGE value="se elimino la clase Jugadores" />
+    <option name="LAST_COMMIT_MESSAGE" value="se elimino la clase Jugadores" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

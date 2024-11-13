@@ -16,7 +16,14 @@ public class Tablero {
     }
 
     public void mostrarTablero() {
+        System.out.print("   ");
         for (int i = 0; i < TAMANO; i++) {
+            System.out.printf("%2d ", i);
+        }
+        System.out.println();
+
+        for (int i = 0; i < TAMANO; i++) {
+            System.out.printf("%2d ", i);
             for (int j = 0; j < TAMANO; j++) {
                 System.out.print("|" + tablero[i][j]);
             }
