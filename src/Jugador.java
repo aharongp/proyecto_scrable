@@ -43,6 +43,10 @@ public class Jugador {
         return playerCharacters;
     }
 
+    public int getNumberOfCharacters(){
+        return playerCharacters.size();
+    }
+
     public void printCharacters(){
         System.out.println("Fichas del jugador: " + this.alias + "\n" + this.playerCharacters);
     }
@@ -79,20 +83,55 @@ public class Jugador {
 
     public boolean validarCaracteres(String caracteresNecesarios) {
         ArrayList<Character> caracteresJugador = this.getPlayerCharacters();
+        int i = 0;
 
-        for (char c : caracteresNecesarios.toCharArray()) {
-            boolean encontrado = false;
-            for (Character caracter : caracteresJugador) {
-                if (caracter.getSymbol().charAt(0) == c) {
-                    encontrado = true;
-                    break;
+        while (i < caracteresNecesarios.length()) {
+            char c = caracteresNecesarios.charAt(i);
+
+            // Verificar si el carácter actual es 'c' y el siguiente es 'h'
+            if (c == 'c' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'h')) {
+                if (!existeCaracterEnJugador("ch", caracteresJugador)) {
+                    return false;
                 }
+                i += 2; // Saltar el siguiente carácter
+                continue;
             }
-            if (!encontrado) {
+
+            // Verificar si el carácter actual es 'r' y el siguiente es 'r'
+            if (c == 'r' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'r')) {
+                if (!existeCaracterEnJugador("rr", caracteresJugador)) {
+                    return false;
+                }
+                i += 2; // Saltar el siguiente carácter
+                continue;
+            }
+
+            // Verificar si el carácter actual es 'l' y el siguiente es 'l'
+            if (c == 'l' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'l')) {
+                if (!existeCaracterEnJugador("ll", caracteresJugador)) {
+                    return false;
+                }
+                i += 2; // Saltar el siguiente carácter
+                continue;
+            }
+
+            // Verificar caracteres individuales
+            if (!existeCaracterEnJugador(String.valueOf(c), caracteresJugador)) {
                 return false; // Si no se encuentra un carácter, retorna false
             }
+
+            i++; // Avanzar al siguiente carácter
         }
         return true; // Si todos los caracteres están presentes, retorna true
+    }
+
+    private boolean existeCaracterEnJugador(String simbolo, ArrayList<Character> caracteresJugador) {
+        for (Character caracter : caracteresJugador) {
+            if (caracter.getSymbol().equals(simbolo)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
