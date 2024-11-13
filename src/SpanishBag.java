@@ -14,6 +14,10 @@ public class SpanishBag implements CharactersBag{
         return characterList;
     }
 
+    public int getNumberOfCharacters(){
+        return characterList.size();
+    }
+
     public void setCharacterList(ArrayList<Character> characterList) {
         this.characterList = characterList;
     }
