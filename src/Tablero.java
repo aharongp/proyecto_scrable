@@ -68,7 +68,7 @@ public class Tablero {
     }
 
     public boolean hayLetrasEnElCentro() {
-        return tablero[7][7] != ' ';
+        return tablero[8][8] != ' ';
     }
 
     public char[][] getTablero() {

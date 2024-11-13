@@ -6,7 +6,7 @@ public class Jugador {
     private int score;               // Puntaje total del jugador
     private int palabrasJugadas; // Lista de palabras jugadas por el jugador
     private ArrayList<Character> playerCharacters;
-    private int tiempoTotalJugado;   // Tiempo total jugado en segundos
+    private long tiempoTotalJugado;   // Tiempo total jugado en segundos
 
     // Constructor
     public Jugador(String alias, String email) {
@@ -35,12 +35,16 @@ public class Jugador {
         return palabrasJugadas;
     }
 
-    public int getTiempoTotalJugado() {
+    public long getTiempoTotalJugado() {
         return tiempoTotalJugado;
     }
 
     public ArrayList<Character> getPlayerCharacters() {
         return playerCharacters;
+    }
+
+    public void printCharacters(){
+        System.out.println("Fichas del jugador: " + this.alias + "\n" + this.playerCharacters);
     }
 
     public void addCharacters(ArrayList<Character> newCharacters){
@@ -51,23 +55,18 @@ public class Jugador {
         this.playerCharacters.clear();
     }
 
-    // Método para agregar puntaje
-    public void agregarPuntaje(int puntos) {
+    public void addPoints(int puntos) {
         this.score += puntos;
     }
 
-    // Método para agregar una palabra jugada
-    public void sumarPalabraJugada(String palabra) {
+    public void addWordPlayed() {
         this.palabrasJugadas +=1 ;
     }
 
-    // Método para aumentar el tiempo total jugado
-    public void agregarTiempoJugado(int segundos) {
-        this.tiempoTotalJugado += segundos;
+    public void addTimePlated(long seconds) {
+        this.tiempoTotalJugado += seconds;
     }
 
-    // Método para mostrar la información del jugador
-    @Override
     public String toString() {
         return "Jugador{" +
                 "alias='" + alias + '\'' +
@@ -77,4 +76,23 @@ public class Jugador {
                 ", tiempoTotalJugado=" + tiempoTotalJugado + " segundos" +
                 '}';
     }
+
+    public boolean validarCaracteres(String caracteresNecesarios) {
+        ArrayList<Character> caracteresJugador = this.getPlayerCharacters();
+
+        for (char c : caracteresNecesarios.toCharArray()) {
+            boolean encontrado = false;
+            for (Character caracter : caracteresJugador) {
+                if (caracter.getSymbol().charAt(0) == c) {
+                    encontrado = true;
+                    break;
+                }
+            }
+            if (!encontrado) {
+                return false; // Si no se encuentra un carácter, retorna false
+            }
+        }
+        return true; // Si todos los caracteres están presentes, retorna true
+    }
+
 }
