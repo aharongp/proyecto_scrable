@@ -3,13 +3,13 @@ public class Tablero {
     private char[][] tablero;
 
     public Tablero() {
-        tablero = new char[TAMANO][TAMANO];
+        tablero = new char[15][15];
         inicializarTablero();
     }
 
     private void inicializarTablero() {
-        for (int i = 0; i < TAMANO; i++) {
-            for (int j = 0; j < TAMANO; j++) {
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
                 tablero[i][j] = ' ';
             }
         }
@@ -25,7 +25,7 @@ public class Tablero {
         for (int i = 0; i < TAMANO; i++) {
             System.out.printf("%2d ", i);
             for (int j = 0; j < TAMANO; j++) {
-                System.out.print("|" + tablero[i][j]);
+                System.out.print("| " + tablero[i][j]);
             }
             System.out.println("|");
         }
