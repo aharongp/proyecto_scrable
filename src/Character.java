@@ -23,8 +23,18 @@ public class Character {
         this.points = points;
     }
 
+    // Método nuevo para comparar caracteres
+    public boolean equals(String otherSymbol) {
+        return this.symbol.equals(otherSymbol);
+    }
+
+    // Método nuevo para verificar si es espacio vacío
+    public boolean isEmpty() {
+        return this.symbol.equals(" ");
+    }
+
     @Override
     public String toString() {
-        return "Symbol=("+getSymbol()+") Point=("+getPoints()+")";
+        return getSymbol();
     }
 }

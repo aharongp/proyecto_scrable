@@ -19,7 +19,8 @@ public class Partida {
     public Partida(Jugador jugador1, Jugador jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
-        this.tablero = new Tablero();
+        this.bag = new SpanishBag();
+        this.tablero = new Tablero(bag);
         this.score1 = 0;
         this.score2 = 0;
         this.actualTurn = 1;
@@ -32,7 +33,6 @@ public class Partida {
     }
 
     public void startGame(){
-        this.bag = new SpanishBag();
         this.jugador1.addCharacters(bag.get(7));
         this.jugador2.addCharacters(bag.get(7));
         this.initialTime = System.currentTimeMillis();
@@ -58,10 +58,10 @@ public class Partida {
                              2. Vertical""");
                     int direccion = Main.read.nextInt();
                     if (direccion == 1) {
-                        this.tablero.colocarPalabra(word, fila,columna,true);
+                        this.tablero.colocarPalabra(word, fila,columna,true, jugador1);
                         alternarTurno();
                     } else if (direccion == 2) {
-                        this.tablero.colocarPalabra(word, fila,columna,false);
+                        this.tablero.colocarPalabra(word, fila,columna,false, jugador1);
                         alternarTurno();
                     }
 
