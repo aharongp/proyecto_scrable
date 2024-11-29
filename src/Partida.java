@@ -20,7 +20,7 @@ public class Partida {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.bag = new SpanishBag();
-        this.tablero = new Tablero(bag);
+        this.tablero = new Tablero();
         this.score1 = 0;
         this.score2 = 0;
         this.actualTurn = 1;
