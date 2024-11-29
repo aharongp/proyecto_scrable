@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="*Se creo la clase JSONMapper para serializar y deserializar a json" />
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="*Se quito el atributo de bolsa de tablero&#10;*Se quito bolsa del constructor&#10;*En partida se cambio el constructor&#10;*Se modifico la inicializacion del tablero&#10;*Se quito el reponer fichas del tablero">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SpanishBag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SpanishBag.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,12 +31,12 @@
     &quot;assignee&quot;: &quot;PanzerOg&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/aharongp/proyecto_scrable.git",
-    "accountId": "56d17b50-7552-43b4-b25b-8c29945f3c07"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/aharongp/proyecto_scrable.git&quot;,
+    &quot;accountId&quot;: &quot;56d17b50-7552-43b4-b25b-8c29945f3c07&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.jdks/openjdk-23/lib/src.zip!/java.base/java/lang/Object.java" root0="SKIP_INSPECTION" />
   </component>
@@ -60,7 +63,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "proyecto-poo",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Java/Libs/jackson-databind-2.18.2.jar",
+    "last_opened_file_path": "C:/Java/Libs/jackson-annotations-2.18.2.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -70,8 +73,8 @@
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/Jose Alejandro/IdeaProjects/SCRABBLE-UCAB-Git/src/Main.java",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15527344",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
@@ -202,7 +205,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732899998527</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="*Se modifico el main para pruebas">
+      <option name="closed" value="true" />
+      <created>1732900443220</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1732900443220</updated>
+    </task>
+    <task id="LOCAL-00016" summary="*Se quito el atributo de bolsa de tablero&#10;*Se quito bolsa del constructor&#10;*En partida se cambio el constructor&#10;*Se modifico la inicializacion del tablero&#10;*Se quito el reponer fichas del tablero">
+      <option name="closed" value="true" />
+      <created>1732900659618</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1732900659619</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +250,9 @@
     <MESSAGE value="se modifico el metodo MostrarTablero en la clase Tablero para que imprima en los bordes del tablero el numero de casilla" />
     <MESSAGE value="*Se creo la clase ScreenReader para comportir un solo escaner en todo el proyecto" />
     <MESSAGE value="*Se creo la clase JSONMapper para serializar y deserializar a json" />
-    <option name="LAST_COMMIT_MESSAGE" value="*Se creo la clase JSONMapper para serializar y deserializar a json" />
+    <MESSAGE value="*Se modifico el main para pruebas" />
+    <MESSAGE value="*Se quito el atributo de bolsa de tablero&#10;*Se quito bolsa del constructor&#10;*En partida se cambio el constructor&#10;*Se modifico la inicializacion del tablero&#10;*Se quito el reponer fichas del tablero" />
+    <option name="LAST_COMMIT_MESSAGE" value="*Se quito el atributo de bolsa de tablero&#10;*Se quito bolsa del constructor&#10;*En partida se cambio el constructor&#10;*Se modifico la inicializacion del tablero&#10;*Se quito el reponer fichas del tablero" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
