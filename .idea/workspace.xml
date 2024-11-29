@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se modifico el metodo MostrarTablero en la clase Tablero para que imprima en los bordes del tablero el numero de casilla">
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="*Se creo la clase ScreenReader para comportir un solo escaner en todo el proyecto">
+      <change afterPath="$PROJECT_DIR$/src/JSONMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tablero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +32,12 @@
     &quot;assignee&quot;: &quot;PanzerOg&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/aharongp/proyecto_scrable.git&quot;,
-    &quot;accountId&quot;: &quot;ad152912-45d5-4ac7-a84f-9d9d4e227420&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/aharongp/proyecto_scrable.git",
+    "accountId": "56d17b50-7552-43b4-b25b-8c29945f3c07"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.jdks/openjdk-23/lib/src.zip!/java.base/java/lang/Object.java" root0="SKIP_INSPECTION" />
   </component>
@@ -64,7 +64,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "proyecto-poo",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/POO ejercicios/Ejemplo del Proyecto",
+    "last_opened_file_path": "C:/Java/Libs/jackson-databind-2.18.2.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,18 +73,13 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "C:/Users/Jose Alejandro/IdeaProjects/SCRABBLE-UCAB-Git/src/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration>C:\Users\Windows 10 pro\AppData\Roaming\Subversion</configuration>
@@ -195,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731462366881</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="*Se creo la clase ScreenReader para comportir un solo escaner en todo el proyecto">
+      <option name="closed" value="true" />
+      <created>1732899689235</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1732899689235</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +225,8 @@
     <MESSAGE value="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero" />
     <MESSAGE value="se elimino la clase Jugadores" />
     <MESSAGE value="se modifico el metodo MostrarTablero en la clase Tablero para que imprima en los bordes del tablero el numero de casilla" />
-    <option name="LAST_COMMIT_MESSAGE" value="se modifico el metodo MostrarTablero en la clase Tablero para que imprima en los bordes del tablero el numero de casilla" />
+    <MESSAGE value="*Se creo la clase ScreenReader para comportir un solo escaner en todo el proyecto" />
+    <option name="LAST_COMMIT_MESSAGE" value="*Se creo la clase ScreenReader para comportir un solo escaner en todo el proyecto" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
