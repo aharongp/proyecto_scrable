@@ -27,6 +27,7 @@ public class Diccionario {
             if (responseCode == 200) {
                 return true;
             } else if (responseCode == 404) {
+                System.out.println(responseCode);
                 return false;
             } else {
                 System.out.println("Error en la API: Código de respuesta " + responseCode);
