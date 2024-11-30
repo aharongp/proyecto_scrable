@@ -106,4 +106,9 @@ public class SpanishBag implements CharactersBag {
     public int remaning() {
         return characterList.size();
     }
+
+    @Override
+    public void reponer(ArrayList<Character> characterList) {
+        this.characterList.addAll(characterList);
+    }
 }
