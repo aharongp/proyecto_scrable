@@ -1,8 +1,10 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Partida {
-
+    UUID uuid = UUID.randomUUID();
+    private String id;
     private Jugador jugador1;
     private Jugador jugador2;
     private int score1;
@@ -15,7 +17,107 @@ public class Partida {
     private long time;
     private int winner;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Jugador getJugador1() {
+        return jugador1;
+    }
+
+    public void setJugador1(Jugador jugador1) {
+        this.jugador1 = jugador1;
+    }
+
+    public Jugador getJugador2() {
+        return jugador2;
+    }
+
+    public void setJugador2(Jugador jugador2) {
+        this.jugador2 = jugador2;
+    }
+
+    public int getScore1() {
+        return score1;
+    }
+
+    public void setScore1(int score1) {
+        this.score1 = score1;
+    }
+
+    public int getScore2() {
+        return score2;
+    }
+
+    public void setScore2(int score2) {
+        this.score2 = score2;
+    }
+
+    public SpanishBag getBag() {
+        return bag;
+    }
+
+    public void setBag(SpanishBag bag) {
+        this.bag = bag;
+    }
+
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
+    public int getActualTurn() {
+        return actualTurn;
+    }
+
+    public void setActualTurn(int actualTurn) {
+        this.actualTurn = actualTurn;
+    }
+
+    public long getInitialTime() {
+        return initialTime;
+    }
+
+    public void setInitialTime(long initialTime) {
+        this.initialTime = initialTime;
+    }
+
+    public long getFinishtime() {
+        return finishtime;
+    }
+
+    public void setFinishtime(long finishtime) {
+        this.finishtime = finishtime;
+    }
+
+    public long getTime() {
+        return time;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public int getWinner() {
+        return winner;
+    }
+
+    public void setWinner(int winner) {
+        this.winner = winner;
+    }
+
+    public Partida(){
+    }
+
     public Partida(Jugador jugador1, Jugador jugador2) {
+        this.id= uuid.toString();
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.bag = new SpanishBag();
@@ -140,10 +242,13 @@ public class Partida {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 menuDeJugador(jugador1);
+
             }
             else {
                 menuDeJugador(jugador2);
             }
+            String jsonPartida=JSONMapper.objectoToJson(this);
+            System.out.println("Partida en JSON=" + jsonPartida);
         }
         finishGame();
     }
