@@ -66,7 +66,7 @@ public class Tablero {
                 String possibleSpecial = (currentSymbol + String.valueOf(palabra.charAt(i + 1))).toLowerCase();
                 if (possibleSpecial.equals("ch") || possibleSpecial.equals("ll") || possibleSpecial.equals("rr")) {
                     // Buscar y remover el carácter especial de las fichas del jugador
-                    for (Character c : jugador.getPlayerCharacters()) {
+                    for (Character c : jugador.getPlayerCharacters().getFichas()) {
                         if (c.getSymbol().equalsIgnoreCase(possibleSpecial)) {
                             fichasUsadas.add(c);
                             puntosGanados += c.getPoints();
@@ -87,7 +87,7 @@ public class Tablero {
 
             if (!isSpecialChar) {
                 // Buscar y remover el carácter individual de las fichas del jugador
-                for (Character c : jugador.getPlayerCharacters()) {
+                for (Character c : jugador.getPlayerCharacters().getFichas()) {
                     if (c.getSymbol().equalsIgnoreCase(currentSymbol)) {
                         fichasUsadas.add(c);
                         puntosGanados += c.getPoints();
@@ -105,7 +105,7 @@ public class Tablero {
         }
 
         // Remover las fichas usadas del jugador
-        jugador.getPlayerCharacters().removeAll(fichasUsadas);
+        jugador.getPlayerCharacters().getFichas().removeAll(fichasUsadas);
 
         // Reponer fichas al jugador hasta tener 7
         //int fichasNecesarias = MAX_FICHAS - jugador.getNumberOfCharacters();
