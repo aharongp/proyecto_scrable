@@ -7,6 +7,14 @@ public class FichasJugador {
         fichas = new ArrayList<>();
     }
 
+    public ArrayList<Character> getFichas() {
+        return fichas;
+    }
+
+    public void setFichas(ArrayList<Character> fichas) {
+        this.fichas = fichas;
+    }
+
     public void agregarFicha(Character ficha) {
         fichas.add(ficha);
     }
@@ -52,5 +60,35 @@ public class FichasJugador {
             }
         }
         return extraidas;
+    }
+
+    public int cantidadDeFichas(){
+        return fichas.size();
+    }
+
+    public void reponer(ArrayList<Character> characterList) {
+        fichas.addAll(characterList);
+    }
+
+    public boolean existeCaracterEnJugador(String simbolo) {
+        boolean result = false;
+        for (Character c : fichas) {
+            if (c.getSymbol().equalsIgnoreCase(simbolo)) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        String result="";
+        String separador="";
+        for (Character c : fichas) {
+            result=result+separador+c.getSymbol();
+            separador=",";
+        }
+        return result;
     }
 }
