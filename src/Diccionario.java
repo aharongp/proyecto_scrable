@@ -24,10 +24,10 @@ public class Diccionario {
         return palabras.contains(palabra.toLowerCase());
     }
 
-    public static void main(String[] args) {
+    public void prueba() {
         try {
             // Carga el diccionario desde el archivo
-            Diccionario diccionario = new Diccionario("C:/proyePOO/src/listado-general.txt");
+            Diccionario diccionario = new Diccionario("listado-general.txt");
 
             // Ejemplo de uso
             String palabra = "abajo";
