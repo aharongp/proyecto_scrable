@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Partida {
@@ -41,9 +41,69 @@ public class Partida {
         initialTime = System.currentTimeMillis();
     }
 
-    public void turnoJugador(Jugador jugador) {
+    public void menuDeJugador(Jugador jugador){
         System.out.println("Es turno del jugador " + jugador.getAlias());
         jugador.printCharacters();
+        int opcion;
+        boolean finalizar=false;
+        do {
+            System.out.println("=========================");
+            System.out.println("        MENU JUEGO      ");
+            System.out.println("=========================");
+            System.out.println("1. Colocar Palabra");
+            System.out.println("2. Cambiar Fichas");
+            System.out.println("3. Pasar Turno");
+            System.out.println("4. Salir de la Partida");
+            System.out.println("=========================");
+            System.out.print("Por favor, selecciona una opcion (1-4): ");
+            //opcion = scanner.nextInt();
+            opcion=ScreenReader.read.nextInt();
+            switch (opcion) {
+                case 1:
+                    colocarPalabra(jugador);
+                    alternarTurno();
+                    finalizar=true;
+                    break;
+                case 2:
+                    finalizar=cambiarFichasDeJugador(jugador);
+                    jugador.printCharacters();
+                    alternarTurno();
+                    break;
+                case 3:
+                    alternarTurno();
+                    finalizar=true;
+                    break;
+                case 4:
+                    salirDePartida();
+                    finalizar=true;
+                    break;
+                default:
+                    System.out.println("Opcion invalida. Por favor, selecciona una opcion valida.");
+            }
+        } while (!finalizar);
+
+    }
+
+    public boolean cambiarFichasDeJugador(Jugador jugador){
+        System.out.println("Fichas del jugador:"+jugador.getAlias());
+        jugador.printCharacters();
+        System.out.println("Indique las fichas a cambiar:");
+        String fichasACambiar=ScreenReader.read.next();
+        //String[] cambio=fichasACambiar.split(",");
+        ArrayList<Character> fichasJ=jugador.getPlayerCharacters().getFichas();
+        //public boolean reemplazarFichas(String fichasPorExtraer, CharactersBag bag)
+        FichasJugador fichasJugador=jugador.getPlayerCharacters();
+        return fichasJugador.reemplazarFichas(fichasACambiar,bag);
+    }
+
+    public void salirDePartida(){
+
+    }
+
+
+    public void colocarPalabra(Jugador jugador) {
+        //System.out.println("Es turno del jugador " + jugador.getAlias());
+        //jugador.printCharacters();
         System.out.println("Escribe la palabra que quieres poner");
         String word = ScreenReader.read.next();
         if (jugador.validarCaracteres(word)) {
@@ -79,12 +139,11 @@ public class Partida {
         while (!chooseWinner()) {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
-                turnoJugador(jugador1);
+                menuDeJugador(jugador1);
             }
             else {
-                turnoJugador(jugador2);
+                menuDeJugador(jugador2);
             }
-            alternarTurno();
         }
         finishGame();
     }
