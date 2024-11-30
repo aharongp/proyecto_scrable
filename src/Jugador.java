@@ -1,11 +1,10 @@
 import java.util.*;
-
 public class Jugador {
     private String alias;            // Alias del jugador
     private String email;            // Correo electrónico del jugador
     private int score;               // Puntaje total del jugador
     private int palabrasJugadas; // Lista de palabras jugadas por el jugador
-    private ArrayList<Character> playerCharacters;
+    private FichasJugador playerCharacters;
     private long tiempoTotalJugado;   // Tiempo total jugado en segundos
 
     // Constructor
@@ -14,8 +13,12 @@ public class Jugador {
         this.email = email;
         this.score = 0;
         this.palabrasJugadas = 0;
-        this.playerCharacters = new ArrayList<Character>();
+        this.playerCharacters = new FichasJugador();
         this.tiempoTotalJugado = 0;
+    }
+
+    public void setPlayerCharacters(FichasJugador playerCharacters) {
+        this.playerCharacters = playerCharacters;
     }
 
     // Métodos de acceso (getters y setters)
@@ -39,12 +42,13 @@ public class Jugador {
         return tiempoTotalJugado;
     }
 
-    public ArrayList<Character> getPlayerCharacters() {
+
+    public FichasJugador getPlayerCharacters() {
         return playerCharacters;
     }
 
-    public int getNumberOfCharacters(){
-        return playerCharacters.size();
+    public int getNumberOfCharacters() {
+        return playerCharacters.cantidadDeFichas();
     }
 
     public void printCharacters(){
@@ -52,11 +56,7 @@ public class Jugador {
     }
 
     public void addCharacters(ArrayList<Character> newCharacters){
-        this.playerCharacters.addAll(newCharacters);
-    }
-
-    public void clearPlayerCharacters(ArrayList<Character> playerCharacters) {
-        this.playerCharacters.clear();
+       playerCharacters.reponer(newCharacters);
     }
 
     public void addPoints(int puntos) {
@@ -82,56 +82,39 @@ public class Jugador {
     }
 
     public boolean validarCaracteres(String caracteresNecesarios) {
-        ArrayList<Character> caracteresJugador = this.getPlayerCharacters();
         int i = 0;
-
         while (i < caracteresNecesarios.length()) {
             char c = caracteresNecesarios.charAt(i);
-
             // Verificar si el carácter actual es 'c' y el siguiente es 'h'
             if (c == 'c' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'h')) {
-                if (!existeCaracterEnJugador("ch", caracteresJugador)) {
+                if (!playerCharacters.existeCaracterEnJugador("CH")) {
                     return false;
                 }
                 i += 2; // Saltar el siguiente carácter
                 continue;
             }
-
             // Verificar si el carácter actual es 'r' y el siguiente es 'r'
             if (c == 'r' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'r')) {
-                if (!existeCaracterEnJugador("rr", caracteresJugador)) {
+                if (!playerCharacters.existeCaracterEnJugador("RR")) {
                     return false;
                 }
                 i += 2; // Saltar el siguiente carácter
                 continue;
             }
-
             // Verificar si el carácter actual es 'l' y el siguiente es 'l'
             if (c == 'l' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'l')) {
-                if (!existeCaracterEnJugador("ll", caracteresJugador)) {
+                if (!playerCharacters.existeCaracterEnJugador("LL")) {
                     return false;
                 }
                 i += 2; // Saltar el siguiente carácter
                 continue;
             }
-
             // Verificar caracteres individuales
-            if (!existeCaracterEnJugador(String.valueOf(c), caracteresJugador)) {
-                return false; // Si no se encuentra un carácter, retorna false
+            if (!playerCharacters.existeCaracterEnJugador(String.valueOf(c))) {
+                return false;
             }
-
             i++; // Avanzar al siguiente carácter
         }
         return true; // Si todos los caracteres están presentes, retorna true
     }
-
-    private boolean existeCaracterEnJugador(String simbolo, ArrayList<Character> caracteresJugador) {
-        for (Character caracter : caracteresJugador) {
-            if (caracter.getSymbol().equals(simbolo)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
 }
