@@ -1,48 +1,43 @@
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
 
 public class Diccionario {
+    private HashSet<String> palabras;
 
-    private static final String API_URL = "https://od-api-sandbox.oxforddictionaries.com/api/v2/entries/es/";
+    public Diccionario(String rutaArchivo) throws IOException {
+        palabras = new HashSet<>();
+        cargarDiccionario(rutaArchivo);
+    }
 
-    private static final String APP_ID = "8ac4989f";
-    private static final String APP_KEY = "238e6ce7812ed3db300a06ae597a1344";
-
-    // Método para verificar si una palabra existe en el diccionario
-    public boolean verificarPalabra(String palabra) {
-        try {
-            String urlString = API_URL + palabra.toLowerCase();
-            URL url = new URL(urlString);
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-
-            conn.setRequestProperty("app_id", APP_ID);
-            conn.setRequestProperty("app_key", APP_KEY);
-
-            int responseCode = conn.getResponseCode();
-
-            if (responseCode == 200) {
-                return true;
-            } else if (responseCode == 404) {
-                System.out.println(responseCode);
-                return false;
-            } else {
-                System.out.println("Error en la API: Código de respuesta " + responseCode);
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-                String inputLine;
-                StringBuilder response = new StringBuilder();
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                System.out.println("Respuesta de error: " + response.toString());
+    private void cargarDiccionario(String rutaArchivo) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                palabras.add(linea.trim().toLowerCase());
             }
-
-        } catch (Exception e) {
-            System.out.println("Error al verificar la palabra: " + e.getMessage());
         }
-        return false;
+    }
+
+    public boolean existePalabra(String palabra) {
+        return palabras.contains(palabra.toLowerCase());
+    }
+
+    public static void main(String[] args) {
+        try {
+            // Carga el diccionario desde el archivo
+            Diccionario diccionario = new Diccionario("C:/proyePOO/src/listado-general.txt");
+
+            // Ejemplo de uso
+            String palabra = "abajo";
+            if (diccionario.existePalabra(palabra)) {
+                System.out.println("La palabra '" + palabra + "' existe en el diccionario.");
+            } else {
+                System.out.println("La palabra '" + palabra + "' NO existe en el diccionario.");
+            }
+        } catch (IOException e) {
+            System.err.println("Error al cargar el archivo: " + e.getMessage());
+        }
     }
 }
