@@ -1,8 +1,8 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Partida {
+    private ManejadorDeArchivos manejadorDeArchivos=new ManejadorDeArchivos();
     UUID uuid = UUID.randomUUID();
     private String id;
     private Jugador jugador1;
@@ -16,6 +16,7 @@ public class Partida {
     private long finishtime;
     private long time;
     private int winner;
+
 
     public String getId() {
         return id;
@@ -143,6 +144,23 @@ public class Partida {
         initialTime = System.currentTimeMillis();
     }
 
+    public void continuarPartida(){
+        while (!chooseWinner()) {
+            this.tablero.mostrarTablero();
+            if (actualTurn == 1) {
+                menuDeJugador(jugador1);
+
+            }
+            else {
+                menuDeJugador(jugador2);
+            }
+            String jsonPartida=JSONMapper.objectoToJson(this);
+            System.out.println("Partida en JSON=" + jsonPartida);
+            manejadorDeArchivos.salvarPartida(this);
+        }
+        finishGame();
+    }
+
     public void menuDeJugador(Jugador jugador){
         System.out.println("Es turno del jugador " + jugador.getAlias());
         jugador.printCharacters();
@@ -229,7 +247,7 @@ public class Partida {
     }
 
     public void reponerFichas(Jugador jugador) {
-        int fichasNecesarias = 7 - jugador.getNumberOfCharacters();
+        int fichasNecesarias = 7 - jugador.numberOfCharacters();
         if (fichasNecesarias > 0) {
             ArrayList<Character> nuevasFichas = bag.get(fichasNecesarias);
             jugador.addCharacters(nuevasFichas);
@@ -249,6 +267,7 @@ public class Partida {
             }
             String jsonPartida=JSONMapper.objectoToJson(this);
             System.out.println("Partida en JSON=" + jsonPartida);
+            manejadorDeArchivos.salvarPartida(this);
         }
         finishGame();
     }
@@ -260,11 +279,11 @@ public class Partida {
 
     public boolean chooseWinner() {
         if (this.bag.remaning() == 0) {
-            if (this.jugador1.getNumberOfCharacters() == 0) {
+            if (this.jugador1.numberOfCharacters() == 0) {
                 this.winner = 1;
                 return true;
             }
-            else if (this.jugador2.getNumberOfCharacters() == 0) {
+            else if (this.jugador2.numberOfCharacters() == 0) {
                 this.winner = 2;
                 return true;
             }
