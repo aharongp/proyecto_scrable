@@ -149,7 +149,6 @@ public class Partida {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 menuDeJugador(jugador1);
-
             }
             else {
                 menuDeJugador(jugador2);

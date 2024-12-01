@@ -15,13 +15,21 @@ public class Main {
             if((opc == 1) | (opc == 2)){
                 System.out.println("Ingresa el correo electronico");
                 email = read.next();
-                while (auth.validateEmail(email)){
+                while (!auth.validateEmail(email)){
                     System.out.println("Correo invalido, por favor ingrese otro");
+                    email = read.next();
                 }
                 System.out.println("Ingresa el alias del jugador");
                 alias = read.next();
-                if( opc == 1) { return auth.login(alias,email);}
-                if(opc ==2) { return auth.register(alias,email);}
+                if( opc == 1) {
+                    Jugador jugador = auth.login(alias,email);
+                    while (jugador == null){
+                        System.out.print("usuario no existe, ingrese un usuario valido");
+                        jugador = inicio();
+                    }
+                    return jugador;
+                }
+                if(opc == 2) { return auth.register(alias,email);}
             } else {
                 System.out.println("Ingrese una opcion valida");
                 System.out.println("\n\n 1.Iniciar sesion \n 2.Registrarse \n\n 0. salir");
@@ -47,9 +55,11 @@ public class Main {
         int opc = read.nextInt();
         while(opc != 0){
             if(opc == 1){
-
+                Partida partida = new Partida(jugador1,jugador2);
+                partida.game();
             } if (opc == 2){
-
+                Partida continuar = new Partida(jugador1,jugador2);
+                continuar.continuarPartida();
             } if (opc == 3) {
 
             } else {

@@ -4,12 +4,21 @@ import java.util.regex.Pattern;
 public class Authentication {
 
     public Jugador login(String alias, String email){
-
-        return null;
+        ManejadorDeArchivos archivo = new ManejadorDeArchivos();
+        Jugador jugador = archivo.restaurarJugador(alias);
+        String emailjugador = jugador.getEmail();
+        if(emailjugador.equals(email)){
+            return jugador;
+        }else {
+            return null;
+        }
     }
-    public Jugador register(String alias, String email){
 
-        return null;
+    public Jugador register(String alias, String email){
+        ManejadorDeArchivos archivo = new ManejadorDeArchivos();
+        Jugador jugador = new Jugador(alias, email);
+        archivo.salvarJugador(jugador);
+        return jugador;
     }
 
     public boolean validateEmail(String email){
