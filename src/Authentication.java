@@ -6,6 +6,10 @@ public class Authentication {
     public Jugador login(String alias, String email){
         ManejadorDeArchivos archivo = new ManejadorDeArchivos();
         Jugador jugador = archivo.restaurarJugador(alias);
+        if(jugador==null){
+            System.out.println("Jugador no encontrado debe registrar primero");
+            return null;
+        }
         String emailjugador = jugador.getEmail();
         if(emailjugador.equals(email)){
             return jugador;
