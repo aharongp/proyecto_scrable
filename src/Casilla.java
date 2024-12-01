@@ -2,7 +2,6 @@ public class Casilla {
     private Character ficha;
     private String bonificacion;
 
-    // Constructor por defecto
     public Casilla() {
         this.ficha = null;
         this.bonificacion = null;
