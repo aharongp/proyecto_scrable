@@ -46,7 +46,6 @@ public class Tablero {
     }
 
     public void mostrarTablero() {
-        String disp = "";
         System.out.print("   ");
         for (int i = 0; i < TAMANO; i++) {
             System.out.printf("%2d ", i);
@@ -56,16 +55,17 @@ public class Tablero {
         for (int i = 0; i < TAMANO; i++) {
             System.out.printf("%2d ", i);
             for (int j = 0; j < TAMANO; j++) {
-                if (tablero[i][j] == null) {
-                    disp = " ";
+                String bonificacion = tablero[i][j].getBonificacion();
+                if (bonificacion == null) {
+                    System.out.print("|   ");
                 } else {
-                    disp = tablero[i][j].getSymbol();
+                    System.out.print("| " + bonificacion + " ");
                 }
-                System.out.print("| " + disp);
             }
             System.out.println("|");
         }
     }
+
 
     public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador) {
         palabra = palabra.toUpperCase();
@@ -209,3 +209,4 @@ public class Tablero {
         return tablero;
     }
 }
+
