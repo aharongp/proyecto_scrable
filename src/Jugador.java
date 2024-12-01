@@ -1,4 +1,8 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.*;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Jugador {
     private String alias;            // Alias del jugador
     private String email;            // Correo electrónico del jugador
@@ -7,6 +11,9 @@ public class Jugador {
     private FichasJugador playerCharacters;
     private long tiempoTotalJugado;   // Tiempo total jugado en segundos
 
+    public Jugador(){
+
+    }
     // Constructor
     public Jugador(String alias, String email) {
         this.alias = alias;
@@ -42,12 +49,11 @@ public class Jugador {
         return tiempoTotalJugado;
     }
 
-
     public FichasJugador getPlayerCharacters() {
         return playerCharacters;
     }
 
-    public int getNumberOfCharacters() {
+    public int numberOfCharacters() {
         return playerCharacters.cantidadDeFichas();
     }
 
