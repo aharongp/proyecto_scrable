@@ -1,6 +1,6 @@
 public class Prueba {
     public static void main(String[] args) {
-        test01();
+        test00();
     }
 
     public static void test00(){
