@@ -215,7 +215,6 @@ public class Partida {
         FichasJugador fichasJugador=jugador.getPlayerCharacters();
         return fichasJugador.reemplazarFichas(fichasACambiar,bag);
     }
-
     public void salirDePartida(){
 
     }

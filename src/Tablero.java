@@ -6,14 +6,13 @@ public class Tablero {
     private Character[][] tablero;
 
     public Tablero() {
-        tablero = new Character[15][15];
+        tablero = new Character[TAMANO][TAMANO];
         inicializarTablero();
     }
 
     private void inicializarTablero() {
-        for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 15; j++) {
-                //tablero[i][j] = new Character(" ", 0);
+        for (int i = 0; i < TAMANO; i++) {
+            for (int j = 0; j < TAMANO; j++) {
                 tablero[i][j] = null;
             }
         }
@@ -32,8 +31,7 @@ public class Tablero {
             for (int j = 0; j < TAMANO; j++) {
                 if (tablero[i][j] == null) {
                     disp = " ";
-                }
-                else {
+                } else {
                     disp = tablero[i][j].getSymbol();
                 }
                 System.out.print("| " + disp);
@@ -43,12 +41,12 @@ public class Tablero {
     }
 
     public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador) {
-        // Primero validamos si el jugador tiene las fichas necesarias
-        if (!jugador.validarCaracteres(palabra.toUpperCase())) {
+        palabra = palabra.toUpperCase();
+
+        if (!jugador.validarCaracteres(palabra)) {
             return false;
         }
 
-        // Luego validamos si la posición es válida en el tablero
         if (!esPosicionValida(palabra, fila, columna, horizontal)) {
             return false;
         }
@@ -59,26 +57,13 @@ public class Tablero {
 
         while (i < palabra.length()) {
             String currentSymbol = String.valueOf(palabra.charAt(i)).toLowerCase();
-
-            // Manejar caracteres especiales (ch, ll, rr)
             boolean isSpecialChar = false;
+
             if (i + 1 < palabra.length()) {
-                String possibleSpecial = (currentSymbol + String.valueOf(palabra.charAt(i + 1))).toLowerCase();
+                String possibleSpecial = currentSymbol + String.valueOf(palabra.charAt(i + 1)).toLowerCase();
                 if (possibleSpecial.equals("ch") || possibleSpecial.equals("ll") || possibleSpecial.equals("rr")) {
-                    // Buscar y remover el carácter especial de las fichas del jugador
-                    for (Character c : jugador.getPlayerCharacters().getFichas()) {
-                        if (c.getSymbol().equalsIgnoreCase(possibleSpecial)) {
-                            fichasUsadas.add(c);
-                            puntosGanados += c.getPoints();
-                            if (horizontal) {
-                                tablero[fila][columna + i] = new Character(possibleSpecial.toUpperCase(), c.getPoints());
-                            }
-                            else {
-                                tablero[fila + i][columna] = new Character(possibleSpecial.toUpperCase(), c.getPoints());
-                            }
-                            break;
-                        }
-                    }
+                    colocarFicha(possibleSpecial.toUpperCase(), fila, columna, horizontal, i, jugador, fichasUsadas);
+                    puntosGanados += obtenerPuntosFicha(possibleSpecial, jugador);
                     i += 2;
                     isSpecialChar = true;
                     continue;
@@ -86,35 +71,14 @@ public class Tablero {
             }
 
             if (!isSpecialChar) {
-                // Buscar y remover el carácter individual de las fichas del jugador
-                for (Character c : jugador.getPlayerCharacters().getFichas()) {
-                    if (c.getSymbol().equalsIgnoreCase(currentSymbol)) {
-                        fichasUsadas.add(c);
-                        puntosGanados += c.getPoints();
-                        if (horizontal) {
-                            tablero[fila][columna + i] = new Character(currentSymbol.toUpperCase(), c.getPoints());
-                        }
-                        else {
-                            tablero[fila + i][columna] = new Character(currentSymbol.toUpperCase(), c.getPoints());
-                        }
-                        break;
-                    }
-                }
+                colocarFicha(currentSymbol.toUpperCase(), fila, columna, horizontal, i, jugador, fichasUsadas);
+                puntosGanados += obtenerPuntosFicha(currentSymbol, jugador);
                 i++;
             }
         }
 
-        // Remover las fichas usadas del jugador
         jugador.getPlayerCharacters().getFichas().removeAll(fichasUsadas);
 
-        // Reponer fichas al jugador hasta tener 7
-        //int fichasNecesarias = MAX_FICHAS - jugador.getNumberOfCharacters();
-        //if (fichasNecesarias > 0) {
-        //   ArrayList<Character> nuevasFichas = getBag().get(fichasNecesarias);
-        //   jugador.addCharacters(nuevasFichas);
-        //}
-
-        // Actualizar estadísticas del jugador
         jugador.addPoints(puntosGanados);
         jugador.addWordPlayed();
 
@@ -122,63 +86,96 @@ public class Tablero {
     }
 
     private boolean esPosicionValida(String palabra, int fila, int columna, boolean horizontal) {
-        // Verificar límites del tablero
-        if (horizontal) {
-            if (columna + palabra.length() > TAMANO) {
-                return false;
-            }
-        }
-        else {
-            if (fila + palabra.length() > TAMANO) {
-                return false;
-            }
-        }
+        if (horizontal && columna + palabra.length() > TAMANO) return false;
+        if (!horizontal && fila + palabra.length() > TAMANO) return false;
+
+        boolean tocaLetraExistente = false;
         int i = 0;
+
         while (i < palabra.length()) {
             String currentSymbol = String.valueOf(palabra.charAt(i)).toLowerCase();
-            // Verificar caracteres especiales
             boolean isSpecialChar = false;
+
             if (i + 1 < palabra.length()) {
                 String possibleSpecial = currentSymbol + String.valueOf(palabra.charAt(i + 1)).toLowerCase();
                 if (possibleSpecial.equals("ch") || possibleSpecial.equals("ll") || possibleSpecial.equals("rr")) {
-                    if (horizontal) {
-                        if (!(tablero[fila][columna + i] == null)
-                                && !tablero[fila][columna + i].getSymbol().equalsIgnoreCase(possibleSpecial)) {
-                            return false;
-                        }
-                    }
-                    else {
-                        if (!(tablero[fila + i][columna] == null)
-                                && !tablero[fila + i][columna].getSymbol().equalsIgnoreCase(possibleSpecial)) {
-                            return false;
-                        }
-                    }
+                    if (!validarCasilla(possibleSpecial, fila, columna, horizontal, i)) return false;
+                    tocaLetraExistente |= hayLetraAdyacente(fila, columna, horizontal, i);
                     i += 2;
                     isSpecialChar = true;
                     continue;
                 }
             }
+
             if (!isSpecialChar) {
-                if (horizontal) {
-                    if (!(tablero[fila][columna + i] == null)
-                            && !tablero[fila][columna + i].getSymbol().equalsIgnoreCase(currentSymbol)) {
-                        return false;
-                    }
-                }
-                else {
-                    if (!(tablero[fila + i][columna] == null)
-                            && !tablero[fila + i][columna].getSymbol().equalsIgnoreCase(currentSymbol)) {
-                        return false;
-                    }
-                }
+                if (!validarCasilla(currentSymbol, fila, columna, horizontal, i)) return false;
+                tocaLetraExistente |= hayLetraAdyacente(fila, columna, horizontal, i);
                 i++;
+            }
+        }
+
+        return tocaLetraExistente || tableroVacio();
+    }
+
+    private boolean validarCasilla(String simbolo, int fila, int columna, boolean horizontal, int offset) {
+        int posFila = horizontal ? fila : fila + offset;
+        int posColumna = horizontal ? columna + offset : columna;
+
+        if (tablero[posFila][posColumna] == null) return true;
+        return tablero[posFila][posColumna].getSymbol().equalsIgnoreCase(simbolo);
+    }
+
+    private boolean hayLetraAdyacente(int fila, int columna, boolean horizontal, int offset) {
+        int posFila = horizontal ? fila : fila + offset;
+        int posColumna = horizontal ? columna + offset : columna;
+
+        int[][] direcciones = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        for (int[] dir : direcciones) {
+            int adyFila = posFila + dir[0];
+            int adyColumna = posColumna + dir[1];
+
+            if (adyFila >= 0 && adyFila < TAMANO && adyColumna >= 0 && adyColumna < TAMANO) {
+                if (tablero[adyFila][adyColumna] != null) return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean tableroVacio() {
+        for (int i = 0; i < TAMANO; i++) {
+            for (int j = 0; j < TAMANO; j++) {
+                if (tablero[i][j] != null) return false;
             }
         }
         return true;
     }
 
+    private void colocarFicha(String simbolo, int fila, int columna, boolean horizontal, int offset, Jugador jugador, ArrayList<Character> fichasUsadas) {
+        int posFila = horizontal ? fila : fila + offset;
+        int posColumna = horizontal ? columna + offset : columna;
+
+        if (tablero[posFila][posColumna] == null) {
+            for (Character c : jugador.getPlayerCharacters().getFichas()) {
+                if (c.getSymbol().equalsIgnoreCase(simbolo)) {
+                    tablero[posFila][posColumna] = new Character(simbolo, c.getPoints());
+                    fichasUsadas.add(c);
+                    break;
+                }
+            }
+        }
+    }
+
+    private int obtenerPuntosFicha(String simbolo, Jugador jugador) {
+        for (Character c : jugador.getPlayerCharacters().getFichas()) {
+            if (c.getSymbol().equalsIgnoreCase(simbolo)) {
+                return c.getPoints();
+            }
+        }
+        return 0;
+    }
+
     public boolean hayLetrasEnElCentro() {
-        return !(tablero[7][7] == null);
+        return tablero[7][7] != null;
     }
 
     public Character[][] getTablero() {
