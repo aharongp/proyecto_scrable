@@ -12,7 +12,7 @@ public class ManejadorDeArchivos {
             bw.flush();
             bw.close();
         } catch (IOException e) {
-            System.out.println("Excepcion=" + e.getStackTrace());
+            //System.out.println("Excepcion=" + e.getStackTrace());
         }
 
     }
@@ -25,9 +25,9 @@ public class ManejadorDeArchivos {
             System.out.println(json);
             return JSONMapper.jsonToObject(json, Partida.class);
         } catch (FileNotFoundException e) {
-            System.out.println("Excepcion=" + e.getMessage());
+            //System.out.println("Excepcion=" + e.getMessage());
         } catch (IOException e) {
-            System.out.println("Excepcion=" + e.getMessage());
+            //System.out.println("Excepcion=" + e.getMessage());
         }
         return null;
     }
@@ -42,21 +42,21 @@ public class ManejadorDeArchivos {
             bw.flush();
             bw.close();
         } catch (IOException e) {
-            System.out.println("Excepcion=" + e.getStackTrace());
+            //System.out.println("Excepcion=" + e.getStackTrace());
         }
     }
 
     public Jugador restaurarJugador(String alias) {
         try {
-            FileReader fr = new FileReader(alias);
+            FileReader fr = new FileReader(alias+".jug");
             BufferedReader br = new BufferedReader(fr);
             String json = br.readLine();
             System.out.println(json);
             return JSONMapper.jsonToObject(json, Jugador.class);
         } catch (FileNotFoundException e) {
-            System.out.println("Excepcion=" + e.getStackTrace());
+            //System.out.println("Excepcion=" + e.getStackTrace());
         } catch (IOException e) {
-            System.out.println("Excepcion=" + e.getStackTrace());
+            //System.out.println("Excepcion=" + e.getStackTrace());
         }
         return null;
     }
