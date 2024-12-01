@@ -19,25 +19,4 @@ public class Diccionario {
             }
         }
     }
-
-    public boolean existePalabra(String palabra) {
-        return palabras.contains(palabra.toLowerCase());
-    }
-
-    public void prueba() {
-        try {
-            // Carga el diccionario desde el archivo
-            Diccionario diccionario = new Diccionario("listado-general.txt");
-
-            // Ejemplo de uso
-            String palabra = "abajo";
-            if (diccionario.existePalabra(palabra)) {
-                System.out.println("La palabra '" + palabra + "' existe en el diccionario.");
-            } else {
-                System.out.println("La palabra '" + palabra + "' NO existe en el diccionario.");
-            }
-        } catch (IOException e) {
-            System.err.println("Error al cargar el archivo: " + e.getMessage());
-        }
-    }
 }

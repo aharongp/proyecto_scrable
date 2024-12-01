@@ -49,6 +49,10 @@ public class Jugador {
         return tiempoTotalJugado;
     }
 
+    public void limpiarFichas(){
+        this.playerCharacters = new FichasJugador();
+    }
+
     public FichasJugador getPlayerCharacters() {
         return playerCharacters;
     }
