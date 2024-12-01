@@ -267,6 +267,8 @@ public class Partida {
             String jsonPartida=JSONMapper.objectoToJson(this);
             System.out.println("Partida en JSON=" + jsonPartida);
             manejadorDeArchivos.salvarPartida(this);
+            manejadorDeArchivos.salvarJugador(getJugador1());
+            manejadorDeArchivos.salvarJugador(getJugador2());
         }
         finishGame();
     }
