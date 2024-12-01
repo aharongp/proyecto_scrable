@@ -224,7 +224,7 @@ public class Partida {
         //jugador.printCharacters();
         System.out.println("Escribe la palabra que quieres poner");
         String word = ScreenReader.read.next();
-        if (jugador.validarCaracteres(word)) {
+        //if (jugador.validarCaracteres(word)) {
             System.out.println("¿En que posicion la deseas colocar?\s numero de fila: ");
             int fila = ScreenReader.read.nextInt();
             System.out.println("numero de columna: ");
@@ -235,13 +235,13 @@ public class Partida {
                              2. Vertical""");
             int direccion = ScreenReader.read.nextInt();
             if (direccion == 1) {
-                this.tablero.colocarPalabra(word, fila, columna, true, jugador);
+                this.tablero.ubicarPalabra(word, fila, columna, true, jugador);
             }
             else if (direccion == 2) {
-                this.tablero.colocarPalabra(word, fila, columna, false, jugador);
+                this.tablero.ubicarPalabra(word, fila, columna, false, jugador);
             }
             reponerFichas(jugador);
-        }
+        //}
     }
 
     public void reponerFichas(Jugador jugador) {
