@@ -27,6 +27,7 @@ public class Main {
                         System.out.print("usuario no existe, ingrese un usuario valido");
                         jugador = inicio();
                     }
+                    jugador.limpiarFichas();
                     return jugador;
                 }
                 if(opc == 2) { return auth.register(alias,email);}
@@ -41,6 +42,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+
         System.out.println("****************************************");
         System.out.println("***********Inicio del juego*************");
         System.out.println("***************Jugador 1****************");
@@ -58,10 +60,21 @@ public class Main {
                 Partida partida = new Partida(jugador1,jugador2);
                 partida.game();
             } if (opc == 2){
-                Partida continuar = new Partida(jugador1,jugador2);
+                ManejadorDeArchivos archivos = new ManejadorDeArchivos();
+                Partida continuar = archivos.buscarPartida(jugador1.getAlias(), jugador2.getAlias());
                 continuar.continuarPartida();
+                System.out.println("Ingrese una opcion valida");
+                System.out.println("\n\n 1.Iniciar sesion \n 2.Registrarse \n\n 0. salir");
+                opc = read.nextInt();
             } if (opc == 3) {
-
+                Estadisticas estadisticas = new Estadisticas();
+                System.out.println("***************Jugador 1****************");
+                estadisticas.estad(jugador1.getAlias());
+                System.out.println("***************Jugador 2****************");
+                estadisticas.estad(jugador2.getAlias());
+                System.out.println("Ingrese una opcion valida");
+                System.out.println("\n\n 1.Iniciar sesion \n 2.Registrarse \n\n 0. salir");
+                opc = read.nextInt();
             } else {
                 System.out.println("Ingrese una opcion valida");
                 System.out.println("\n\n 1.Iniciar sesion \n 2.Registrarse \n\n 0. salir");
