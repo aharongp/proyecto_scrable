@@ -1,6 +1,12 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Character {
     private String symbol;
     private int points;
+
+    public Character(){
+    }
 
     public Character(String symbol, int points) {
         this.symbol = symbol;
@@ -21,16 +27,6 @@ public class Character {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-
-    // Método nuevo para comparar caracteres
-    public boolean equals(String otherSymbol) {
-        return this.symbol.equals(otherSymbol);
-    }
-
-    // Método nuevo para verificar si es espacio vacío
-    public boolean isEmpty() {
-        return this.symbol.equals(" ");
     }
 
     @Override
