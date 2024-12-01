@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -222,9 +223,20 @@ public class Partida {
     public void colocarPalabra(Jugador jugador) {
         //System.out.println("Es turno del jugador " + jugador.getAlias());
         //jugador.printCharacters();
+        Diccionario diccionario = new Diccionario();
         System.out.println("Escribe la palabra que quieres poner");
         String word = ScreenReader.read.next();
-        //if (jugador.validarCaracteres(word)) {
+        int cont =0;
+        while(!diccionario.existePalabra(word)){
+            System.out.println("esa palabra no existe en el diccionario , por favor ingrese otra");
+            word = ScreenReader.read.next();
+            cont++;
+            if (cont == 2){
+                System.out.println("perdiste el turno");
+                return;
+            }
+        }
+        if (jugador.validarCaracteres(word)) {
             System.out.println("¿En que posicion la deseas colocar?\s numero de fila: ");
             int fila = ScreenReader.read.nextInt();
             System.out.println("numero de columna: ");
@@ -241,7 +253,7 @@ public class Partida {
                 this.tablero.ubicarPalabra(word, fila, columna, false, jugador);
             }
             reponerFichas(jugador);
-        //}
+        }
     }
 
     public void reponerFichas(Jugador jugador) {
