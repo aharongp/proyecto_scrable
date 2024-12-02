@@ -93,12 +93,12 @@ public class Main {
                 opc = read.nextInt();
             } if (opc == 3) {
                 Estadisticas estadisticas = new Estadisticas();
-                System.out.println("***************Jugador 1****************");
+                System.out.println(FONDO_VERDE+TEXTO_NEGRO + "***************Jugador 1****************");
                 estadisticas.estad(jugador1.getAlias());
-                System.out.println("***************Jugador 2****************");
+                System.out.println(FONDO_AMARILLO+TEXTO_NEGRO + "***************Jugador 2****************");
                 estadisticas.estad(jugador2.getAlias());
-                System.out.println("Ingrese una opcion valida");
-                System.out.println("\n"+FONDO_CYAN+ TEXTO_NEGRO+"¿Que les gustaria hacer?"+ RESET);
+
+                System.out.println(RESET+"\n"+FONDO_CYAN+ TEXTO_NEGRO+"¿Que les gustaria hacer?"+ RESET);
                 System.out.println(FONDO_CYAN+ TEXTO_NEGRO+"1. Iniciar una partida"+ RESET);
                 System.out.println(FONDO_CYAN+ TEXTO_NEGRO+"2. Continuar partida anterior"+ RESET);
                 System.out.println(FONDO_CYAN+ TEXTO_NEGRO+"3. Ver estadisticas de los jugadores"+ RESET);
