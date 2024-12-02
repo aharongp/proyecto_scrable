@@ -62,10 +62,11 @@ public class Main {
             } if (opc == 2){
                 ManejadorDeArchivos archivos = new ManejadorDeArchivos();
                 Partida continuar = archivos.buscarPartida(jugador1.getAlias(), jugador2.getAlias());
-                continuar.continuarPartida();
-                System.out.println("Ingrese una opcion valida");
-                System.out.println("\n\n 1.Iniciar sesion \n 2.Registrarse \n\n 0. salir");
-                opc = read.nextInt();
+                if (continuar == null) {
+                    System.out.println("No hay ninguna partida que cargar");
+                } else {
+                    continuar.continuarPartida();
+                }
             } if (opc == 3) {
                 Estadisticas estadisticas = new Estadisticas();
                 System.out.println("***************Jugador 1****************");
