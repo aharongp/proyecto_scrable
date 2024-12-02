@@ -92,7 +92,7 @@ public class SpanishBag implements CharactersBag {
         add("X", 10, 1);
         add("Y", 5, 1);
         add("Z", 10, 1);
-        add("Comodin", 0, 2);
+        add("+", 0, 2);
     }
 
     @Override
