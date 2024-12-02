@@ -191,7 +191,7 @@ public class Partida {
             comodin = jugador.getPlayerCharacters();
             jugador.printCharacters();
         }
-        String opcion;
+        int opcion;
         boolean finPartida = false;
         boolean finalizar = false;
         do {
@@ -205,10 +205,9 @@ public class Partida {
             System.out.println("4. Salir de la Partida");
             System.out.println("=========================");
             System.out.print("Por favor, selecciona una opcion (1-4): ");
-            opcion = scanner.nextLine();
-            //opcion = ScreenReader.read.nextLine();
+            opcion = scanner.nextInt();
             switch (opcion) {
-                case "1":
+                case 1:
                     if(colocarPalabra(jugador)){
                         alternarTurno();
                         finalizar = true;
@@ -216,20 +215,19 @@ public class Partida {
                     tablero.mostrarTablero();
                     jugador.printCharacters();
                     break;
-                case "2":
+                case 2:
                     finalizar = cambiarFichasDeJugador(jugador);
                     jugador.printCharacters();
                     alternarTurno();
+                    finalizar = true;
                     break;
-                case "3":
+                case 3:
                     alternarTurno();
                     finalizar = true;
                     break;
-                case "4":
+                case 4:
                     salirDePartida();
-                    finalizar = true;
-                    finPartida = true;
-                    break;
+                    return true;
                 default:
                     System.out.println(Main.TEXTO_ROJO+"Opcion invalida. Por favor, selecciona una opcion valida."+ Main.RESET);
             }
