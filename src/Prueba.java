@@ -14,5 +14,4 @@ public class Prueba {
         Estadisticas estadisticas=new Estadisticas();
         estadisticas.estad("Pepe");
     }
-
 }
