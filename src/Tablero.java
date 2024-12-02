@@ -29,18 +29,18 @@ public class Tablero {
         String disp = "";
         System.out.print("   ");
         for (int i = 0; i < TAMANO; i++) {
-            System.out.printf("%2d ", i);
+            System.out.printf(Main.FONDO_BLANCO + Main.TEXTO_NEGRO+"%3d " +Main.RESET, i);
         }
         System.out.println();
         for (int i = 0; i < TAMANO; i++) {
-            System.out.printf("%2d ", i);
+            System.out.printf(Main.FONDO_BLANCO+Main.TEXTO_NEGRO+"%2d "+ Main.RESET, i );
             for (int j = 0; j < TAMANO; j++) {
                 if (tablero[i][j] == null) {
-                    disp = " ";
+                    disp = "   ";
                 } else {
-                    disp = tablero[i][j].getSymbol();
+                    disp =  Main.FONDO_VERDE +Main.TEXTO_NEGRO+ " "+tablero[i][j].getSymbol()+" "+ Main.RESET;
                 }
-                System.out.print("| " + disp);
+                System.out.print("|" + disp );
             }
             System.out.println("|");
         }
