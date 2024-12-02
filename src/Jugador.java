@@ -53,6 +53,7 @@ public class Jugador {
         this.playerCharacters = new FichasJugador();
     }
 
+
     public FichasJugador getPlayerCharacters() {
         return playerCharacters;
     }

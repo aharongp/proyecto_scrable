@@ -66,8 +66,9 @@ public class ColocadorDePalabra {
                 //System.out.println("Pasa en tablero");
             }
             if (board[crow][ccol] == null && (tileCount.getOrDefault(tile, 0) <= 0)) {
-                //System.out.println("Jugador no tiene letra : " + crow + ", " + ccol + "," + "ficha=" + tile);
+                System.out.println("Jugador no tiene letra : " + crow + ", " + ccol + "," + "ficha=" + tile);
                 return false;
+
             }
             else {
                 //System.out.println("Pasa en ficha");
@@ -120,9 +121,6 @@ public class ColocadorDePalabra {
                     } else {
                         tile = String.valueOf(word.charAt(i));
                         Character ficha = fichasJugador.buscar(tile);
-                        if (ficha == null){
-                            ficha = fichasJugador.buscar("+");
-                        }
                         tablero[fila][columna] = ficha;
                         fichasUsadas.add(ficha);
                         puntosGanados = puntosGanados + ficha.getPoints();

@@ -7,12 +7,30 @@ public class FichasJugador {
         fichas = new ArrayList<>();
     }
 
+    public void setComodin(String letra){
+        for ( Character ficha : fichas){
+            String symbol = ficha.getSymbol();
+            if (symbol.equalsIgnoreCase("+")){
+                ficha.setSymbol(letra);
+                break;
+            }
+        }
+    }
+
     public ArrayList<Character> getFichas() {
         return fichas;
     }
 
     public void setFichas(ArrayList<Character> fichas) {
         this.fichas = fichas;
+    }
+
+    public boolean existeComodin(){
+        for ( Character ficha : fichas){
+            String symbol = ficha.getSymbol();
+            if (symbol.equalsIgnoreCase("+")) return true;
+        }
+        return false;
     }
 
     public void agregarFicha(Character ficha) {

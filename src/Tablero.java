@@ -62,11 +62,10 @@ public class Tablero {
 
     public boolean ubicarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador) {
         boolean result;
-        ColocadorDePalabra colocadorDePalabra=new ColocadorDePalabra();
+        ColocadorDePalabra colocadorDePalabra = new ColocadorDePalabra();
         result=colocadorDePalabra.colocarPalabra(palabra,fila,columna,horizontal,jugador,this.getTablero(),estaVacio);
         estaVacio=false;
         return result;
-
     }
 
     /*public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador) {

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class Partida {
@@ -161,6 +162,15 @@ public class Partida {
     public boolean menuDeJugador(Jugador jugador) {
         System.out.println("Es turno del jugador " + jugador.getAlias());
         jugador.printCharacters();
+        FichasJugador comodin = jugador.getPlayerCharacters();
+        while(comodin.existeComodin()){
+            System.out.println(Main.TEXTO_VERDE+"Te has consegido un comodin, cambialo por una letra!!"+ Main.RESET);
+            String letra = ScreenReader.read.next();
+            letra = letra.toUpperCase();
+            jugador.getPlayerCharacters().setComodin(letra);
+            comodin = jugador.getPlayerCharacters();
+            jugador.printCharacters();
+        }
         String opcion;
         boolean finPartida = false;
         boolean finalizar = false;
@@ -226,6 +236,12 @@ public class Partida {
 
     public boolean colocarPalabra(Jugador jugador) {
         boolean result=false;
+        while(jugador.getPlayerCharacters().existeComodin()){
+            System.out.println(Main.TEXTO_VERDE+"Te has consegido un comodin, cambialo por una letra!!"+ Main.RESET);
+            String letra = ScreenReader.read.next();
+            letra = letra.toUpperCase();
+            jugador.getPlayerCharacters().setComodin(letra);
+        }
         Diccionario diccionario = new Diccionario();
         System.out.println(Main.TEXTO_AZUL+"Escribe la palabra que quieres poner"+Main.RESET);
         String word = ScreenReader.read.next();
@@ -249,9 +265,9 @@ public class Partida {
                  2. Vertical""");
         int direccion = ScreenReader.read.nextInt();
         if (direccion == 1) {
-            result = this.tablero.ubicarPalabra(word, fila, columna, true, jugador);
+            result = this.tablero.ubicarPalabra(word.toUpperCase(), fila, columna, true, jugador);
         } else if (direccion == 2) {
-            result = this.tablero.ubicarPalabra(word, fila, columna, false, jugador);
+            result = this.tablero.ubicarPalabra(word.toUpperCase(), fila, columna, false, jugador);
         }
         reponerFichas(jugador);
         return result;
