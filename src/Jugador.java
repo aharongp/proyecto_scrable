@@ -121,7 +121,9 @@ public class Jugador {
             }
             // Verificar caracteres individuales
             if (!playerCharacters.existeCaracterEnJugador(String.valueOf(c))) {
-                return false;
+                if (!playerCharacters.existeCaracterEnJugador("+")){
+                    return false;
+                }
             }
             i++; // Avanzar al siguiente carácter
         }

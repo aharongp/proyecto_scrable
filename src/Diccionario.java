@@ -6,9 +6,13 @@ import java.util.HashSet;
 public class Diccionario {
     private HashSet<String> palabras;
 
-    public Diccionario(String rutaArchivo) throws IOException {
-        palabras = new HashSet<>();
-        cargarDiccionario(rutaArchivo);
+    public Diccionario(){
+        try{
+            palabras = new HashSet<>();
+            cargarDiccionario("src/listado-general.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void cargarDiccionario(String rutaArchivo) throws IOException {
@@ -18,5 +22,9 @@ public class Diccionario {
                 palabras.add(linea.trim().toLowerCase());
             }
         }
+    }
+
+    public boolean existePalabra(String palabra) {
+        return palabras.contains(palabra.toLowerCase());
     }
 }
