@@ -25,10 +25,10 @@ public class Estadisticas {
         File directory = new File(System.getProperty("user.dir"));
         String extension = ".par";
         List<String> fileNames = BuscarArchivo.getFileNamesWithExtension(directory, extension);
-        System.out.println(fileNames.size());
+//        System.out.println(fileNames.size());
         ArrayList<Partida> partidas=new ArrayList<>();
         for (String fileName : fileNames) {
-            System.out.println("Nombre de archivo="+fileName);
+//            System.out.println("Nombre de archivo="+fileName);
             Partida partida=manejadorDeArchivos.restaurarPartida(fileName);
             if (partida.getJugador1().getAlias().equals(alias) || partida.getJugador2().getAlias().equals(alias)){
                 partidas.add(partida);
