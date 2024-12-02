@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
+import java.util.Scanner;
 
 public class Partida {
     UUID uuid = UUID.randomUUID();
@@ -143,14 +144,33 @@ public class Partida {
         jugador2.addCharacters(bag.get(7));
         initialTime = System.currentTimeMillis();
     }
-
-    public void continuarPartida() {
-        while (!chooseWinner()) {
+    public void game() {
+        startGame();
+        boolean finPartida = false;
+        while (!chooseWinner() && !finPartida) {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
-                menuDeJugador(jugador1);
+                finPartida = menuDeJugador(jugador1);
+
             } else {
-                menuDeJugador(jugador2);
+                finPartida = menuDeJugador(jugador2);
+            }
+            String jsonPartida=JSONMapper.objectoToJson(this);
+            manejadorDeArchivos.salvarPartida(this);
+            manejadorDeArchivos.salvarJugador(getJugador1());
+            manejadorDeArchivos.salvarJugador(getJugador2());
+        }
+        finishGame();
+    }
+
+    public void continuarPartida() {
+        boolean finPartida = false;
+        while (!chooseWinner() && !finPartida) {
+            this.tablero.mostrarTablero();
+            if (actualTurn == 1) {
+                finPartida = menuDeJugador(jugador1);
+            } else {
+                finPartida = menuDeJugador(jugador2);
             }
             //String jsonPartida = JSONMapper.objectoToJson(this);
             //System.out.println("Partida en JSON=" + jsonPartida);
@@ -281,24 +301,7 @@ public class Partida {
         }
     }
 
-    public void game() {
-        startGame();
-        boolean finPartida = false;
-        while (!chooseWinner() && !finPartida) {
-            this.tablero.mostrarTablero();
-            if (actualTurn == 1) {
-                finPartida = menuDeJugador(jugador1);
 
-            } else {
-                finPartida = menuDeJugador(jugador2);
-            }
-            String jsonPartida=JSONMapper.objectoToJson(this);
-            manejadorDeArchivos.salvarPartida(this);
-            manejadorDeArchivos.salvarJugador(getJugador1());
-            manejadorDeArchivos.salvarJugador(getJugador2());
-        }
-        finishGame();
-    }
 
     public void finishGame() {
         this.finishtime = System.currentTimeMillis();
