@@ -10,13 +10,13 @@ public class ColocadorDePalabra {
         ArrayList<Character> fichasUsadas = new ArrayList<>();
         boolean canPlace = canPlaceWord(palabra, fila, columna, jugador.getPlayerCharacters(), horizontal, tablero,tableroVacio);
         if (canPlace) {
-            System.out.println("The palabra \"" + palabra + "\" can be placed on the board.");
+            //System.out.println("The palabra \"" + palabra + "\" can be placed on the board.");
             actualizarTablero(palabra, fila, columna, horizontal, tablero, jugador.getPlayerCharacters(), fichasUsadas);
             jugador.getPlayerCharacters().getFichas().removeAll(fichasUsadas);
             jugador.addPoints(puntosGanados);
             jugador.addWordPlayed();
         } else {
-            System.out.println("The palabra \"" + palabra + "\" cannot be placed on the board.");
+            System.out.println("La palabra \"" + palabra + "\" no puede ser colocada en el tablero.");
         }
         return canPlace;
     }
@@ -57,20 +57,20 @@ public class ColocadorDePalabra {
                 crow = row + requiredTilesCount -1;
                 ccol = col;
             }
-            System.out.println("Coords="+crow+","+ccol);
+            //System.out.println("Coords="+crow+","+ccol);
             if (board[crow][ccol] != null && !board[crow][ccol].getSymbol().equals(tile)) {
-                System.out.println("Letra en tablero no coincide : " + crow + ", " + ccol + "," + "ficha=" + tile + ",tab=" + board[crow][ccol].getSymbol());
+                //System.out.println("Letra en tablero no coincide : " + crow + ", " + ccol + "," + "ficha=" + tile + ",tab=" + board[crow][ccol].getSymbol());
                 return false;
             }
             else {
-                System.out.println("Pasa en tablero");
+                //System.out.println("Pasa en tablero");
             }
             if (board[crow][ccol] == null && (tileCount.getOrDefault(tile, 0) <= 0)) {
-                System.out.println("Jugador no tiene letra : " + crow + ", " + ccol + "," + "ficha=" + tile);
+                //System.out.println("Jugador no tiene letra : " + crow + ", " + ccol + "," + "ficha=" + tile);
                 return false;
             }
             else {
-                System.out.println("Pasa en ficha");
+                //System.out.println("Pasa en ficha");
                 //tileCount.put(tile, tileCount.get(tile) - 1);
             }
             if (board[crow][ccol] == null) {
