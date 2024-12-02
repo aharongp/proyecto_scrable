@@ -37,19 +37,19 @@ public class Casilla {
             return puntosBase;
         }
         switch (bonificacion) {
-            case "2L": return puntosBase * 2; // Doble letra
-            case "3L": return puntosBase * 3; // Triple letra
-            case "2W": return puntosBase * 2; // Doble palabra
-            case "3W": return puntosBase * 3; // Triple palabra
-            default: return puntosBase; // Sin bonificación
+            case "2L": return puntosBase * 2;
+            case "3L": return puntosBase * 3;
+            case "2P": return puntosBase * 2;
+            case "3P": return puntosBase * 3;
+            default: return puntosBase;
         }
     }
 
     @Override
     public String toString() {
         if (ficha != null) {
-            return ficha.toString(); // Devuelve el símbolo de la ficha
+            return ficha.toString();
         }
-        return (bonificacion != null) ? bonificacion : " "; // Devuelve la bonificación o un espacio vacío
+        return (bonificacion != null) ? bonificacion : " ";
     }
 }
