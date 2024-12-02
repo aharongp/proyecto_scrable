@@ -4,9 +4,11 @@ public class Tablero {
     private static final int TAMANO = 15;
     private static final int MAX_FICHAS = 7;
     private Character[][] tablero;
+    private boolean estaVacio;
 
     public Tablero() {
         tablero = new Character[TAMANO][TAMANO];
+        estaVacio=true;
         inicializarTablero();
     }
     public boolean hayLetrasEnElCentro() {
@@ -23,6 +25,18 @@ public class Tablero {
                 tablero[i][j] = null;
             }
         }
+    }
+
+    public void setTablero(Character[][] tablero) {
+        this.tablero = tablero;
+    }
+
+    public boolean isEstaVacio() {
+        return estaVacio;
+    }
+
+    public void setEstaVacio(boolean estaVacio) {
+        this.estaVacio = estaVacio;
     }
 
     public void mostrarTablero() {
@@ -47,8 +61,12 @@ public class Tablero {
     }
 
     public boolean ubicarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador) {
+        boolean result;
         ColocadorDePalabra colocadorDePalabra=new ColocadorDePalabra();
-        return colocadorDePalabra.colocarPalabra(palabra,fila,columna,horizontal,jugador,this.getTablero());
+        result=colocadorDePalabra.colocarPalabra(palabra,fila,columna,horizontal,jugador,this.getTablero(),estaVacio);
+        estaVacio=false;
+        return result;
+
     }
 
     /*public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador) {
