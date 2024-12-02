@@ -120,6 +120,9 @@ public class ColocadorDePalabra {
                     } else {
                         tile = String.valueOf(word.charAt(i));
                         Character ficha = fichasJugador.buscar(tile);
+                        if (ficha == null){
+                            ficha = fichasJugador.buscar("+");
+                        }
                         tablero[fila][columna] = ficha;
                         fichasUsadas.add(ficha);
                         puntosGanados = puntosGanados + ficha.getPoints();

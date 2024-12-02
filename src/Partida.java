@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Partida {
+    private ManejadorDeArchivos manejadorDeArchivos=new ManejadorDeArchivos();
     UUID uuid = UUID.randomUUID();
-    private final ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
     private String id;
     private Jugador jugador1;
     private Jugador jugador2;
@@ -129,6 +130,7 @@ public class Partida {
         this.winner = winner;
     }
 
+
     public void alternarTurno() {
         if (actualTurn == 1) {
             actualTurn = 2;
@@ -172,7 +174,7 @@ public class Partida {
             System.out.println("3. Pasar Turno");
             System.out.println("4. Salir de la Partida");
             System.out.println("=========================");
-            System.out.print("Por favor, selecciona una opcion (1-4): ");
+            System.out.print("Por favor, selecciona una opcion (1-4): " + Main.RESET);
             //opcion = scanner.nextInt();
             opcion = ScreenReader.read.nextLine();
             switch (opcion) {
@@ -198,7 +200,7 @@ public class Partida {
                     finalizar = true;
                     break;
                 default:
-                    System.out.println("Opcion invalida. Por favor, selecciona una opcion valida.");
+                    System.out.println(Main.TEXTO_ROJO+"Opcion invalida. Por favor, selecciona una opcion valida."+ Main.RESET);
             }
         } while (!finalizar);
 
@@ -222,8 +224,19 @@ public class Partida {
 
     public boolean colocarPalabra(Jugador jugador) {
         boolean result=false;
-        System.out.println("Escribe la palabra que quieres poner");
+        Diccionario diccionario = new Diccionario();
+        System.out.println(Main.TEXTO_AZUL+"Escribe la palabra que quieres poner"+Main.RESET);
         String word = ScreenReader.read.next();
+        int cont =0;
+        while(!diccionario.existePalabra(word)){
+            System.out.println(Main.TEXTO_ROJO+"esa palabra no existe en el diccionario , por favor ingrese otra"+ Main.RESET);
+            word = ScreenReader.read.next();
+            cont++;
+            if (cont == 2){
+                System.out.println("perdiste el turno");
+                return true;
+            }
+        }
         System.out.println("¿En que posicion la deseas colocar?  numero de fila: ");
         int fila = ScreenReader.read.nextInt();
         System.out.println("numero de columna: ");
@@ -256,12 +269,11 @@ public class Partida {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 menuDeJugador(jugador1);
-
-            } else {
+            }
+            else {
                 menuDeJugador(jugador2);
             }
-            String jsonPartida = JSONMapper.objectoToJson(this);
-            System.out.println("Partida en JSON=" + jsonPartida);
+            String jsonPartida=JSONMapper.objectoToJson(this);
             manejadorDeArchivos.salvarPartida(this);
             manejadorDeArchivos.salvarJugador(getJugador1());
             manejadorDeArchivos.salvarJugador(getJugador2());
