@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class Partida {
@@ -151,19 +152,21 @@ public class Partida {
             } else {
                 menuDeJugador(jugador2);
             }
-            String jsonPartida = JSONMapper.objectoToJson(this);
-            System.out.println("Partida en JSON=" + jsonPartida);
+            //String jsonPartida = JSONMapper.objectoToJson(this);
+            //System.out.println("Partida en JSON=" + jsonPartida);
             manejadorDeArchivos.salvarPartida(this);
         }
         finishGame();
     }
 
-    public void menuDeJugador(Jugador jugador) {
+    public boolean menuDeJugador(Jugador jugador) {
         System.out.println("Es turno del jugador " + jugador.getAlias());
         jugador.printCharacters();
         String opcion;
+        boolean finPartida = false;
         boolean finalizar = false;
         do {
+            Scanner scanner=new Scanner(System.in);
             System.out.println("=========================");
             System.out.println("        MENU JUEGO      ");
             System.out.println("=========================");
@@ -173,8 +176,8 @@ public class Partida {
             System.out.println("4. Salir de la Partida");
             System.out.println("=========================");
             System.out.print("Por favor, selecciona una opcion (1-4): ");
-            //opcion = scanner.nextInt();
-            opcion = ScreenReader.read.nextLine();
+            opcion = scanner.nextLine();
+            //opcion = ScreenReader.read.nextLine();
             switch (opcion) {
                 case "1":
                     if(colocarPalabra(jugador)){
@@ -196,12 +199,14 @@ public class Partida {
                 case "4":
                     salirDePartida();
                     finalizar = true;
+                    finPartida = true;
                     break;
                 default:
+                    System.out.println();
                     System.out.println("Opcion invalida. Por favor, selecciona una opcion valida.");
             }
         } while (!finalizar);
-
+        return finPartida;
     }
 
     public boolean cambiarFichasDeJugador(Jugador jugador) {
@@ -217,7 +222,8 @@ public class Partida {
     }
 
     public void salirDePartida() {
-
+        ManejadorDeArchivos manejadorDeArchivos1=new ManejadorDeArchivos();
+        manejadorDeArchivos1.salvarPartida(this);
     }
 
     public boolean colocarPalabra(Jugador jugador) {
@@ -252,13 +258,14 @@ public class Partida {
 
     public void game() {
         startGame();
-        while (!chooseWinner()) {
+        boolean finPartida = false;
+        while (!chooseWinner() && !finPartida) {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
-                menuDeJugador(jugador1);
+                finPartida = menuDeJugador(jugador1);
 
             } else {
-                menuDeJugador(jugador2);
+                finPartida = menuDeJugador(jugador2);
             }
             String jsonPartida = JSONMapper.objectoToJson(this);
             System.out.println("Partida en JSON=" + jsonPartida);
