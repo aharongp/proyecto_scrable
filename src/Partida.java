@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Partida {
-    private ManejadorDeArchivos manejadorDeArchivos=new ManejadorDeArchivos();
     UUID uuid = UUID.randomUUID();
+    private final ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
     private String id;
     private Jugador jugador1;
     private Jugador jugador2;
@@ -17,6 +17,21 @@ public class Partida {
     private long time;
     private int winner;
 
+
+    public Partida() {
+    }
+
+    public Partida(Jugador jugador1, Jugador jugador2) {
+        this.id = uuid.toString();
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
+        this.bag = new SpanishBag();
+        this.tablero = new Tablero();
+        this.score1 = 0;
+        this.score2 = 0;
+        this.actualTurn = 1;
+        this.winner = 0;
+    }
 
     public String getId() {
         return id;
@@ -114,26 +129,10 @@ public class Partida {
         this.winner = winner;
     }
 
-    public Partida(){
-    }
-
-    public Partida(Jugador jugador1, Jugador jugador2) {
-        this.id= uuid.toString();
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
-        this.bag = new SpanishBag();
-        this.tablero = new Tablero();
-        this.score1 = 0;
-        this.score2 = 0;
-        this.actualTurn = 1;
-        this.winner = 0;
-    }
-
     public void alternarTurno() {
         if (actualTurn == 1) {
             actualTurn = 2;
-        }
-        else {
+        } else {
             actualTurn = 1;
         }
     }
@@ -144,27 +143,26 @@ public class Partida {
         initialTime = System.currentTimeMillis();
     }
 
-    public void continuarPartida(){
+    public void continuarPartida() {
         while (!chooseWinner()) {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 menuDeJugador(jugador1);
-            }
-            else {
+            } else {
                 menuDeJugador(jugador2);
             }
-            String jsonPartida=JSONMapper.objectoToJson(this);
+            String jsonPartida = JSONMapper.objectoToJson(this);
             System.out.println("Partida en JSON=" + jsonPartida);
             manejadorDeArchivos.salvarPartida(this);
         }
         finishGame();
     }
 
-    public void menuDeJugador(Jugador jugador){
+    public void menuDeJugador(Jugador jugador) {
         System.out.println("Es turno del jugador " + jugador.getAlias());
         jugador.printCharacters();
-        int opcion;
-        boolean finalizar=false;
+        String opcion;
+        boolean finalizar = false;
         do {
             System.out.println("=========================");
             System.out.println("        MENU JUEGO      ");
@@ -176,25 +174,28 @@ public class Partida {
             System.out.println("=========================");
             System.out.print("Por favor, selecciona una opcion (1-4): ");
             //opcion = scanner.nextInt();
-            opcion=ScreenReader.read.nextInt();
+            opcion = ScreenReader.read.nextLine();
             switch (opcion) {
-                case 1:
-                    colocarPalabra(jugador);
-                    alternarTurno();
-                    finalizar=true;
+                case "1":
+                    if(colocarPalabra(jugador)){
+                        alternarTurno();
+                        finalizar = true;
+                    }
+                    tablero.mostrarTablero();
+                    jugador.printCharacters();
                     break;
-                case 2:
-                    finalizar=cambiarFichasDeJugador(jugador);
+                case "2":
+                    finalizar = cambiarFichasDeJugador(jugador);
                     jugador.printCharacters();
                     alternarTurno();
                     break;
-                case 3:
+                case "3":
                     alternarTurno();
-                    finalizar=true;
+                    finalizar = true;
                     break;
-                case 4:
+                case "4":
                     salirDePartida();
-                    finalizar=true;
+                    finalizar = true;
                     break;
                 default:
                     System.out.println("Opcion invalida. Por favor, selecciona una opcion valida.");
@@ -203,45 +204,42 @@ public class Partida {
 
     }
 
-    public boolean cambiarFichasDeJugador(Jugador jugador){
-        System.out.println("Fichas del jugador:"+jugador.getAlias());
+    public boolean cambiarFichasDeJugador(Jugador jugador) {
+        System.out.println("Fichas del jugador:" + jugador.getAlias());
         jugador.printCharacters();
         System.out.println("Indique las fichas a cambiar:");
-        String fichasACambiar=ScreenReader.read.next();
+        String fichasACambiar = ScreenReader.read.next();
         //String[] cambio=fichasACambiar.split(",");
-        ArrayList<Character> fichasJ=jugador.getPlayerCharacters().getFichas();
+        ArrayList<Character> fichasJ = jugador.getPlayerCharacters().getFichas();
         //public boolean reemplazarFichas(String fichasPorExtraer, CharactersBag bag)
-        FichasJugador fichasJugador=jugador.getPlayerCharacters();
-        return fichasJugador.reemplazarFichas(fichasACambiar,bag);
-    }
-    public void salirDePartida(){
-
+        FichasJugador fichasJugador = jugador.getPlayerCharacters();
+        return fichasJugador.reemplazarFichas(fichasACambiar, bag);
     }
 
+    public void salirDePartida() {
 
-    public void colocarPalabra(Jugador jugador) {
-        //System.out.println("Es turno del jugador " + jugador.getAlias());
-        //jugador.printCharacters();
+    }
+
+    public boolean colocarPalabra(Jugador jugador) {
+        boolean result=false;
         System.out.println("Escribe la palabra que quieres poner");
         String word = ScreenReader.read.next();
-        //if (jugador.validarCaracteres(word)) {
-            System.out.println("¿En que posicion la deseas colocar?\s numero de fila: ");
-            int fila = ScreenReader.read.nextInt();
-            System.out.println("numero de columna: ");
-            int columna = ScreenReader.read.nextInt();
-            System.out.println("""
-                            Escribe la direccion de la palabra:\s
-                             1. Horizontal\s
-                             2. Vertical""");
-            int direccion = ScreenReader.read.nextInt();
-            if (direccion == 1) {
-                this.tablero.ubicarPalabra(word, fila, columna, true, jugador);
-            }
-            else if (direccion == 2) {
-                this.tablero.ubicarPalabra(word, fila, columna, false, jugador);
-            }
-            reponerFichas(jugador);
-        //}
+        System.out.println("¿En que posicion la deseas colocar?  numero de fila: ");
+        int fila = ScreenReader.read.nextInt();
+        System.out.println("numero de columna: ");
+        int columna = ScreenReader.read.nextInt();
+        System.out.println("""
+                Escribe la direccion de la palabra:\s
+                 1. Horizontal\s
+                 2. Vertical""");
+        int direccion = ScreenReader.read.nextInt();
+        if (direccion == 1) {
+            result = this.tablero.ubicarPalabra(word, fila, columna, true, jugador);
+        } else if (direccion == 2) {
+            result = this.tablero.ubicarPalabra(word, fila, columna, false, jugador);
+        }
+        reponerFichas(jugador);
+        return result;
     }
 
     public void reponerFichas(Jugador jugador) {
@@ -259,11 +257,10 @@ public class Partida {
             if (actualTurn == 1) {
                 menuDeJugador(jugador1);
 
-            }
-            else {
+            } else {
                 menuDeJugador(jugador2);
             }
-            String jsonPartida=JSONMapper.objectoToJson(this);
+            String jsonPartida = JSONMapper.objectoToJson(this);
             System.out.println("Partida en JSON=" + jsonPartida);
             manejadorDeArchivos.salvarPartida(this);
             manejadorDeArchivos.salvarJugador(getJugador1());
@@ -282,8 +279,7 @@ public class Partida {
             if (this.jugador1.numberOfCharacters() == 0) {
                 this.winner = 1;
                 return true;
-            }
-            else if (this.jugador2.numberOfCharacters() == 0) {
+            } else if (this.jugador2.numberOfCharacters() == 0) {
                 this.winner = 2;
                 return true;
             }
