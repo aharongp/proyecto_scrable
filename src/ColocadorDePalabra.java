@@ -2,15 +2,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Clase que gestiona la colocación de palabras en un tablero de juego,
+ * verifica si una palabra se puede colocar y actualiza el tablero con las palabras jugadas.
+ */
 public class ColocadorDePalabra {
     private int puntosGanados = 0;
-    private boolean enlazado=false;
+    private boolean enlazado = false;
 
-    public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador, Character[][] tablero,boolean tableroVacio) {
+    /**
+     * Coloca una palabra en el tablero si es válido y actualiza el puntaje del jugador.
+     *
+     * @param palabra La palabra que se va a colocar en el tablero.
+     * @param fila La fila donde se iniciará la colocación de la palabra.
+     * @param columna La columna donde se iniciará la colocación de la palabra.
+     * @param horizontal Indica si la palabra se coloca horizontalmente (true) o verticalmente (false).
+     * @param jugador El jugador que está colocando la palabra.
+     * @param tablero El tablero donde se va a colocar la palabra.
+     * @param tableroVacio Indica si el tablero está vacío (para un primer movimiento).
+     * @return true si la palabra se puede colocar correctamente, false en caso contrario.
+     */
+    public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador, Character[][] tablero, boolean tableroVacio) {
         ArrayList<Character> fichasUsadas = new ArrayList<>();
-        boolean canPlace = canPlaceWord(palabra, fila, columna, jugador.getPlayerCharacters(), horizontal, tablero,tableroVacio);
+        boolean canPlace = canPlaceWord(palabra, fila, columna, jugador.getPlayerCharacters(), horizontal, tablero, tableroVacio);
         if (canPlace) {
-            //System.out.println("The palabra \"" + palabra + "\" can be placed on the board.");
             actualizarTablero(palabra, fila, columna, horizontal, tablero, jugador.getPlayerCharacters(), fichasUsadas);
             jugador.getPlayerCharacters().getFichas().removeAll(fichasUsadas);
             jugador.addPoints(puntosGanados);
@@ -21,9 +36,21 @@ public class ColocadorDePalabra {
         return canPlace;
     }
 
-    public boolean canPlaceWord(String word, int row, int col, FichasJugador fichasJugador, boolean horizontal, Character[][] board,boolean tableroVacio) {
-        int crow,ccol;
-        boolean enlazado=false;
+    /**
+     * Verifica si una palabra puede ser colocada en el tablero en la posición especificada.
+     *
+     * @param word La palabra que se va a colocar.
+     * @param row La fila donde se quiere colocar la palabra.
+     * @param col La columna donde se quiere colocar la palabra.
+     * @param fichasJugador Las fichas que el jugador tiene disponibles para usar.
+     * @param horizontal Indica si la palabra se colocará horizontalmente o verticalmente.
+     * @param board El tablero donde se intenta colocar la palabra.
+     * @param tableroVacio Indica si el tablero está vacío (para un primer movimiento).
+     * @return true si la palabra se puede colocar en el tablero, false en caso contrario.
+     */
+    public boolean canPlaceWord(String word, int row, int col, FichasJugador fichasJugador, boolean horizontal, Character[][] board, boolean tableroVacio) {
+        int crow, ccol;
+        boolean enlazado = false;
         Map<String, Integer> tileCount = new HashMap<>();
         for (Character tile : fichasJugador.getFichas()) {
             tileCount.put(tile.getSymbol(), tileCount.getOrDefault(tile.getSymbol(), 0) + 1);
@@ -49,46 +76,38 @@ public class ColocadorDePalabra {
                 i++;
             }
             if (horizontal) {
-                //ccol = col + (i - requiredTilesCount) - 1;
-                ccol = col + requiredTilesCount -1;
+                ccol = col + requiredTilesCount - 1;
                 crow = row;
             } else {
-                //crow = row + (i - requiredTilesCount) - 1;
-                crow = row + requiredTilesCount -1;
+                crow = row + requiredTilesCount - 1;
                 ccol = col;
             }
-            //System.out.println("Coords="+crow+","+ccol);
             if (board[crow][ccol] != null && !board[crow][ccol].getSymbol().equals(tile)) {
-                //System.out.println("Letra en tablero no coincide : " + crow + ", " + ccol + "," + "ficha=" + tile + ",tab=" + board[crow][ccol].getSymbol());
                 return false;
-            }
-            else {
-                //System.out.println("Pasa en tablero");
             }
             if (board[crow][ccol] == null && (tileCount.getOrDefault(tile, 0) <= 0)) {
-                System.out.println("Jugador no tiene letra : " + crow + ", " + ccol + "," + "ficha=" + tile);
                 return false;
-
-            }
-            else {
-                //System.out.println("Pasa en ficha");
-                //tileCount.put(tile, tileCount.get(tile) - 1);
             }
             if (board[crow][ccol] == null) {
-               tileCount.put(tile, tileCount.get(tile) - 1);
+                tileCount.put(tile, tileCount.get(tile) - 1);
+            } else {
+                enlazado = true;
             }
-            else{
-                enlazado=true;
-            }
         }
-        if (tableroVacio) {
-            return true;
-        }
-        else {
-            return enlazado;
-        }
+        return tableroVacio || enlazado;
     }
 
+    /**
+     * Actualiza el tablero con la palabra colocada por el jugador.
+     *
+     * @param word La palabra que se va a colocar en el tablero.
+     * @param fila La fila donde se colocará la palabra.
+     * @param columna La columna donde se colocará la palabra.
+     * @param horizontal Indica si la palabra se coloca horizontalmente.
+     * @param tablero El tablero que se actualizará con la palabra.
+     * @param fichasJugador Las fichas del jugador que se utilizan para la colocación.
+     * @param fichasUsadas La lista donde se agregarán las fichas que han sido usadas.
+     */
     public void actualizarTablero(String word, int fila, int columna, boolean horizontal, Character[][] tablero, FichasJugador fichasJugador, ArrayList<Character> fichasUsadas) {
         if (horizontal) {
             for (int i = 0; i < word.length(); ) {
@@ -127,14 +146,12 @@ public class ColocadorDePalabra {
                         columna++;
                         i++;
                     }
-                }
-                else {
+                } else {
                     String simbolo = tablero[fila][columna].getSymbol();
                     if (simbolo.equals("CH") || simbolo.equals("LL") || simbolo.equals("RR")) {
-                        i=i+2;
-                    }
-                    else {
-                        i=i+1;
+                        i += 2;
+                    } else {
+                        i++;
                     }
                     columna++;
                 }
@@ -149,8 +166,8 @@ public class ColocadorDePalabra {
                         tablero[fila][columna] = ficha;
                         fichasUsadas.add(ficha);
                         puntosGanados = puntosGanados + ficha.getPoints();
-                        fila++; // Move to the next position
-                        i += 2; // Skip the next 'L'
+                        fila++;
+                        i += 2;
                     } else if (i < word.length() - 1 && (word.charAt(i) == 'R' && word.charAt(i + 1) == 'R')) {
                         tile = "RR";
                         Character ficha = fichasJugador.buscar(tile);
@@ -176,14 +193,12 @@ public class ColocadorDePalabra {
                         fila++;
                         i++;
                     }
-                }
-                else {
+                } else {
                     String simbolo = tablero[fila][columna].getSymbol();
                     if (simbolo.equals("CH") || simbolo.equals("LL") || simbolo.equals("RR")) {
-                        i=i+2;
-                    }
-                    else {
-                        i=i+1;
+                        i += 2;
+                    } else {
+                        i++;
                     }
                     fila++;
                 }

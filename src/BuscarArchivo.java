@@ -3,8 +3,20 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase proporciona un método para buscar archivos dentro de un directorio que
+ * tengan una extensión específica.
+ */
 public class BuscarArchivo {
 
+    /**
+     * Obtiene una lista de nombres de archivos con una extensión específica en un directorio dado.
+     *
+     * @param directory El directorio donde se buscarán los archivos.
+     * @param extension La extensión de los archivos que se desean buscar (incluyendo el punto, como ".txt").
+     * @return Una lista de nombres de archivos que tienen la extensión especificada.
+     *         Si el directorio no es válido o no contiene archivos con la extensión, se devuelve una lista vacía.
+     */
     public static List<String> getFileNamesWithExtension(File directory, String extension) {
         List<String> fileNames = new ArrayList<>();
 
@@ -24,4 +36,3 @@ public class BuscarArchivo {
         return fileNames;
     }
 }
-

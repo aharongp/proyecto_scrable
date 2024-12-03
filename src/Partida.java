@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
-import java.util.Scanner;
 
+/**
+ * Clase que representa una partida de Scrabble entre dos jugadores.
+ * Gestiona el flujo del juego, las acciones de los jugadores y el manejo de tiempo.
+ */
 public class Partida {
     UUID uuid = UUID.randomUUID();
     private final ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
@@ -19,10 +22,18 @@ public class Partida {
     private long time;
     private int winner;
 
-
+    /**
+     * Constructor por defecto de la clase Partida.
+     */
     public Partida() {
     }
 
+    /**
+     * Constructor de la clase Partida, inicializa los jugadores y otros atributos.
+     *
+     * @param jugador1 El primer jugador de la partida.
+     * @param jugador2 El segundo jugador de la partida.
+     */
     public Partida(Jugador jugador1, Jugador jugador2) {
         this.id = uuid.toString();
         this.jugador1 = jugador1;
@@ -34,6 +45,8 @@ public class Partida {
         this.actualTurn = 1;
         this.winner = 0;
     }
+
+    // Getters y setters para los atributos de la clase
 
     public String getId() {
         return id;
@@ -131,6 +144,9 @@ public class Partida {
         this.winner = winner;
     }
 
+    /**
+     * Alterna el turno entre los dos jugadores.
+     */
     public void alternarTurno() {
         if (actualTurn == 1) {
             actualTurn = 2;
@@ -139,11 +155,19 @@ public class Partida {
         }
     }
 
+    /**
+     * Inicia el juego, reparte las fichas y registra el tiempo inicial.
+     */
     private void startGame() {
         jugador1.addCharacters(bag.get(7));
         jugador2.addCharacters(bag.get(7));
         initialTime = System.currentTimeMillis();
     }
+
+    /**
+     * Método principal del juego que gestiona el ciclo de la partida.
+     * Alterna los turnos de los jugadores, muestra el tablero y guarda los avances en archivos.
+     */
     public void game() {
         startGame();
         boolean finPartida = false;
@@ -151,11 +175,10 @@ public class Partida {
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 finPartida = menuDeJugador(jugador1);
-
             } else {
                 finPartida = menuDeJugador(jugador2);
             }
-            String jsonPartida=JSONMapper.objectoToJson(this);
+            // Guardar el progreso de la partida y los jugadores
             manejadorDeArchivos.salvarPartida(this);
             manejadorDeArchivos.salvarJugador(getJugador1());
             manejadorDeArchivos.salvarJugador(getJugador2());
@@ -163,6 +186,9 @@ public class Partida {
         finishGame();
     }
 
+    /**
+     * Continúa una partida guardada, manteniendo el turno de los jugadores y el estado actual del juego.
+     */
     public void continuarPartida() {
         boolean finPartida = false;
         while (!chooseWinner() && !finPartida) {
@@ -172,19 +198,23 @@ public class Partida {
             } else {
                 finPartida = menuDeJugador(jugador2);
             }
-            //String jsonPartida = JSONMapper.objectoToJson(this);
-            //System.out.println("Partida en JSON=" + jsonPartida);
             manejadorDeArchivos.salvarPartida(this);
         }
         finishGame();
     }
 
+    /**
+     * Muestra el menú de opciones para el jugador y maneja su selección.
+     *
+     * @param jugador El jugador que está realizando una acción en su turno.
+     * @return true si la partida ha terminado, false en caso contrario.
+     */
     public boolean menuDeJugador(Jugador jugador) {
         System.out.println("Es turno del jugador " + jugador.getAlias());
         jugador.printCharacters();
         FichasJugador comodin = jugador.getPlayerCharacters();
         while(comodin.existeComodin()){
-            System.out.println(Main.TEXTO_VERDE+"Te has consegido un comodin, cambialo por una letra!!"+ Main.RESET);
+            System.out.println(Main.TEXTO_VERDE+"Te has conseguido un comodín, cámbialo por una letra!!"+ Main.RESET);
             String letra = ScreenReader.read.next();
             letra = letra.toUpperCase();
             jugador.getPlayerCharacters().setComodin(letra);
@@ -195,20 +225,20 @@ public class Partida {
         boolean finPartida = false;
         boolean finalizar = false;
         do {
-            Scanner scanner=new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             System.out.println("=========================");
-            System.out.println("        MENU JUEGO      ");
+            System.out.println("        MENÚ JUEGO      ");
             System.out.println("=========================");
             System.out.println("1. Colocar Palabra");
             System.out.println("2. Cambiar Fichas");
             System.out.println("3. Pasar Turno");
             System.out.println("4. Salir de la Partida");
             System.out.println("=========================");
-            System.out.print("Por favor, selecciona una opcion (1-4): ");
+            System.out.print("Por favor, selecciona una opción (1-4): ");
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
-                    if(colocarPalabra(jugador)){
+                    if (colocarPalabra(jugador)) {
                         alternarTurno();
                         finalizar = true;
                     }
@@ -229,58 +259,67 @@ public class Partida {
                     salirDePartida();
                     return true;
                 default:
-                    System.out.println(Main.TEXTO_ROJO+"Opcion invalida. Por favor, selecciona una opcion valida."+ Main.RESET);
+                    System.out.println(Main.TEXTO_ROJO+"Opción inválida. Por favor, selecciona una opción válida."+ Main.RESET);
             }
         } while (!finalizar);
         return finPartida;
     }
 
+    /**
+     * Permite al jugador cambiar sus fichas por otras del saco.
+     *
+     * @param jugador El jugador que está cambiando fichas.
+     * @return true si el cambio fue exitoso, false en caso contrario.
+     */
     public boolean cambiarFichasDeJugador(Jugador jugador) {
         System.out.println("Fichas del jugador:" + jugador.getAlias());
         jugador.printCharacters();
         System.out.println("Indique las fichas a cambiar:");
         String fichasACambiar = ScreenReader.read.next();
-        //String[] cambio=fichasACambiar.split(",");
         ArrayList<Character> fichasJ = jugador.getPlayerCharacters().getFichas();
-        //public boolean reemplazarFichas(String fichasPorExtraer, CharactersBag bag)
         FichasJugador fichasJugador = jugador.getPlayerCharacters();
         return fichasJugador.reemplazarFichas(fichasACambiar, bag);
     }
 
+    /**
+     * Permite al jugador salir de la partida y guardar el progreso.
+     */
     public void salirDePartida() {
-        ManejadorDeArchivos manejadorDeArchivos1=new ManejadorDeArchivos();
-        manejadorDeArchivos1.salvarPartida(this);
+        manejadorDeArchivos.salvarPartida(this);
     }
 
+    /**
+     * Permite al jugador colocar una palabra en el tablero.
+     *
+     * @param jugador El jugador que coloca la palabra.
+     * @return true si la palabra fue colocada exitosamente, false en caso contrario.
+     */
     public boolean colocarPalabra(Jugador jugador) {
-        boolean result=false;
-        while(jugador.getPlayerCharacters().existeComodin()){
-            System.out.println(Main.TEXTO_VERDE+"Te has consegido un comodin, cambialo por una letra!!"+ Main.RESET);
+        boolean result = false;
+        while (jugador.getPlayerCharacters().existeComodin()) {
+            System.out.println(Main.TEXTO_VERDE+"Te has conseguido un comodín, cámbialo por una letra!!" + Main.RESET);
             String letra = ScreenReader.read.next();
             letra = letra.toUpperCase();
             jugador.getPlayerCharacters().setComodin(letra);
         }
         Diccionario diccionario = new Diccionario();
-        System.out.println(Main.TEXTO_AZUL+"Escribe la palabra que quieres poner"+Main.RESET);
+        System.out.println(Main.TEXTO_AZUL+"Escribe la palabra que quieres poner" + Main.RESET);
         String word = ScreenReader.read.next();
-        int cont =0;
-        while(!diccionario.existePalabra(word)){
-            System.out.println(Main.TEXTO_ROJO+"esa palabra no existe en el diccionario , por favor ingrese otra"+ Main.RESET);
+        int cont = 0;
+        while (!diccionario.existePalabra(word)) {
+            System.out.println(Main.TEXTO_ROJO+"Esa palabra no existe en el diccionario, por favor ingrese otra" + Main.RESET);
             word = ScreenReader.read.next();
             cont++;
-            if (cont == 2){
-                System.out.println("perdiste el turno");
+            if (cont == 2) {
+                System.out.println("Perdiste el turno");
                 return true;
             }
         }
-        System.out.println("¿En que posicion la deseas colocar?  numero de fila: ");
+        System.out.println("¿En qué posición la deseas colocar? Número de fila: ");
         int fila = ScreenReader.read.nextInt();
-        System.out.println("numero de columna: ");
+        System.out.println("Número de columna: ");
         int columna = ScreenReader.read.nextInt();
-        System.out.println("""
-                Escribe la direccion de la palabra:\s
-                 1. Horizontal\s
-                 2. Vertical""");
+        System.out.println("Escribe la dirección de la palabra:\n1. Horizontal\n2. Vertical");
         int direccion = ScreenReader.read.nextInt();
         if (direccion == 1) {
             result = this.tablero.ubicarPalabra(word.toUpperCase(), fila, columna, true, jugador);
@@ -291,6 +330,11 @@ public class Partida {
         return result;
     }
 
+    /**
+     * Reemplaza las fichas del jugador si es necesario.
+     *
+     * @param jugador El jugador que está reponiendo sus fichas.
+     */
     public void reponerFichas(Jugador jugador) {
         int fichasNecesarias = 7 - jugador.numberOfCharacters();
         if (fichasNecesarias > 0) {
@@ -299,13 +343,19 @@ public class Partida {
         }
     }
 
-
-
+    /**
+     * Finaliza el juego y calcula el tiempo total de la partida.
+     */
     public void finishGame() {
         this.finishtime = System.currentTimeMillis();
         this.time = this.finishtime - this.initialTime;
     }
 
+    /**
+     * Verifica si hay un ganador basado en las condiciones del juego.
+     *
+     * @return true si hay un ganador, false en caso contrario.
+     */
     public boolean chooseWinner() {
         if (this.bag.remaning() == 0) {
             if (this.jugador1.numberOfCharacters() == 0) {
