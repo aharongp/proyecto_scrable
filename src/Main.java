@@ -113,6 +113,8 @@ public class Main {
             if(opc == 1){
                 Partida partida = new Partida(jugador1,jugador2);
                 partida.game();
+                menu();
+                opc = leerNumero();
             }else if (opc == 2){
                 if(jugador1!=null && jugador2 != null){
                     Partida continuar = archivos.buscarPartida(jugador1.getAlias(), jugador2.getAlias());

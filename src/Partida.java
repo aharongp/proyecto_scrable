@@ -140,7 +140,7 @@ public class Partida {
     public void continuarPartida() {
         boolean finPartida = false;
         while (!chooseWinner() && !finPartida) {
-            initialTime = System.currentTimeMillis();
+            this.initialTime = System.currentTimeMillis();
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 finPartida = menuDeJugador(jugador1);
@@ -186,7 +186,7 @@ public class Partida {
         }
 
         boolean finalizar = false;
-        while (!finalizar){
+        do{
             System.out.println("=========================");
             System.out.println("        MENÚ JUEGO      ");
             System.out.println("=========================");
@@ -221,7 +221,7 @@ public class Partida {
                 default:
                     System.out.println(Main.TEXTO_ROJO+"Opción inválida. Por favor, selecciona una opción válida."+ Main.RESET);
             }
-        }
+        }while (!finalizar);
         return false;
     }
 
@@ -245,7 +245,7 @@ public class Partida {
      * Permite al jugador salir de la partida y guardar el progreso.
      */
     public void salirDePartida() {
-        Main.archivos.salvarPartida(this);
+        manejadorDeArchivos.salvarPartida(this);
     }
 
     /**
