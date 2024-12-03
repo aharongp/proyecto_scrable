@@ -168,6 +168,7 @@ public class Partida {
      */
     public boolean menuDeJugador(Jugador jugador) {
         System.out.println("Es turno del jugador " + jugador.getAlias());
+        System.out.println("Tiempo de partida: " + this.time);
         jugador.printCharacters();
         FichasJugador comodin = jugador.getPlayerCharacters();
         while(comodin.existeComodin()){
