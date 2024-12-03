@@ -3,6 +3,7 @@
  * y tener una bonificación asociada para modificar el puntaje de una jugada.
  */
 public class Casilla {
+
     private Character ficha;
     private String bonificacion;
 

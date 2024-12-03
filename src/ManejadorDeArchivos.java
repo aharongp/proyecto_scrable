@@ -44,7 +44,7 @@ public class ManejadorDeArchivos {
         } catch (IOException e) {
             // Handle exceptions (comentado para fines de depuración)
         }
-        return null; // Retorna null si la restauración falla
+        return null;
     }
 
     /**
@@ -77,13 +77,13 @@ public class ManejadorDeArchivos {
             FileReader fr = new FileReader(alias + ".jug");
             BufferedReader br = new BufferedReader(fr);
             String json = br.readLine();
-            return JSONMapper.jsonToObject(json, Jugador.class); // Convierte el JSON a un objeto Jugador
+            return JSONMapper.jsonToObject(json, Jugador.class);
         } catch (FileNotFoundException e) {
             // Handle exceptions (comentado para fines de depuración)
         } catch (IOException e) {
             // Handle exceptions (comentado para fines de depuración)
         }
-        return null; // Retorna null si la restauración falla
+        return null;
     }
 
     /**
@@ -96,11 +96,10 @@ public class ManejadorDeArchivos {
     public Partida buscarPartida(String alias, String alias2) {
         ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
         File directory = new File(System.getProperty("user.dir"));
-        String extension = ".par"; // Archivos con la extensión ".par"
-        List<String> fileNames = BuscarArchivo.getFileNamesWithExtension(directory, extension); // Buscar archivos con la extensión ".par"
+        String extension = ".par";
+        List<String> fileNames = BuscarArchivo.getFileNamesWithExtension(directory, extension);
         ArrayList<Partida> partidas = new ArrayList<>();
 
-        // Buscar todas las partidas en las que alguno de los jugadores esté involucrado
         for (String fileName : fileNames) {
             Partida partida = manejadorDeArchivos.restaurarPartida(fileName);
             if (partida.getJugador1().getAlias().equals(alias) || partida.getJugador2().getAlias().equals(alias)) {
@@ -108,12 +107,11 @@ public class ManejadorDeArchivos {
             }
         }
 
-        // Buscar la partida entre los dos jugadores específicos
         for (Partida partida : partidas) {
             if (partida.getJugador1().getAlias().equals(alias) && partida.getJugador2().getAlias().equals(alias2)) {
-                return partida; // Retorna la partida si ambos jugadores coinciden
+                return partida;
             }
         }
-        return null; // Retorna null si no se encuentra una partida entre los dos jugadores
+        return null;
     }
 }

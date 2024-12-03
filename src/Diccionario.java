@@ -8,6 +8,7 @@ import java.util.HashSet;
  * para cargar un archivo de palabras y verificar si una palabra existe en el diccionario.
  */
 public class Diccionario {
+
     private HashSet<String> palabras;
 
     /**

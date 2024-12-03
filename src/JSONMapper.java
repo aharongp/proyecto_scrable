@@ -10,7 +10,7 @@ import java.util.logging.Logger;
  */
 public abstract class JSONMapper {
 
-    // Instancia del ObjectMapper para convertir objetos a JSON y viceversa
+
     public static ObjectMapper mapper = new ObjectMapper();
 
     /**
@@ -41,11 +41,9 @@ public abstract class JSONMapper {
      */
     public static <T> T jsonToObject(String json, Class<T> classOfT) {
         try {
-            // Convierte la cadena JSON al objeto del tipo especificado
             return mapper.readValue(json, classOfT);
         }
         catch (JsonProcessingException ex) {
-            // Registra el error si ocurre una excepción durante la conversión
             Logger.getLogger(JSONMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

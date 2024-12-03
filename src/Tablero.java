@@ -7,10 +7,10 @@ import java.util.ArrayList;
  * la validación de colocación de letras adyacentes.
  */
 public class Tablero {
-    private static final int TAMANO = 15;  // Tamaño del tablero 15x15
-    private static final int MAX_FICHAS = 7;  // Número máximo de fichas en la mano de un jugador
-    private Character[][] tablero;  // Matriz que representa el tablero de juego
-    private boolean estaVacio;  // Indicador de si el tablero está vacío
+    private static final int TAMANO = 15;
+    private static final int MAX_FICHAS = 7;
+    private Character[][] tablero;
+    private boolean estaVacio;
 
     /**
      * Constructor de la clase `Tablero`. Inicializa el tablero y lo pone vacío.

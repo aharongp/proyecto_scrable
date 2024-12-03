@@ -49,7 +49,6 @@ public class Jugador {
         this.playerCharacters = playerCharacters;
     }
 
-    // Métodos de acceso (getters)
 
     /**
      * Obtiene el alias del jugador.
@@ -177,50 +176,4 @@ public class Jugador {
                 '}';
     }
 
-    /**
-     * Valida si el jugador tiene los caracteres necesarios para formar una palabra.
-     * Los caracteres especiales como "CH", "RR", y "LL" son verificados de forma especial.
-     * Si el jugador no tiene los caracteres requeridos, el método retorna false.
-     *
-     * @param caracteresNecesarios La cadena de caracteres necesarios para formar una palabra.
-     * @return true si el jugador tiene los caracteres necesarios, false en caso contrario.
-     */
-    public boolean validarCaracteres(String caracteresNecesarios) {
-        int i = 0;
-        while (i < caracteresNecesarios.length()) {
-            char c = caracteresNecesarios.charAt(i);
-            // Verificar si el carácter actual es 'c' y el siguiente es 'h'
-            if (c == 'c' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'h')) {
-                if (!playerCharacters.existeCaracterEnJugador("CH")) {
-                    return false;
-                }
-                i += 2; // Saltar el siguiente carácter
-                continue;
-            }
-            // Verificar si el carácter actual es 'r' y el siguiente es 'r'
-            if (c == 'r' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'r')) {
-                if (!playerCharacters.existeCaracterEnJugador("RR")) {
-                    return false;
-                }
-                i += 2; // Saltar el siguiente carácter
-                continue;
-            }
-            // Verificar si el carácter actual es 'l' y el siguiente es 'l'
-            if (c == 'l' && (i + 1 < caracteresNecesarios.length() && caracteresNecesarios.charAt(i + 1) == 'l')) {
-                if (!playerCharacters.existeCaracterEnJugador("LL")) {
-                    return false;
-                }
-                i += 2; // Saltar el siguiente carácter
-                continue;
-            }
-            // Verificar caracteres individuales
-            if (!playerCharacters.existeCaracterEnJugador(String.valueOf(c))) {
-                if (!playerCharacters.existeCaracterEnJugador("+")){
-                    return false;
-                }
-            }
-            i++; // Avanzar al siguiente carácter
-        }
-        return true; // Si todos los caracteres están presentes, retorna true
-    }
 }
