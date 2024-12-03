@@ -140,6 +140,7 @@ public class Partida {
     public void continuarPartida() {
         boolean finPartida = false;
         while (!chooseWinner() && !finPartida) {
+            initialTime = System.currentTimeMillis();
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 finPartida = menuDeJugador(jugador1);
@@ -183,7 +184,6 @@ public class Partida {
             jugador.printCharacters();
         }
 
-        boolean finPartida = false;
         boolean finalizar = false;
         do {
             System.out.println("=========================");
@@ -221,7 +221,7 @@ public class Partida {
                     System.out.println(Main.TEXTO_ROJO+"Opción inválida. Por favor, selecciona una opción válida."+ Main.RESET);
             }
         } while (!finalizar);
-        return finPartida;
+        return false;
     }
 
     /**
