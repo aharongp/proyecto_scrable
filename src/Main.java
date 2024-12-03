@@ -114,11 +114,13 @@ public class Main {
                 Partida partida = new Partida(jugador1,jugador2);
                 partida.game();
             }else if (opc == 2){
-                Partida continuar = archivos.buscarPartida(jugador1.getAlias(), jugador2.getAlias());
-                if (continuar == null) {
-                    System.out.println("No hay ninguna partida guardada para cargar.");
-                } else {
-                    continuar.continuarPartida();
+                if(jugador1!=null && jugador2 != null){
+                    Partida continuar = archivos.buscarPartida(jugador1.getAlias(), jugador2.getAlias());
+                    if (continuar == null) {
+                        System.out.println("No hay ninguna partida guardada para cargar.");
+                    } else {
+                        continuar.continuarPartida();
+                    }
                 }
                 System.out.println(RESET+"\n"+FONDO_CYAN+ TEXTO_NEGRO+"¿Que les gustaria hacer?"+ RESET);
                 menu();

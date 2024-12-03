@@ -186,7 +186,7 @@ public class Partida {
         }
 
         boolean finalizar = false;
-        do {
+        while (!finalizar){
             System.out.println("=========================");
             System.out.println("        MENÚ JUEGO      ");
             System.out.println("=========================");
@@ -221,7 +221,7 @@ public class Partida {
                 default:
                     System.out.println(Main.TEXTO_ROJO+"Opción inválida. Por favor, selecciona una opción válida."+ Main.RESET);
             }
-        } while (!finalizar);
+        }
         return false;
     }
 
@@ -308,7 +308,7 @@ public class Partida {
      */
     public void finishGame() {
         long finishtime = System.currentTimeMillis();
-        this.time += finishtime - this.initialTime;
+        this.time += (finishtime - this.initialTime)/1000;
     }
 
     /**
