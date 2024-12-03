@@ -99,7 +99,6 @@ public class Main {
      * @param args Argumentos de línea de comandos (no utilizados en este caso).
      */
     public static void main(String[] args) {
-
         System.out.println(FONDO_VERDE+TEXTO_NEGRO + "****************************************" +RESET);
         System.out.println(FONDO_VERDE+TEXTO_NEGRO + "***********Inicio del juego*************" + RESET);
         System.out.println(FONDO_VERDE+TEXTO_NEGRO + "***************Jugador 1****************"+ RESET);

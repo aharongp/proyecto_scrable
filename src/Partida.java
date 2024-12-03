@@ -127,6 +127,7 @@ public class Partida {
             } else {
                 finPartida = menuDeJugador(jugador2);
             }
+            chooseWinner();
             manejadorDeArchivos.salvarPartida(this);
             manejadorDeArchivos.salvarJugador(getJugador1());
             manejadorDeArchivos.salvarJugador(getJugador2());
@@ -147,6 +148,7 @@ public class Partida {
             } else {
                 finPartida = menuDeJugador(jugador2);
             }
+            chooseWinner();
             manejadorDeArchivos.salvarPartida(this);
             finishGame();
         }
@@ -203,11 +205,9 @@ public class Partida {
                         alternarTurno();
                         finalizar = true;
                     }
-                    jugador.printCharacters();
                     break;
                 case 2:
                     cambiarFichasDeJugador(jugador);
-                    jugador.printCharacters();
                     alternarTurno();
                     finalizar = true;
                     break;
@@ -318,10 +318,12 @@ public class Partida {
      */
     public boolean chooseWinner() {
         if (this.bag.remaning() == 0) {
-            if (this.jugador1.numberOfCharacters() == 0) {
+            if (this.jugador1.numberOfCharacters() == 1) {
+                System.out.println(Main.FONDO_VERDE+ Main.TEXTO_NEGRO +"el ganador es: " + jugador1.getAlias()+Main.RESET);
                 this.winner = 1;
                 return true;
-            } else if (this.jugador2.numberOfCharacters() == 0) {
+            } else if (this.jugador2.numberOfCharacters() == 1) {
+                System.out.println(Main.FONDO_VERDE+ Main.TEXTO_NEGRO +"el ganador es: " + jugador2.getAlias()+Main.RESET);
                 this.winner = 2;
                 return true;
             }
