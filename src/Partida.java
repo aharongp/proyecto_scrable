@@ -110,7 +110,6 @@ public class Partida {
     private void startGame() {
         jugador1.addCharacters(bag.get(7));
         jugador2.addCharacters(bag.get(7));
-        initialTime = System.currentTimeMillis();
     }
 
     /**
@@ -121,6 +120,7 @@ public class Partida {
         startGame();
         boolean finPartida = false;
         while (!chooseWinner() && !finPartida) {
+            initialTime = System.currentTimeMillis();
             this.tablero.mostrarTablero();
             if (actualTurn == 1) {
                 finPartida = menuDeJugador(jugador1);
