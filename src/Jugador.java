@@ -50,6 +50,14 @@ public class Jugador {
     }
 
 
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     /**
      * Obtiene el alias del jugador.
      *

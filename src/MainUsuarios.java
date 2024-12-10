@@ -46,6 +46,62 @@ public class MainUsuarios {
         }
     }
 
+    public static void modificarUsuario() {
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
+        System.out.println("Ingrese el alias del usuario a modificar:");
+        String alias = read.next();
+
+        File directory = new File(System.getProperty("user.dir"));
+        String extension = ".jug";  // Extensión de los archivos de partida
+        List<String> fileNames = BuscarArchivo.getFileNamesWithExtension(directory, extension);
+
+        boolean usuarioEncontrado = false;
+        Jugador jugadorAModificar = null;
+
+        for (String fileName : fileNames) {
+            int lastIndex = fileName.lastIndexOf(".");
+            String jugador = fileName.substring(0, lastIndex);
+            if (alias.equals(jugador)) {
+                usuarioEncontrado = true;
+                jugadorAModificar = manejadorDeArchivos.restaurarJugador(jugador);
+                break;
+            }
+        }
+
+        if (!usuarioEncontrado) {
+            System.out.println(TEXTO_ROJO + "Usuario no encontrado." + RESET);
+            return;
+        }
+
+        System.out.println("Usuario encontrado: " + jugadorAModificar.getAlias() + ", " + jugadorAModificar.getEmail());
+
+        System.out.println("¿Desea modificar el alias? (s/n)");
+        char modificarAlias = read.next().charAt(0);
+        if (modificarAlias == 's' || modificarAlias == 'S') {
+            System.out.println("Ingrese el nuevo alias:");
+            String nuevoAlias = read.next();
+            jugadorAModificar.setAlias(nuevoAlias);
+        }
+
+        System.out.println("¿Desea modificar el correo electrónico? (s/n)");
+        char modificarEmail = read.next().charAt(0);
+        if (modificarEmail == 's' || modificarEmail == 'S') {
+            System.out.println("Ingrese el nuevo correo electrónico:");
+            String nuevoEmail = read.next();
+            Authentication auth = new Authentication();
+            // Validar el nuevo correo electrónico
+            while (!auth.validateEmail(nuevoEmail)) {
+                System.out.println(TEXTO_ROJO + "Correo inválido, por favor ingrese otro" + RESET);
+                nuevoEmail = read.next();
+            }
+            jugadorAModificar.setEmail(nuevoEmail);
+        }
+
+        // Guardar los cambios en el archivo
+        manejadorDeArchivos.salvarJugador(jugadorAModificar);
+        System.out.println(TEXTO_VERDE + "Usuario modificado exitosamente." + RESET);
+    }
+
 
     public static void registrarUsuario(){
         String alias = "";
@@ -126,11 +182,13 @@ public class MainUsuarios {
                 menu();
                 opc = leerNumero();
             }else if (opc == 3) {
-
+                System.out.println("Ingrese el alias del usuario a eliminar");
+                String alias=read.nextLine();
+                eliminarUsuario(alias);
                 menu();
                 opc = leerNumero();
             }else if (opc == 4) {
-
+                modificarUsuario();
                 menu();
                 opc = leerNumero();
             } else {

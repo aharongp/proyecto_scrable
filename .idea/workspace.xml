@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="se hizo un cambio en la clase Diccionario ya que estabamos teniendo problemas con la api que queriamos usar, por lo que quitamos la api y ahora usamos un archivo txt que tiene todas las palabras del Diccionario para validar las palabras que se ponen en el tablero">
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="*Se ajusto el metodo continuar partida para que sea capaz de salir de la partida">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tablero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUsuarios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +62,9 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Prueba.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ScrabbleHelper.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SpanishScrabble.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;proyecto-poo&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -230,7 +234,151 @@
       <option name="project" value="LOCAL" />
       <updated>1732901648817</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="*Se creo la clase BuscarArchivo&#10;*Se creo metodo para buscar los archivos">
+      <option name="closed" value="true" />
+      <created>1733023692959</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1733023692959</updated>
+    </task>
+    <task id="LOCAL-00019" summary="*Se crearon metodos para guardar y cargar jugador">
+      <option name="closed" value="true" />
+      <created>1733023726110</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1733023726110</updated>
+    </task>
+    <task id="LOCAL-00020" summary="*Se agregaron los manejadores de archivos para guardar cada uno de los jugadores">
+      <option name="closed" value="true" />
+      <created>1733023781499</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1733023781499</updated>
+    </task>
+    <task id="LOCAL-00021" summary="*Se creo la clase Estadisticas&#10;*Se creo metodo que permite imprimir los datos del jugador por partida y sus datos totales">
+      <option name="closed" value="true" />
+      <created>1733023851392</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1733023851392</updated>
+    </task>
+    <task id="LOCAL-00022" summary="*Se creo la clase Prueba para probar la clase estadistica">
+      <option name="closed" value="true" />
+      <created>1733023889618</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1733023889618</updated>
+    </task>
+    <task id="LOCAL-00023" summary="*Se puso una validacion de null en el registro">
+      <option name="closed" value="true" />
+      <created>1733094644929</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1733094644929</updated>
+    </task>
+    <task id="LOCAL-00024" summary="*Se incluyo la extension del jugador en el nombre del archivo">
+      <option name="closed" value="true" />
+      <created>1733094713702</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1733094713702</updated>
+    </task>
+    <task id="LOCAL-00025" summary="*Se definio la clase ColocadorDePalabra para manejar los casos de CH,LL,RR Y utilizar letras existentes en el tablero">
+      <option name="closed" value="true" />
+      <created>1733095039387</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1733095039387</updated>
+    </task>
+    <task id="LOCAL-00026" summary="*Se remplazo el metodo colocarPalabra con el metodo ubicarPalabra que usa la clase ColocadorDePalabra&#10;*Se comentaron 2 metodos por su desuso">
+      <option name="closed" value="true" />
+      <created>1733095152259</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1733095152260</updated>
+    </task>
+    <task id="LOCAL-00027" summary="*Se cambio el metodo colocarPalabra para utilizar el metodo ubicarPalabra">
+      <option name="closed" value="true" />
+      <created>1733095217855</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1733095217855</updated>
+    </task>
+    <task id="LOCAL-00028" summary="*Se cambio a test00 para hacer la prueba">
+      <option name="closed" value="true" />
+      <created>1733095268643</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1733095268643</updated>
+    </task>
+    <task id="LOCAL-00029" summary="*Se refinaron varios metodos para que la palabra quedar correctamento colocada">
+      <option name="closed" value="true" />
+      <created>1733107784799</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1733107784799</updated>
+    </task>
+    <task id="LOCAL-00030" summary="*Se ajusto la clase para utilizar la logica de colocarPalabra definida en la clase ColocarPalabra">
+      <option name="closed" value="true" />
+      <created>1733107872563</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1733107872563</updated>
+    </task>
+    <task id="LOCAL-00031" summary="*Se hicieron ajustes para mejorar algunas opciones en menu">
+      <option name="closed" value="true" />
+      <created>1733107928723</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1733107928723</updated>
+    </task>
+    <task id="LOCAL-00032" summary="*Se ajusto para pruebas">
+      <option name="closed" value="true" />
+      <created>1733107986023</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1733107986024</updated>
+    </task>
+    <task id="LOCAL-00033" summary="*Se ajusto partida para el metodo finalizarPartida">
+      <option name="closed" value="true" />
+      <created>1733111018292</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1733111018292</updated>
+    </task>
+    <task id="LOCAL-00034" summary="*Se comentaron uno system.out de prueba">
+      <option name="closed" value="true" />
+      <created>1733111050701</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1733111050701</updated>
+    </task>
+    <task id="LOCAL-00035" summary="*Se ajusto el metodo continuar partida para que sea capaz de salir de la partida">
+      <option name="closed" value="true" />
+      <created>1733117113594</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1733117113594</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,13 +396,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se creo la Clase Character(Fichas),se Clase SpanishBag que implementa la interfaz CharctersBag, y se creo una clase que prueba los metodos implementados en SpanishBag" />
-    <MESSAGE value="una parte de la clase partida" />
-    <MESSAGE value="se crea la clase Tablero" />
-    <MESSAGE value="se agrega un metodo en la clase Tablero para mostrar el estado actual del tablero" />
-    <MESSAGE value="se agrega un metodo en la clase Tablero para colocar una palabra en el tablero" />
-    <MESSAGE value="se agrega un metodo en la clase Tablero para validar si la posicion es valida para colocar la palabra" />
-    <MESSAGE value="se agrega un metodo en la clase Tablero para verificar si hay letras en el tablero y otro metodo para obtener el contenido del tablero" />
     <MESSAGE value="se elimino la clase Jugadores" />
     <MESSAGE value="se modifico el metodo MostrarTablero en la clase Tablero para que imprima en los bordes del tablero el numero de casilla" />
     <MESSAGE value="*Se creo la clase ScreenReader para comportir un solo escaner en todo el proyecto" />
@@ -262,8 +403,25 @@
     <MESSAGE value="*Se modifico el main para pruebas" />
     <MESSAGE value="*Se quito el atributo de bolsa de tablero&#10;*Se quito bolsa del constructor&#10;*En partida se cambio el constructor&#10;*Se modifico la inicializacion del tablero&#10;*Se quito el reponer fichas del tablero" />
     <MESSAGE value="*Se cambio el get de number para que no tenga conflictos con jackson json" />
-    <MESSAGE value="se hizo un cambio en la clase Diccionario ya que estabamos teniendo problemas con la api que queriamos usar, por lo que quitamos la api y ahora usamos un archivo txt que tiene todas las palabras del Diccionario para validar las palabras que se ponen en el tablero" />
-    <option name="LAST_COMMIT_MESSAGE" value="se hizo un cambio en la clase Diccionario ya que estabamos teniendo problemas con la api que queriamos usar, por lo que quitamos la api y ahora usamos un archivo txt que tiene todas las palabras del Diccionario para validar las palabras que se ponen en el tablero" />
+    <MESSAGE value="*Se creo la clase BuscarArchivo&#10;*Se creo metodo para buscar los archivos" />
+    <MESSAGE value="*Se crearon metodos para guardar y cargar jugador" />
+    <MESSAGE value="*Se agregaron los manejadores de archivos para guardar cada uno de los jugadores" />
+    <MESSAGE value="*Se creo la clase Estadisticas&#10;*Se creo metodo que permite imprimir los datos del jugador por partida y sus datos totales" />
+    <MESSAGE value="*Se creo la clase Prueba para probar la clase estadistica" />
+    <MESSAGE value="*Se puso una validacion de null en el registro" />
+    <MESSAGE value="*Se incluyo la extension del jugador en el nombre del archivo" />
+    <MESSAGE value="*Se definio la clase ColocadorDePalabra para manejar los casos de CH,LL,RR Y utilizar letras existentes en el tablero" />
+    <MESSAGE value="*Se remplazo el metodo colocarPalabra con el metodo ubicarPalabra que usa la clase ColocadorDePalabra&#10;*Se comentaron 2 metodos por su desuso" />
+    <MESSAGE value="*Se cambio el metodo colocarPalabra para utilizar el metodo ubicarPalabra" />
+    <MESSAGE value="*Se cambio a test00 para hacer la prueba" />
+    <MESSAGE value="*Se refinaron varios metodos para que la palabra quedar correctamento colocada" />
+    <MESSAGE value="*Se ajusto la clase para utilizar la logica de colocarPalabra definida en la clase ColocarPalabra" />
+    <MESSAGE value="*Se hicieron ajustes para mejorar algunas opciones en menu" />
+    <MESSAGE value="*Se ajusto para pruebas" />
+    <MESSAGE value="*Se ajusto partida para el metodo finalizarPartida" />
+    <MESSAGE value="*Se comentaron uno system.out de prueba" />
+    <MESSAGE value="*Se ajusto el metodo continuar partida para que sea capaz de salir de la partida" />
+    <option name="LAST_COMMIT_MESSAGE" value="*Se ajusto el metodo continuar partida para que sea capaz de salir de la partida" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
