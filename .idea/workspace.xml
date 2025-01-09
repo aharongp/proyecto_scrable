@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="*Se ajusto el metodo continuar partida para que sea capaz de salir de la partida">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="abde4bbb-fb06-4e90-9512-f3334ace2637" name="Changes" comment="Se creo el modificar usuario">
+      <change afterPath="$PROJECT_DIR$/src/InterfazGraficaUsuario.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MenuDeModificar.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MenuDePartida.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MenuDeRegistro.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MenuPartidaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto poo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto poo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainUsuarios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -62,13 +68,18 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainUsuarios.executor&quot;: &quot;Run&quot;,
     &quot;Application.Prueba.executor&quot;: &quot;Run&quot;,
     &quot;Application.ScrabbleHelper.executor&quot;: &quot;Run&quot;,
     &quot;Application.SpanishScrabble.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;proyecto-poo&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Java/Libs/jackson-annotations-2.18.2.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/JavaProjects/Conversor&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -77,10 +88,10 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Jose Alejandro/IdeaProjects/SCRABBLE-UCAB-Git/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15527344&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -378,7 +389,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733117113594</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Se creo el modificar usuario">
+      <option name="closed" value="true" />
+      <created>1733797606962</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1733797606962</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +415,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="se elimino la clase Jugadores" />
     <MESSAGE value="se modifico el metodo MostrarTablero en la clase Tablero para que imprima en los bordes del tablero el numero de casilla" />
     <MESSAGE value="*Se creo la clase ScreenReader para comportir un solo escaner en todo el proyecto" />
     <MESSAGE value="*Se creo la clase JSONMapper para serializar y deserializar a json" />
@@ -421,7 +439,8 @@
     <MESSAGE value="*Se ajusto partida para el metodo finalizarPartida" />
     <MESSAGE value="*Se comentaron uno system.out de prueba" />
     <MESSAGE value="*Se ajusto el metodo continuar partida para que sea capaz de salir de la partida" />
-    <option name="LAST_COMMIT_MESSAGE" value="*Se ajusto el metodo continuar partida para que sea capaz de salir de la partida" />
+    <MESSAGE value="Se creo el modificar usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se creo el modificar usuario" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

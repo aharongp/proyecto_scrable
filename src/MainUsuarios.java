@@ -84,6 +84,7 @@ public class MainUsuarios {
         }
 
         System.out.println("¿Desea modificar el correo electrónico? (s/n)");
+
         char modificarEmail = read.next().charAt(0);
         if (modificarEmail == 's' || modificarEmail == 'S') {
             System.out.println("Ingrese el nuevo correo electrónico:");
