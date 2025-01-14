@@ -1,4 +1,4 @@
-package usuarios;
+package com.example.usuarios;
 
 import juego.Authentication;
 import juego.BuscarArchivo;
