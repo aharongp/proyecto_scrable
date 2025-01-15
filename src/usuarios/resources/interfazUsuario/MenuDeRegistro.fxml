@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.UserRegistrationController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
          <children>
@@ -33,7 +33,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="25.0" prefWidth="246.0" />
+                        <TextField fx:id="textNombreDeUsuario" prefHeight="25.0" prefWidth="246.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
@@ -46,21 +46,13 @@
                               <Insets right="35.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="25.0" prefWidth="246.0" />
+                        <TextField fx:id="textCorreoDeUsuario" prefHeight="25.0" prefWidth="246.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="211.0" prefWidth="514.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" text="Guardar Usuario">
-                           <HBox.margin>
-                              <Insets right="40.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" text="Regresar">
-                           <HBox.margin>
-                              <Insets left="100.0" />
-                           </HBox.margin>
-                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onButtonGuardarUsuario" prefHeight="70.0" prefWidth="120.0" text="Guardar Usuario" />
+                        <Button mnemonicParsing="false" onAction="#onButtonRegresar" prefHeight="70.0" prefWidth="120.0" text="Regresar" />
                      </children>
                   </HBox>
                </children>

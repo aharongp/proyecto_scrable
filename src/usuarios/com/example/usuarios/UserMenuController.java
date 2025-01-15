@@ -1,46 +1,29 @@
 package com.example.usuarios;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class UserMenuController {
 
     @FXML
-    private Button btnRegistrarse;
+    protected void onButtonRegistrar() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/MenuDeRegistro.fxml"));
+            Parent root=fxmlLoader.load();
+            Stage stage=new Stage();
+            stage.setTitle("MenuDeRegistro");
+            stage.setScene(new Scene(root));
+            stage.show();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
 
-    @FXML
-    private Button btnModificarDatos;
-
-    @FXML
-    private Button btnMostrarEstadisticas;
-
-    @FXML
-    private Button btnMostrarUsuarios;
-
-    @FXML
-    private Button btnSalir;
-
-    @FXML
-    public void initialize() {
-        btnRegistrarse.setOnAction(event -> {
-            System.out.println("Registrarse clickeado");
-        });
-
-        btnModificarDatos.setOnAction(event -> {
-            System.out.println("Modificar Datos clickeado");
-        });
-
-        btnMostrarEstadisticas.setOnAction(event -> {
-            System.out.println("Mostrar Estadisticas clickeado");
-        });
-
-        btnMostrarUsuarios.setOnAction(event -> {
-            System.out.println("Mostrar Usuarios clickeado");
-        });
-
-        btnSalir.setOnAction(event -> {
-            System.out.println("Salir clickeado");
-            System.exit(0);
-        });
     }
 }
