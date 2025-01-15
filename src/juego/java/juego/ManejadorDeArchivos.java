@@ -110,7 +110,38 @@ public class ManejadorDeArchivos {
             return;
         }
 
+        int opc = -1;
+        while(opc!=0){
+            System.out.println("\n" +  "¿Qué quieres modificar?" );
+            System.out.println( "1. alias" );
+            System.out.println("2. correo" );
+            System.out.println("0. Salir");
+            opc = Main.leerNumero();
 
+            if (opc == 1){
+                System.out.println("escribe el nuevo alias");
+                String nuevoAlias = Main.read.next();
+                File jug = new File(nuevoAlias + ".jug");
+                while (jug.exists()){
+                    System.out.println("ese alias ya esta en uso, por favor escribe otro");
+                    nuevoAlias = Main.read.next();
+                    jug = new File(nuevoAlias + ".jug");
+                }
+                jugador.setAlias(nuevoAlias);
+            } else if( opc == 2){
+                Authentication auth = new Authentication();
+                System.out.println("escribe el nuevo alias");
+                String nuevoCorreo = Main.read.next();
+                while (!auth.validateEmail(nuevoCorreo)){
+                    System.out.println("correo invalido, escribe otro");
+                    nuevoCorreo = Main.read.next();
+                }
+                jugador.setEmail(nuevoCorreo);
+            }else{
+                System.out.println("opcion invalida, ingrese una correcta");
+            }
+
+        }
     }
 
 
