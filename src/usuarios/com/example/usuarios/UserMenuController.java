@@ -22,7 +22,7 @@ public class UserMenuController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/MenuDeRegistro.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("MenuDeRegistro");
+            stage.setTitle("Menu De Registro");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
@@ -58,7 +58,25 @@ public class UserMenuController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/MenuDeEliminar.fxml"));
             Parent root = fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Menu de Modificacion");
+            stage.setTitle("Menu de Eliminacion");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void onButtonEstadisticas(ActionEvent event) {
+        try {
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/MenuDeEstadisticas.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Menu de Estadisticas");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {

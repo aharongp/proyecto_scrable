@@ -15,6 +15,38 @@ public class Estadisticas {
     private long palabrasJugadasTotal;
     private long partidasJugadasTotal;
 
+    public long getScoreTotal() {
+        return scoreTotal;
+    }
+
+    public void setScoreTotal(long scoreTotal) {
+        this.scoreTotal = scoreTotal;
+    }
+
+    public long getTiempoTotal() {
+        return tiempoTotal;
+    }
+
+    public void setTiempoTotal(long tiempoTotal) {
+        this.tiempoTotal = tiempoTotal;
+    }
+
+    public long getPalabrasJugadasTotal() {
+        return palabrasJugadasTotal;
+    }
+
+    public void setPalabrasJugadasTotal(long palabrasJugadasTotal) {
+        this.palabrasJugadasTotal = palabrasJugadasTotal;
+    }
+
+    public long getPartidasJugadasTotal() {
+        return partidasJugadasTotal;
+    }
+
+    public void setPartidasJugadasTotal(long partidasJugadasTotal) {
+        this.partidasJugadasTotal = partidasJugadasTotal;
+    }
+
     /**
      * Método que calcula y muestra las estadísticas del jugador especificado por su alias.
      * Recupera las partidas del jugador y calcula el total de puntos, tiempo jugado,
@@ -88,5 +120,50 @@ public class Estadisticas {
                 + "\nPalabras jugadas=" + palabrasJugadasTotal
                 + "\nPartidas jugadas=" + partidasJugadasTotal
         );
+    }
+
+    public void estadisticasSimples(String alias){
+        scoreTotal = 0;
+        palabrasJugadasTotal = 0;
+        partidasJugadasTotal = 0;
+        tiempoTotal = 0;
+
+        ManejadorDeArchivos manejadorDeArchivos = new ManejadorDeArchivos();
+        File directory = new File(System.getProperty("user.dir"));
+        String extension = ".par";  // Extensión de los archivos de partida
+        List<String> fileNames = BuscarArchivo.getFileNamesWithExtension(directory, extension);
+
+        ArrayList<Partida> partidas = new ArrayList<>();
+        for (String fileName : fileNames) {
+            Partida partida = manejadorDeArchivos.restaurarPartida(fileName);
+            // Verifica si el jugador está en alguna de las partidas
+            if (partida.getJugador1().getAlias().equals(alias) || partida.getJugador2().getAlias().equals(alias)){
+                partidas.add(partida);
+            }
+        }
+
+        long score = 0;
+        long tiempo = 0;
+        long palabras = 0;
+
+        // Muestra las estadísticas de cada partida jugada
+        for (Partida partida : partidas) {
+            if (partida.getJugador1().getAlias().equals(alias)){
+                score = partida.getJugador1().getScore();
+                tiempo = partida.getTime();
+                palabras = partida.getJugador1().getPalabrasJugadas();
+            } else {
+                score = partida.getJugador2().getScore();
+                tiempo = partida.getTime();
+                palabras = partida.getJugador2().getPalabrasJugadas();
+            }
+
+
+            // Actualiza las estadísticas totales
+            partidasJugadasTotal++;
+            scoreTotal += score;
+            tiempoTotal += tiempo;
+            palabrasJugadasTotal += palabras;
+        }
     }
 }

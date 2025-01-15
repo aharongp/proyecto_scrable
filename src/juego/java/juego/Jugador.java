@@ -17,7 +17,9 @@ public class Jugador {
     private int score;               // Puntaje total del jugador
     private int palabrasJugadas;     // Cantidad de palabras jugadas por el jugador
     private FichasJugador playerCharacters; // Fichas que posee el jugador
-    private long tiempoTotalJugado;   // Tiempo total jugado en segundos
+    private long tiempoTotalJugado;
+    private int partidasJugadas;
+    // Tiempo total jugado en segundos
 
     /**
      * Constructor vacío por defecto.
@@ -40,6 +42,7 @@ public class Jugador {
         this.palabrasJugadas = 0;
         this.playerCharacters = new FichasJugador();
         this.tiempoTotalJugado = 0;
+        this.partidasJugadas=0;
     }
 
     /**
@@ -169,6 +172,14 @@ public class Jugador {
      */
     public void addTimePlated(long seconds) {
         this.tiempoTotalJugado += seconds;
+    }
+
+    public int getPartidasJugadas() {
+        return partidasJugadas;
+    }
+
+    public void setPartidasJugadas(int partidasJugadas) {
+        this.partidasJugadas = partidasJugadas;
     }
 
     /**
