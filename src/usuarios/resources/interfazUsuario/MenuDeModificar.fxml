@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.UserModificationController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -20,26 +19,26 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="560.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="358.0" prefWidth="600.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="460.0" prefWidth="515.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="420.0">
                      <children>
-                        <Label text="Ingrese el Usuario a Modificar">
+                        <Label text="Alias">
                            <font>
                               <Font size="20.0" />
                            </font>
                            <HBox.margin>
-                              <Insets right="10.0" />
+                              <Insets right="120.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="26.0" prefWidth="228.0" />
+                        <TextField fx:id="textAlias" prefHeight="26.0" prefWidth="228.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="420.0">
                      <children>
-                        <Label text="Ingrese nuevo Alias">
+                        <Label text="Correo">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -47,32 +46,20 @@
                               <Insets right="100.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="26.0" prefWidth="228.0" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="423.0">
-                     <children>
-                        <Label text="Ingrese nuevo correo">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets right="85.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField prefHeight="26.0" prefWidth="228.0" />
+                        <TextField fx:id="textEmail" prefHeight="26.0" prefWidth="228.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="211.0" prefWidth="514.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" text="Guardar Usuario">
+                        <Button mnemonicParsing="false" onAction="#onButtonLeer" prefHeight="70.0" prefWidth="120.0" text="Leer" />
+                        <Button mnemonicParsing="false" onAction="#onButtonModificar" prefHeight="70.0" prefWidth="120.0" text="Actualizar">
                            <HBox.margin>
-                              <Insets right="40.0" />
+                              <Insets />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" text="Regresar">
+                        <Button mnemonicParsing="false" onAction="#onButtonRegresar" prefHeight="70.0" prefWidth="120.0" text="Regresar">
                            <HBox.margin>
-                              <Insets left="100.0" />
+                              <Insets />
                            </HBox.margin>
                         </Button>
                      </children>

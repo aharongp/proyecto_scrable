@@ -70,7 +70,7 @@ public class MainUsuarios {
         String alias = read.next();
 
         File directory = new File(System.getProperty("user.dir"));
-        String extension = ".jug";  // Extensión de los archivos de usuario
+        String extension = ".jug";
         List<String> fileNames = BuscarArchivo.getFileNamesWithExtension(directory, extension);
 
         boolean usuarioEncontrado = false;

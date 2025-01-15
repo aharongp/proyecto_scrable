@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.UserMenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.UserMenuController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
          <children>
-            <Label text="Menu de Usuario">
+            <Label text="Menu de Jugadores">
                <font>
                   <Font size="30.0" />
                </font>
@@ -20,15 +20,17 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="701.0" prefWidth="600.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="563.0" prefWidth="350.0">
+            <VBox alignment="TOP_CENTER" prefHeight="563.0" prefWidth="600.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onButtonRegistrar" prefHeight="90.0" prefWidth="130.0" text="Registrarse" />
+                  <Button mnemonicParsing="false" onAction="#onButtonRegistrar" prefHeight="90.0" prefWidth="130.0" text="Registrar Jugador" />
                   <Region prefHeight="35.0" prefWidth="350.0" />
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="130.0" text="Modificar Datos" />
+                  <Button mnemonicParsing="false" onAction="#onButtonModificar" prefHeight="90.0" prefWidth="130.0" text="Modificar Jugador" />
                   <Region prefHeight="35.0" prefWidth="350.0" />
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="130.0" text="Mostrar juego.Estadisticas" />
+                  <Button mnemonicParsing="false" onAction="#onButtonEliminar" prefHeight="90.0" prefWidth="130.0" text="Eliminar Jugador" />
+                  <Region prefHeight="35.0" prefWidth="200.0" />
+                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="130.0" text="Mostrar Estadisticas &#10;de Jugador" textAlignment="CENTER" />
                   <Region prefHeight="35.0" prefWidth="350.0" />
-                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="130.0" text="Mostrar Usuarios" />
+                  <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="130.0" text="Mostrar Jugador" />
                   <Region prefHeight="35.0" prefWidth="350.0" />
                   <Button mnemonicParsing="false" prefHeight="90.0" prefWidth="130.0" text="Salir" />
                </children>

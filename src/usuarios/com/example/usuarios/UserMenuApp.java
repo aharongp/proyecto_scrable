@@ -11,7 +11,7 @@ public class UserMenuApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/interfazUsuario/InterfazGraficaUsuario.fxml"));
-        primaryStage.setTitle("Menu de Usuario");
+        primaryStage.setTitle("Menu de Jugador");
         primaryStage.setScene(new Scene(root, 600, 800));
         primaryStage.show();
     }
