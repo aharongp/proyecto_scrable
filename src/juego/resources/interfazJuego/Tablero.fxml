@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx" prefHeight="800.0" prefWidth="800.0">
+    <!-- Parte superior: Alias de jugadores y puntajes -->
+    <top>
+        <HBox alignment="CENTER" spacing="20" style="-fx-padding: 10; -fx-background-color: #f4f4f4;">
+            <!-- Jugador 1 -->
+            <VBox alignment="CENTER">
+                <Label text="Jugador 1" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <Label fx:id="scoreJugador1" text="Score: 0" style="-fx-font-size: 14px;" />
+            </VBox>
+            <!-- Jugador 2 -->
+            <VBox alignment="CENTER">
+                <Label text="Jugador 2" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <Label fx:id="scoreJugador2" text="Score: 0" style="-fx-font-size: 14px;" />
+            </VBox>
+            <!-- Puedes agregar más jugadores aquí -->
+        </HBox>
+    </top>
+
+    <!-- Parte central: Tablero del Scrabble -->
+    <center>
+        <GridPane style="-fx-padding: 10; -fx-background-color: #ffffff;" gridLinesVisible="true">
+            <!-- Aquí va el tablero que ya tienes definido -->
+
+            <children>
+                <!-- Fila 0 -->
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="0" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="0" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="0" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="0" GridPane.columnIndex="14" />
+
+                <!-- Fila 1 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="1" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="1" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="1" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="1" GridPane.columnIndex="14" />
+
+                <!-- Fila 2 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="2" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="2" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="2" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="2" GridPane.columnIndex="14" />
+
+                <!-- Fila 3 -->
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="3" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="3" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="3" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="3" GridPane.columnIndex="14" />
+
+                <!-- Fila 4 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="4" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="4" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="4" GridPane.columnIndex="14" />
+
+                <!-- Fila 5 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="5" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="5" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="5" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="5" GridPane.columnIndex="14" />
+
+                <!-- Fila 6 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="6" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="6" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="6" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="6" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="6" GridPane.columnIndex="14" />
+
+                <!-- Añadir las filas restantes (2-14) siguiendo este patrón de colores y diseño -->
+
+                <!-- Fila 7 (Centro) -->
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="7" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffff00;" GridPane.rowIndex="7" GridPane.columnIndex="7" /> <!-- Centro del tablero -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="7" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="7" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="7" GridPane.columnIndex="14" />
+
+                <!-- Fila 8 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="8" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="8" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="8" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="8" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="8" GridPane.columnIndex="14" />
+
+                <!-- Fila 9 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="9" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="9" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="9" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ff6347;" GridPane.rowIndex="9" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="9" GridPane.columnIndex="14" />
+
+                <!-- Fila 10 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="10" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="10" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="10" GridPane.columnIndex="14" />
+
+                <!-- Fila 11 -->
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="11" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="11" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="11" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="11" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="11" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="11" GridPane.columnIndex="14" />
+                <!-- Fila 12 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="12" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="12" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="12" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="12" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="12" GridPane.columnIndex="14" />
+
+                <!-- Fila 13 -->
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #90ee90;" GridPane.rowIndex="13" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="13" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="13" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="13" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="13" GridPane.columnIndex="14" />
+
+                <!-- Fila 14 -->
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="14" GridPane.columnIndex="0" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="1" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="14" GridPane.columnIndex="2" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="3" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="4" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="14" GridPane.columnIndex="5" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="6" />
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="14" GridPane.columnIndex="7" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="8" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="14" GridPane.columnIndex="9" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="10" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="11" />
+                <Button text="" style="-fx-background-color: #ffb6c1;" GridPane.rowIndex="14" GridPane.columnIndex="12" />
+                <Button text="" style="-fx-background-color: #ffffff;" GridPane.rowIndex="14" GridPane.columnIndex="13" />
+                <Button text="" style="-fx-background-color: #add8e6;" GridPane.rowIndex="14" GridPane.columnIndex="14" />
+            </children>
+        </GridPane>
+    </center>
+
+    <!-- Parte inferior: Botones de letras -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #e6e6e6;">
+            <!-- Botones de letras -->
+            <Button text="A" fx:id="btnLetraA" style="-fx-font-size: 14px; -fx-background-color: #ffffff;" />
+            <Button text="B" fx:id="btnLetraB" style="-fx-font-size: 14px; -fx-background-color: #ffffff;" />
+            <Button text="C" fx:id="btnLetraC" style="-fx-font-size: 14px; -fx-background-color: #ffffff;" />
+            <Button text="D" fx:id="btnLetraD" style="-fx-font-size: 14px; -fx-background-color: #ffffff;" />
+            <Button text="E" fx:id="btnLetraE" style="-fx-font-size: 14px; -fx-background-color: #ffffff;" />
+            <!-- Agrega más botones según las letras disponibles -->
+        </HBox>
+    </bottom>
+</BorderPane>
+
