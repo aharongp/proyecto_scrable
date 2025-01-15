@@ -88,6 +88,32 @@ public class ManejadorDeArchivos {
         return null;
     }
 
+    public void eliminarJugador(String alias) {
+            File file = new File(alias + ".jug");
+
+            if(!file.exists()) {
+                System.out.println("El jugador " + alias + "no existe");
+                return;
+            }
+
+            if (file.delete()) {
+                System.out.println("jugador " + alias + " eliminado con éxito.");
+            } else {
+                System.out.println("No se pudo eliminar el jugador: " + alias);
+            }
+    }
+
+    public void modificarUsuario(String alias){
+        Jugador jugador = restaurarJugador(alias);
+        if(jugador == null){
+            System.out.println("No existe el jugador: " + alias);
+            return;
+        }
+
+
+    }
+
+
     /**
      * Busca una partida guardada entre dos jugadores por sus alias.
      *
