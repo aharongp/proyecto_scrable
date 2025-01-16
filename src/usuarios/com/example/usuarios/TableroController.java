@@ -16,10 +16,16 @@ import java.util.List;
 public class TableroController {
     private Partida partida;
 
+    @FXML
+    private HBox playerTiles; // HBox para las fichas del jugador
+
+    @FXML
+    private GridPane board; // GridPane para el tablero de juego
+
     private String selectedLetter = null; // Letra seleccionada por el jugador
 
-    // Método para inicializar los eventos
-    public void initializeGame(HBox playerTiles, GridPane board) {
+    @FXML
+    public void initialize() {
         // Asignar evento a las fichas del jugador
         for (Node node : playerTiles.getChildren()) {
             if (node instanceof Button button) {
