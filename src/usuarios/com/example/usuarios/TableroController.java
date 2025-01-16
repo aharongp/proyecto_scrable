@@ -22,6 +22,7 @@ public class TableroController {
     @FXML
     private GridPane board; // GridPane para el tablero de juego
 
+    private Button selectedTileButton = null;
     private String selectedLetter = null; // Letra seleccionada por el jugador
 
     @FXML
@@ -43,8 +44,13 @@ public class TableroController {
 
     // Evento al hacer clic en una ficha del jugador
     private void onTileClick(MouseEvent event, Button tileButton) {
-        selectedLetter = tileButton.getText(); // Guardar la letra seleccionada
-        System.out.println("Ficha seleccionada: " + selectedLetter);
+        if (!tileButton.isDisable()) { // Solo permitir seleccionar fichas activas
+            selectedLetter = tileButton.getText(); // Guardar la letra seleccionada
+            selectedTileButton = tileButton; // Guardar el botón seleccionado
+            System.out.println("Ficha seleccionada: " + selectedLetter);
+        } else {
+            System.out.println("Esta ficha ya fue usada.");
+        }
     }
 
     // Evento al hacer clic en el tablero
@@ -62,6 +68,12 @@ public class TableroController {
             col = (col == null) ? 0 : col;
 
             System.out.println("Letra '" + selectedLetter + "' colocada en fila: " + row + ", columna: " + col);
+
+            // Deshabilitar la ficha seleccionada para que no pueda usarse de nuevo
+            if (selectedTileButton != null) {
+                selectedTileButton.setDisable(true);
+                selectedTileButton = null; // Limpiar la referencia al botón seleccionado
+            }
 
             // Desmarcar la ficha seleccionada
             selectedLetter = null;
