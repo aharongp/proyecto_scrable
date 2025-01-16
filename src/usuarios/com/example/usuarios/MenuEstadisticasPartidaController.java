@@ -1,0 +1,93 @@
+package com.example.usuarios;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import juego.Partida;
+import juego.Jugador;
+
+public class MenuEstadisticasPartidaController {
+
+    @FXML
+    private TextField campoJugador1;
+
+    @FXML
+    private TextField campoPuntosJugador1;
+
+    @FXML
+    private TextField campoPalabrasJugador1;
+
+    @FXML
+    private TextField campoJugador2;
+
+    @FXML
+    private TextField campoPuntosJugador2;
+
+    @FXML
+    private TextField campoPalabrasJugador2;
+
+    @FXML
+    private TextField campoGanador;
+
+    @FXML
+    private TextField campoDuracion;
+
+    @FXML
+    private Button btnRegresar;
+
+    private Partida partida;
+
+    @FXML
+    public void initialize() {
+        // Configuración inicial del controlador si es necesaria.
+        configurarCamposNoEditables();
+        btnRegresar.setOnAction(event -> regresarMenuPrincipal());
+    }
+
+    public void setPartida(Partida partida) {
+        this.partida = partida;
+        cargarEstadisticas();
+    }
+
+    private void cargarEstadisticas() {
+        if (partida != null) {
+            Jugador jugador1 = partida.getJugador1();
+            Jugador jugador2 = partida.getJugador2();
+
+            campoJugador1.setText(jugador1.getAlias());
+            campoPuntosJugador1.setText(String.valueOf(jugador1.getScore()));
+            campoPalabrasJugador1.setText(String.valueOf(jugador1.getPalabrasJugadas()));
+
+            campoJugador2.setText(jugador2.getAlias());
+            campoPuntosJugador2.setText(String.valueOf(jugador2.getScore()));
+            campoPalabrasJugador2.setText(String.valueOf(jugador2.getPalabrasJugadas()));
+
+            // Determinar el ganador
+            Jugador ganador = partida.getWinner();
+            campoGanador.setText(ganador != null ? ganador.getAlias() : "Empate");
+
+            // Establecer la duración
+            campoDuracion.setText(partida.getTime());
+        } else {
+            System.out.println("No se ha configurado una partida.");
+        }
+    }
+
+    private void configurarCamposNoEditables() {
+        campoJugador1.setEditable(false);
+        campoPuntosJugador1.setEditable(false);
+        campoPalabrasJugador1.setEditable(false);
+
+        campoJugador2.setEditable(false);
+        campoPuntosJugador2.setEditable(false);
+        campoPalabrasJugador2.setEditable(false);
+
+        campoGanador.setEditable(false);
+        campoDuracion.setEditable(false);
+    }
+
+    private void regresarMenuPrincipal() {
+        // Lógica para regresar al menú principal (por ejemplo, cambiar de escena)
+        System.out.println("Regresando al menú principal...");
+    }
+}
