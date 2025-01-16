@@ -54,20 +54,31 @@ public class MenuEstadisticasPartidaController {
             Jugador jugador1 = partida.getJugador1();
             Jugador jugador2 = partida.getJugador2();
 
-            campoJugador1.setText(jugador1.getAlias());
-            campoPuntosJugador1.setText(String.valueOf(jugador1.getScore()));
-            campoPalabrasJugador1.setText(String.valueOf(jugador1.getPalabrasJugadas()));
+            if (jugador1 != null) {
+                campoJugador1.setText(jugador1.getAlias());
+                campoPuntosJugador1.setText(String.valueOf(jugador1.getScore()));
+                campoPalabrasJugador1.setText(String.valueOf(jugador1.getPalabrasJugadas()));
+            } else {
+                campoJugador1.setText("N/A");
+                campoPuntosJugador1.setText("0");
+                campoPalabrasJugador1.setText("0");
+            }
 
-            campoJugador2.setText(jugador2.getAlias());
-            campoPuntosJugador2.setText(String.valueOf(jugador2.getScore()));
-            campoPalabrasJugador2.setText(String.valueOf(jugador2.getPalabrasJugadas()));
+            if (jugador2 != null) {
+                campoJugador2.setText(jugador2.getAlias());
+                campoPuntosJugador2.setText(String.valueOf(jugador2.getScore()));
+                campoPalabrasJugador2.setText(String.valueOf(jugador2.getPalabrasJugadas()));
+            } else {
+                campoJugador2.setText("N/A");
+                campoPuntosJugador2.setText("0");
+                campoPalabrasJugador2.setText("0");
+            }
 
             // Determinar el ganador
-            Jugador ganador = partida.getWinner();
-            campoGanador.setText(ganador != null ? ganador.getAlias() : "Empate");
+            int ganador = partida.getWinner();
 
             // Establecer la duración
-            campoDuracion.setText(partida.getTime());
+            campoDuracion.setText(partida.getId() != null ? String.valueOf(partida.getTime()) : "0:00");
         } else {
             System.out.println("No se ha configurado una partida.");
         }
@@ -91,3 +102,4 @@ public class MenuEstadisticasPartidaController {
         System.out.println("Regresando al menú principal...");
     }
 }
+

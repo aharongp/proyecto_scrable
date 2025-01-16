@@ -52,12 +52,12 @@ public class Partida {
         return id;
     }
 
-    public Jugador getJugador1() {
+    public juego.Jugador getJugador1() {
         return jugador1;
     }
 
 
-    public Jugador getJugador2() {
+    public juego.Jugador getJugador2() {
         return jugador2;
     }
 
