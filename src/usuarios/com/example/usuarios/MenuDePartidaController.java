@@ -1,11 +1,14 @@
 package com.example.usuarios;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import juego.Jugador;
+
 import java.io.IOException;
 
 public class MenuDePartidaController {
@@ -22,26 +25,23 @@ public class MenuDePartidaController {
     @FXML
     protected void onButtonContinuarJuego(){}
     @FXML
-    protected void onButtonRegresar(){}
-
-    @FXML
-    private Button buttonEstadisticas;
-
-    @FXML
-    protected void onButtonEstadisticas() {
-
+    protected void onButtonEstadisticas(ActionEvent event){
         try {
-            Stage currentStage = (Stage) buttonEstadisticas.getScene().getWindow();
-            currentStage.close();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/MenuDePartida/MenuDeEstadisticas.fxml"));
-            Parent root = loader.load();
 
-            Stage newStage = new Stage();
-            newStage.setTitle("Estadísticas");
-            newStage.setScene(new Scene(root));
-            newStage.show();
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/MenuEstadisticasPartida.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Menu De Registro");
+            stage.setScene(new Scene(root));
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    @FXML
+    protected void onButtonRegresar(){}
+
 }
