@@ -10,13 +10,11 @@ import juego.ButtonInfo;
 import juego.Partida;
 import juego.Tablero;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TableroController {
     private Partida partida;
+
 
     @FXML
     private HBox playerTiles; // HBox para las fichas del jugador
@@ -26,6 +24,10 @@ public class TableroController {
 
     private Button selectedTileButton = null;
     private String selectedLetter = null; // Letra seleccionada por el jugador
+
+    private Integer columna;
+    private Integer fila;
+    private boolean horizontal;
 
     // Mapa para rastrear qué botón del HBox corresponde a cada letra colocada
     private final Map<String, Button> usedTilesMap = new HashMap<>();
@@ -63,6 +65,12 @@ public class TableroController {
         String currentText = boardButton.getText();
 
         if (selectedLetter != null) {
+
+            if (currentText != null && !currentText.isEmpty()) {
+                // Validar si el botón del tablero ya tiene una ficha
+                System.out.println("El espacio ya está ocupado. No se puede cambiar la ficha.");
+                return;
+            }
             // Cambiar el texto del botón del tablero
             boardButton.setText(selectedLetter);
 
@@ -73,6 +81,14 @@ public class TableroController {
             // Manejar índices nulos
             row = (row == null) ? 0 : row;
             col = (col == null) ? 0 : col;
+
+            horizontal = Objects.equals(fila, row);
+            System.out.println(horizontal);
+            columna = (columna == null) ? col : columna;
+            System.out.println(columna);
+
+            fila = (fila == null) ? row : fila;
+            System.out.println(fila);
 
             System.out.println("Letra '" + selectedLetter + "' colocada en fila: " + row + ", columna: " + col);
 
