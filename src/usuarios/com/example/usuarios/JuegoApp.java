@@ -6,13 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class PartidaApp extends Application {
+public class JuegoApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/resources/interfazUsuario/InicioDeSesion.fxml"));
-        primaryStage.setTitle("Menu de Inicio de Sesion");
-        primaryStage.setScene(new Scene(root, 600, 800));
+        primaryStage.setTitle("Menu Jugador");
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
 

@@ -8,55 +8,51 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.InicioDeSesionController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.InicioDeSesionController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0">
          <children>
-            <Label text="Menu de Inicio de sesion">
+            <Label text="Inicio de Sesion">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="403.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="513.0" prefWidth="600.0">
          <children>
-            <VBox prefHeight="402.0" prefWidth="525.0">
+            <VBox prefHeight="460.0" prefWidth="515.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Alias del Jugador 1">
+                        <Label text="Alias Jugador 1">
                            <font>
                               <Font size="25.0" />
                            </font>
                            <HBox.margin>
-                              <Insets right="40.0" />
+                              <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="textJugador1" />
+                        <TextField fx:id="textJugador1" prefHeight="25.0" prefWidth="246.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label text="Alias del Jugador 2">
+                        <Label text="Alias Jugador 2">
                            <font>
                               <Font size="25.0" />
                            </font>
                            <HBox.margin>
-                              <Insets right="40.0" />
+                              <Insets right="20.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="textJugador2" />
+                        <TextField fx:id="textJugador2" prefHeight="25.0" prefWidth="246.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="164.0" prefWidth="525.0">
+                  <HBox alignment="CENTER" prefHeight="211.0" prefWidth="514.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onButtonIniciar" prefHeight="100.0" prefWidth="100.0" text="Iniciar">
-                           <HBox.margin>
-                              <Insets right="50.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#onButtonSalir" prefHeight="100.0" prefWidth="100.0" text="Salir" />
+                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" text="Iniciar" onAction="#onIniciar"/>
+                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="120.0" text="Salir" onAction="#onSalir"/>
                      </children>
                   </HBox>
                </children>
@@ -65,3 +61,4 @@
       </HBox>
    </children>
 </VBox>
+
