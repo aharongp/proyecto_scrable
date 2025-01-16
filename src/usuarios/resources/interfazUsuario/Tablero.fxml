@@ -29,7 +29,7 @@
 
     <!-- Parte central: Tablero del Scrabble -->
     <center>
-        <GridPane alignment="CENTER" gridLinesVisible="true" prefWidth="600.0" style="-fx-padding: 10; -fx-background-color: #ffffff;">
+        <GridPane fx:id="board" alignment="CENTER" gridLinesVisible="true" prefWidth="600.0" style="-fx-padding: 10; -fx-background-color: #ffffff;">
             <!-- Aquí va el tablero que ya tienes definido -->
 
             <children>
@@ -337,7 +337,7 @@
 
     <!-- Parte inferior: Botones de letras -->
     <bottom>
-        <HBox alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #e6e6e6;">
+        <HBox fx:id="playerTiles" alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #e6e6e6;">
             <!-- Botones de letras -->
             <Button fx:id="btnLetraA" style="-fx-font-size: 14px; -fx-background-color: #ffffff;" text="A" />
             <Button fx:id="btnLetraB" style="-fx-font-size: 14px; -fx-background-color: #ffffff;" text="B" />
