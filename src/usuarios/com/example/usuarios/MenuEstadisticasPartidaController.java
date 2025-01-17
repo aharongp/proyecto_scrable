@@ -1,10 +1,16 @@
 package com.example.usuarios;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import juego.Partida;
 import juego.Jugador;
+
+import java.io.IOException;
 
 public class MenuEstadisticasPartidaController {
 
@@ -37,12 +43,12 @@ public class MenuEstadisticasPartidaController {
 
     private Partida partida;
 
-    @FXML
+    /*@FXML
     public void initialize() {
         // Configuración inicial del controlador si es necesaria.
         configurarCamposNoEditables();
         btnRegresar.setOnAction(event -> regresarMenuPrincipal());
-    }
+    }*/
 
     public void setPartida(Partida partida) {
         this.partida = partida;
@@ -97,9 +103,22 @@ public class MenuEstadisticasPartidaController {
         campoDuracion.setEditable(false);
     }
 
+    @FXML
     private void regresarMenuPrincipal() {
-        // Lógica para regresar al menú principal (por ejemplo, cambiar de escena)
-        System.out.println("Regresando al menú principal...");
+        try {
+            Stage stage = (Stage) campoJugador1.getScene().getWindow();
+            stage.close();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/MenuDePartida.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage newStage = new Stage();
+            newStage.setTitle("Menú Principal");
+            newStage.setScene(new Scene(root));
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error al cargar la interfaz previa.");
+        }
     }
 }
 
