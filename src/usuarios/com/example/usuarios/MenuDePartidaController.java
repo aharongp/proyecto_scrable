@@ -20,6 +20,7 @@ public class MenuDePartidaController {
         this.jugador2=jugador2;
     }
 
+
     @FXML
     protected void onButtonNuevoJuego(){}
     @FXML
@@ -42,6 +43,8 @@ public class MenuDePartidaController {
         }
     }
     @FXML
-    protected void onButtonRegresar(){}
+    protected void onButtonRegresar(){
+        System.exit(0);
+    }
 
 }

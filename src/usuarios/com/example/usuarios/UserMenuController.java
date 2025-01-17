@@ -83,4 +83,9 @@ public class UserMenuController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void onButtonSalir(ActionEvent event) {
+        System.exit(0);
+    }
 }
