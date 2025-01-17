@@ -98,11 +98,7 @@ public class TableroController {
             }
             sendButton.setOnMouseClicked(event -> onSendClick());
             passButton.setOnMouseClicked(event -> onPassClick());
-            if (partida.getActualTurn() ==1){
-                statsButton.setOnMouseClicked(event -> showPlayerStats(partida.getJugador1()));
-            }else {
-                statsButton.setOnMouseClicked(event -> showPlayerStats(partida.getJugador2()));
-            }
+            statsButton.setOnMouseClicked(event -> showPlayerStats());
         }
 
         // Asignar evento a los botones del tablero
@@ -317,7 +313,13 @@ public class TableroController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    public void showPlayerStats(Jugador jugador) {
+    public void showPlayerStats() {
+        Jugador jugador;
+        if (partida.getActualTurn() == 1){
+            jugador = partida.getJugador1();
+        }else {
+            jugador = partida.getJugador2();
+        }
         // Crear una nueva alerta
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Estadísticas del Jugador");

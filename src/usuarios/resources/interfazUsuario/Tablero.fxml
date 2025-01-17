@@ -340,7 +340,7 @@
         <HBox fx:id="playerTiles" alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #e6e6e6;">
             <!-- Agrega más botones según las letras disponibles -->
             <HBox alignment="CENTER" spacing="5" style="-fx-padding: 10; -fx-background-color: #e6e6e6;">
-                <Button fx:id="btnStats" text="=" />
+                <Button fx:id="statsButton" text="=" />
                 <Button fx:id="btnBag" text="Bolsa de fichas" />
                 <Button fx:id="sendButton" text="ENVIAR" />
             </HBox>
