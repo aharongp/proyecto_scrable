@@ -11,6 +11,7 @@ import java.util.*;
  * Esta clase incluye métodos para gestionar las fichas del jugador, su puntaje, y el progreso durante el juego.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
+
 public class Jugador {
     private String alias;            // Alias del jugador
     private String email;            // Correo electrónico del jugador

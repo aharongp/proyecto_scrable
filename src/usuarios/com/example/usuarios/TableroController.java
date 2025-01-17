@@ -7,6 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.ButtonType;
+import java.util.Optional;
 import juego.*;
 import juego.Tablero;
 
@@ -251,4 +256,32 @@ public class TableroController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    private String showAlerta(String title, String message) {
+        // Crear una nueva alerta
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        // Crear un campo de texto
+        TextField inputField = new TextField();
+        inputField.setPromptText("Ingresa tu valor aquí");
+
+        // Añadir el campo de texto a la alerta
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(alert.getDialogPane().getContent(), inputField);
+        alert.getDialogPane().setContent(vBox);
+
+        // Mostrar la alerta y esperar a que el usuario presione el botón
+        Optional<ButtonType> result = alert.showAndWait();
+
+        // Devolver el valor ingresado por el usuario
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            return inputField.getText();
+        } else {
+            return null;
+        }
+    }
+
 }
