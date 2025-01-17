@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
 
 public class TableroController {
     private Partida partida;
+    private int pass;
 
     @FXML
     private HBox playerTiles; // HBox para las fichas del jugador
@@ -31,6 +32,9 @@ public class TableroController {
 
     @FXML
     private Button sendButton;
+
+    @FXML
+    private Button passButton;
 
     private Button selectedTileButton = null;
     private String selectedLetter = null; // Letra seleccionada por el jugador
@@ -44,6 +48,7 @@ public class TableroController {
 
     public void iniciarPartida(Jugador jugador1, Jugador jugador2){
         this.partida = new Partida(jugador1, jugador2);
+        this.pass = 0;
     }
 
     @FXML
@@ -89,6 +94,8 @@ public class TableroController {
                 button.setOnMouseClicked(event -> onTileClick(event, button));
             }
             sendButton.setOnMouseClicked(event -> onSendClick());
+            passButton.setOnMouseClicked(event -> onPassClick());
+
         }
 
         // Asignar evento a los botones del tablero
@@ -263,6 +270,16 @@ public class TableroController {
         usedTilesMap = new HashMap<>();
     }
 
+    private void onPassClick(){
+        partida.alternarTurno();
+        pass +=1;
+        if (partida.getActualTurn() == 1){
+            mostrarFichas(partida.getJugador1());
+        }else {
+            mostrarFichas(partida.getJugador2());
+        }
+    }
+
     private void mostrarFichas(Jugador jugador){
         int index=0;
         juego.FichasJugador fichasJugador = jugador.getPlayerCharacters();
@@ -285,6 +302,21 @@ public class TableroController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
+        alert.showAndWait();
+    }
+    public void showPlayerStats(Jugador jugador) {
+        // Crear una nueva alerta
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Estadísticas del Jugador");
+        alert.setHeaderText("Estadísticas de " + jugador.getAlias());
+        alert.setContentText("Alias: " + jugador.getAlias() + "\n" +
+                "Correo: " + jugador.getEmail() + "\n" +
+                "Puntaje: " + jugador.getScore() + "\n" +
+                "Palabras Jugadas: " + jugador.getPalabrasJugadas() + "\n" +
+                "Tiempo Total Jugado: " + jugador.getTiempoTotalJugado() + " segundos\n" +
+                "Partidas Jugadas: " + jugador.getPartidasJugadas());
+
+        // Mostrar la alerta
         alert.showAndWait();
     }
 
