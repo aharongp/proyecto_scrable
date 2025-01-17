@@ -332,7 +332,7 @@ public class Partida {
      */
     public void finishGame() {
         long finishtime = System.currentTimeMillis();
-        this.time += (finishtime - this.initialTime)/1000;
+        this.time += (int) ((finishtime - this.initialTime)/10000);
     }
 
     /**
