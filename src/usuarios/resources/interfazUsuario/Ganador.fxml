@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="469.0" prefWidth="439.0" spacing="20" style="-fx-padding: 20; -fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<VBox  alignment="CENTER" prefHeight="469.0" prefWidth="439.0" spacing="20" style="-fx-padding: 20; -fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.GanadorContoller">
 
     <!-- Etiqueta para el mensaje de felicitación -->
     <Label fx:id="lblCongratulations" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2e7d32;" text="¡Felicidades!" />
 
     <!-- Etiqueta para mostrar el nombre del jugador ganador -->
-    <Label fx:id="lblWinnerName" style="-fx-font-size: 18; -fx-text-fill: #000;" text="Ganador: [Nombre del jugador]" />
-
-    <!-- Botones para mostrar información adicional -->
-    <Button fx:id="btnPlayer1Points" style="-fx-font-size: 14; -fx-background-color: #1976d2; -fx-text-fill: white;" text="Puntos del Jugador 1: [Puntos]" />
-    <Button fx:id="btnPlayer2Points" style="-fx-font-size: 14; -fx-background-color: #1976d2; -fx-text-fill: white;" text="Puntos del Jugador 2: [Puntos]" />
-
-    <!-- Botones para mostrar palabras jugadas por cada jugador -->
-    <Button fx:id="btnWordsPlayer1" style="-fx-font-size: 14; -fx-background-color: #1976d2; -fx-text-fill: white;" text="Palabras Jugadas por Jugador 1: [Cantidad]" />
-    <Button fx:id="btnWordsPlayer2" style="-fx-font-size: 14; -fx-background-color: #1976d2; -fx-text-fill: white;" text="Palabras Jugadas por Jugador 2: [Cantidad]" />
-
-    <Button fx:id="btnGameTime" style="-fx-font-size: 14; -fx-background-color: #1976d2; -fx-text-fill: white;" text="Tiempo de Partida: [Duración]" />
+    <Label fx:id="nombre" style="-fx-font-size: 18; -fx-text-fill: #000;" text="Ganador: [Nombre del jugador]" />
+   <Label fx:id="puntos1" layoutX="88.0" layoutY="112.0" style="-fx-font-size: 18; -fx-text-fill: #000;" text="Puntos del Jugador 1: [Puntos]" />
+   <Label fx:id="puntos2" layoutX="88.0" layoutY="133.0" style="-fx-font-size: 18; -fx-text-fill: #000;" text="Puntos del Jugador 2: [Puntos]" />
+   <Label fx:id="palabras1" layoutX="88.0" layoutY="458.0" style="-fx-font-size: 18; -fx-text-fill: #000;" text="Palabras Jugadas por Jugador 1: [Cantidad]" />
+   <Label fx:id="palabras2" layoutX="88.0" layoutY="500.0" style="-fx-font-size: 18; -fx-text-fill: #000;" text="Palabras Jugadas por Jugador 2: [Cantidad]" />
+   <Label fx:id="tiempo" layoutX="35.0" layoutY="493.0" style="-fx-font-size: 18; -fx-text-fill: #000;" text="Tiempo de Partida: [Duración]" />
 
     <!-- Botones para acciones de reiniciar o salir -->
     <VBox alignment="CENTER" spacing="10">
-        <Button fx:id="btnExitGame" style="-fx-font-size: 14; -fx-background-color: #d32f2f; -fx-text-fill: white;" text="Salir" />
+        <Button fx:id="btnExitGame" onAction="#onButtonSalir" style="-fx-font-size: 14; -fx-background-color: #d32f2f; -fx-text-fill: white;" text="Salir" />
     </VBox>
 
 </VBox>
