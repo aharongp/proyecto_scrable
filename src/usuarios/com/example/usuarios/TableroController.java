@@ -36,6 +36,9 @@ public class TableroController {
     @FXML
     private Button passButton;
 
+    @FXML
+    private Button statsButton;
+
     private Button selectedTileButton = null;
     private String selectedLetter = null; // Letra seleccionada por el jugador
 
@@ -95,7 +98,11 @@ public class TableroController {
             }
             sendButton.setOnMouseClicked(event -> onSendClick());
             passButton.setOnMouseClicked(event -> onPassClick());
-
+            if (partida.getActualTurn() ==1){
+                statsButton.setOnMouseClicked(event -> showPlayerStats(partida.getJugador1()));
+            }else {
+                statsButton.setOnMouseClicked(event -> showPlayerStats(partida.getJugador2()));
+            }
         }
 
         // Asignar evento a los botones del tablero
