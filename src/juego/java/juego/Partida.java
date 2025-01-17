@@ -100,6 +100,8 @@ public class Partida {
 
     public void ubicarPalabra(String word, int fila, int columna, boolean horizontal, Jugador jugador){
         this.tablero.ubicarPalabra(word.toUpperCase(), fila, columna, horizontal, jugador);
+        reponerFichas(jugador);
+        manejadorDeArchivos.salvarPartida(this);
     }
 
 
