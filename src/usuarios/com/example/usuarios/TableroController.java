@@ -39,6 +39,12 @@ public class TableroController {
     @FXML
     private Button statsButton;
 
+    @FXML
+    private Button bagButton;
+
+    @FXML
+    private Button changeButton;
+
     private Button selectedTileButton = null;
     private String selectedLetter = null; // Letra seleccionada por el jugador
 
@@ -49,13 +55,14 @@ public class TableroController {
     // Mapa para rastrear qué botón del HBox corresponde a cada letra colocada
     private Map<String, Button> usedTilesMap = new HashMap<>();
 
-    public void iniciarPartida(Jugador jugador1, Jugador jugador2){
-        this.partida = new Partida(jugador1, jugador2);
-        this.pass = 0;
+
+    public void setPartida(Jugador jugador1, Jugador jugador2){
+      this.partida = new Partida(jugador1, jugador2);
+      this.pass =0;
+      iniciarPartida();
     }
 
-    @FXML
-    public void initialize() {
+    public void iniciarPartida() {
         if (partida.getActualTurn() == 1){
             FichasJugador fichas1 = partida.getJugador1().getPlayerCharacters();
             while(fichas1.existeComodin()){
@@ -94,8 +101,10 @@ public class TableroController {
                 button.setOnMouseClicked(event -> onTileClick(event, button));
             }
             sendButton.setOnMouseClicked(event -> onSendClick());
+            changeButton.setOnMouseClicked(event -> onChangeClick());
             passButton.setOnMouseClicked(event -> onPassClick());
             statsButton.setOnMouseClicked(event -> showPlayerStats());
+            bagButton.setOnMouseClicked(event -> onBolsaFichasClick());
         }
 
         // Asignar evento a los botones del tablero
@@ -286,6 +295,36 @@ public class TableroController {
         }
     }
 
+    public void onBolsaFichasClick() {
+        SpanishBag bag = partida.getBag();
+
+        StringBuilder mensaje = new StringBuilder();
+        mensaje.append("Letras restantes en el saco:\n");
+
+        int letras = bag.numberOfCharacters();
+        mensaje.append("\nTotal de letras restantes: ").append(letras);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Letras en el Saco");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje.toString());
+        alert.showAndWait();
+    }
+
+    public void onChangeClick(){
+        if (partida.getActualTurn() == 1){
+            partida.cambiarFichasDeJugador(partida.getJugador1());
+            partida.alternarTurno();
+            mostrarFichas(partida.getJugador2());
+
+        }else {
+            partida.cambiarFichasDeJugador(partida.getJugador2());
+            partida.alternarTurno();
+            mostrarFichas(partida.getJugador1());
+
+        }
+    }
+
     private void mostrarFichas(Jugador jugador){
         int index=0;
         juego.FichasJugador fichasJugador = jugador.getPlayerCharacters();
@@ -310,6 +349,7 @@ public class TableroController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     public void showPlayerStats() {
         Jugador jugador;
         if (partida.getActualTurn() == 1){
@@ -358,6 +398,7 @@ public class TableroController {
             return null;
         }
     }
+
     private boolean LetraValida(String letra){
         Pattern pattern = Pattern.compile("[A-Z]");
         Matcher matcher = pattern.matcher(letra);

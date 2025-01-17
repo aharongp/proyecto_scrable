@@ -30,8 +30,8 @@ public class MenuDePartidaController {
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/Tablero.fxml"));
             Parent root = fxmlLoader.load();
-            TableroController tableroController= fxmlLoader.getController();
-            tableroController.iniciarPartida(jugador1,jugador2);
+            TableroController tableroController = fxmlLoader.getController();
+            tableroController.setPartida(this.jugador1,this.jugador2);
             Stage stage = new Stage();
             stage.setTitle("Juego");
             stage.setScene(new Scene(root, 600, 800));
