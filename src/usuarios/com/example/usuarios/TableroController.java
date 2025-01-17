@@ -2,13 +2,12 @@ package com.example.usuarios;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import juego.ButtonInfo;
-import juego.Jugador;
-import juego.Partida;
+import juego.*;
 import juego.Tablero;
 
 import java.util.*;
@@ -199,6 +198,12 @@ public class TableroController {
     private void onSendClick(){
         String[][] tablero = getBoardAsMatrix(board);
         String palabra = getWordFromMatrix(tablero, fila, columna, horizontal);
+
+        if(!validarPalabra(palabra)){
+            showAlert("Palabra invalida", "La palabra que quieres colocar es invalida, por favor intenta con otra o pasa turno");
+            return;
+        }
+
         if (partida.getActualTurn() == 1){
             partida.ubicarPalabra(palabra, fila, columna, horizontal, partida.getJugador1());
         } else {
@@ -234,5 +239,16 @@ public class TableroController {
             }
     }
 
+    private boolean validarPalabra(String palabra){
+        Diccionario diccionario = new Diccionario();
+        return diccionario.existePalabra(palabra);
+    }
 
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
