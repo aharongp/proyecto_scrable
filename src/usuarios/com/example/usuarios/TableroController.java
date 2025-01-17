@@ -13,9 +13,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.ButtonType;
 import java.util.Optional;
 import juego.*;
+import juego.Main;
 import juego.Tablero;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TableroController {
     private Partida partida;
@@ -46,9 +49,37 @@ public class TableroController {
     @FXML
     public void initialize() {
         iniciarPartida(new Jugador("aharon", "aharon@gmail.com"), new Jugador("jose", "jose@gmail.com"));
+
+
         if (partida.getActualTurn() == 1){
+            FichasJugador fichas1 = partida.getJugador1().getPlayerCharacters();
+            while(fichas1.existeComodin()){
+                String nuevaFicha = showAlertComodin("FELICIDADES", "Te has encontrado un comodin, intercambialo por una letra");
+                nuevaFicha = nuevaFicha.toUpperCase();
+                while (!LetraValida(nuevaFicha)){
+                    System.out.println("Necesitas elegir una letra entre la A-Z o CH,LL,RR, intenta de nuevo");
+                    nuevaFicha = showAlertComodin("FELICIDADES", "Necesitas elegir una letra entre la A-Z o CH,LL,RR, intenta de nuevo");
+                    nuevaFicha = nuevaFicha.toUpperCase();
+                }
+                partida.getJugador1().getPlayerCharacters().setComodin(nuevaFicha);
+
+                fichas1 = partida.getJugador1().getPlayerCharacters();
+            }
             mostrarFichas(partida.getJugador1());
         }else {
+            FichasJugador fichas2 = partida.getJugador2().getPlayerCharacters();
+            while(fichas2.existeComodin()){
+                String nuevaFicha2 = showAlertComodin("FELICIDADES", "Te has encontrado un comodin, intercambialo por una letra");
+                nuevaFicha2 = nuevaFicha2.toUpperCase();
+                while (!LetraValida(nuevaFicha2)){
+                    System.out.println("Necesitas elegir una letra entre la A-Z o CH,LL,RR, intenta de nuevo");
+                    nuevaFicha2 = showAlertComodin("FELICIDADES", "Necesitas elegir una letra entre la A-Z o CH,LL,RR, intenta de nuevo");
+                    nuevaFicha2 = nuevaFicha2.toUpperCase();
+                }
+                partida.getJugador2().getPlayerCharacters().setComodin(nuevaFicha2);
+
+                fichas2 = partida.getJugador2().getPlayerCharacters();
+            }
             mostrarFichas(partida.getJugador2());
         }
 
@@ -257,7 +288,7 @@ public class TableroController {
         alert.showAndWait();
     }
 
-    private String showAlerta(String title, String message) {
+    private String showAlertComodin(String title, String message) {
         // Crear una nueva alerta
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -282,6 +313,14 @@ public class TableroController {
         } else {
             return null;
         }
+    }
+    private boolean LetraValida(String letra){
+        Pattern pattern = Pattern.compile("[A-Z]");
+        Matcher matcher = pattern.matcher(letra);
+        if (matcher.matches()){
+            return true;
+        }
+        else return (letra.equals("RR") | letra.equals("CH") | letra.equals("LL"));
     }
 
 }
