@@ -56,9 +56,6 @@ public class TableroController {
 
     @FXML
     public void initialize() {
-        iniciarPartida(new Jugador("aharon", "aharon@gmail.com"), new Jugador("jose", "jose@gmail.com"));
-
-
         if (partida.getActualTurn() == 1){
             FichasJugador fichas1 = partida.getJugador1().getPlayerCharacters();
             while(fichas1.existeComodin()){

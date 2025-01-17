@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import juego.Jugador;
+import juego.Tablero;
 
 import java.io.IOException;
 
@@ -22,9 +23,29 @@ public class MenuDePartidaController {
 
 
     @FXML
-    protected void onButtonNuevoJuego(){}
+    protected void onButtonNuevoJuego(ActionEvent event) {
+        try {
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/interfazUsuario/Tablero.fxml"));
+            Parent root = fxmlLoader.load();
+            TableroController tableroController= fxmlLoader.getController();
+            tableroController.iniciarPartida(jugador1,jugador2);
+            Stage stage = new Stage();
+            stage.setTitle("Juego");
+            stage.setScene(new Scene(root, 600, 800));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
-    protected void onButtonContinuarJuego(){}
+    protected void onButtonContinuarJuego() {
+        // Implementar lógica para continuar juego
+    }
+
     @FXML
     protected void onButtonEstadisticas(ActionEvent event){
         try {
