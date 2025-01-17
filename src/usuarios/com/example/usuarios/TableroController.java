@@ -256,8 +256,10 @@ public class TableroController {
 
         if (partida.getActualTurn() == 1){
             partida.ubicarPalabra(palabra, fila, columna, horizontal, partida.getJugador1());
+            pass =0;
         } else {
             partida.ubicarPalabra(palabra, fila, columna, horizontal, partida.getJugador2());
+            pass =0;
         }
         partida.getTablero().mostrarTablero();
         System.out.println(palabra);
@@ -280,6 +282,10 @@ public class TableroController {
     private void onPassClick(){
         partida.alternarTurno();
         pass +=1;
+        if(pass == 4){
+            partida.chooseWinner();
+        }
+
         if (partida.getActualTurn() == 1){
             mostrarFichas(partida.getJugador1());
         }else {
