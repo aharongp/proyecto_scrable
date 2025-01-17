@@ -55,6 +55,7 @@ public class MenuEstadisticasPartidaController {
         cargarEstadisticas();
     }
 
+    @FXML
     private void cargarEstadisticas() {
         if (partida != null) {
             Jugador jugador1 = partida.getJugador1();
