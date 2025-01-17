@@ -46,6 +46,7 @@ public class Partida {
         this.score2 = 0;
         this.actualTurn = 1;
         this.winner = 0;
+        startGame();
     }
 
     public String getId() {
@@ -56,6 +57,9 @@ public class Partida {
         return jugador1;
     }
 
+    public int getActualTurn() {
+        return actualTurn;
+    }
 
     public juego.Jugador getJugador2() {
         return jugador2;
@@ -92,6 +96,10 @@ public class Partida {
 
     public int getWinner() {
         return winner;
+    }
+
+    public void ubicarPalabra(String word, int fila, int columna, boolean horizontal, Jugador jugador){
+        this.tablero.ubicarPalabra(word.toUpperCase(), fila, columna, horizontal, jugador);
     }
 
 

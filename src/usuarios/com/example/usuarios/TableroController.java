@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import juego.ButtonInfo;
+import juego.Jugador;
 import juego.Partida;
 import juego.Tablero;
 
@@ -15,12 +16,14 @@ import java.util.*;
 public class TableroController {
     private Partida partida;
 
-
     @FXML
     private HBox playerTiles; // HBox para las fichas del jugador
 
     @FXML
     private GridPane board; // GridPane para el tablero de juego
+
+    @FXML
+    private Button sendButton;
 
     private Button selectedTileButton = null;
     private String selectedLetter = null; // Letra seleccionada por el jugador
@@ -30,15 +33,27 @@ public class TableroController {
     private boolean horizontal;
 
     // Mapa para rastrear qué botón del HBox corresponde a cada letra colocada
-    private final Map<String, Button> usedTilesMap = new HashMap<>();
+    private Map<String, Button> usedTilesMap = new HashMap<>();
+
+    public void iniciarPartida(Jugador jugador1, Jugador jugador2){
+        this.partida = new Partida(jugador1, jugador2);
+    }
 
     @FXML
     public void initialize() {
+        iniciarPartida(new Jugador("aharon", "aharon@gmail.com"), new Jugador("jose", "jose@gmail.com"));
+        if (partida.getActualTurn() == 1){
+            mostrarFichas(partida.getJugador1());
+        }else {
+            mostrarFichas(partida.getJugador2());
+        }
+
         // Asignar evento a las fichas del jugador
         for (Node node : playerTiles.getChildren()) {
             if (node instanceof Button button) {
                 button.setOnMouseClicked(event -> onTileClick(event, button));
             }
+            sendButton.setOnMouseClicked(event -> onSendClick());
         }
 
         // Asignar evento a los botones del tablero
@@ -47,6 +62,7 @@ public class TableroController {
                 button.setOnMouseClicked(event -> onBoardClick(event, button, board));
             }
         }
+
     }
 
     // Evento al hacer clic en una ficha del jugador
@@ -115,4 +131,107 @@ public class TableroController {
             System.out.println("No hay ficha seleccionada y el botón está vacío.");
         }
     }
+
+    private String[][] getBoardAsMatrix(GridPane board) {
+        // Determinar las dimensiones del GridPane
+        int rows = board.getRowCount();
+        int cols = board.getColumnCount();
+
+        // Crear una matriz para almacenar el contenido del tablero
+        String[][] matrix = new String[rows][cols];
+
+        // Recorrer los hijos del GridPane
+        for (Node node : board.getChildren()) {
+            if (node instanceof Button button) {
+                // Obtener la posición del botón
+                Integer row = GridPane.getRowIndex(node);
+                Integer col = GridPane.getColumnIndex(node);
+
+                // Manejar índices nulos (por defecto fila/columna es 0)
+                row = (row == null) ? 0 : row;
+                col = (col == null) ? 0 : col;
+
+                // Asignar el texto del botón a la posición correspondiente en la matriz
+                matrix[row][col] = button.getText();
+            }
+        }
+
+        // Rellenar celdas vacías con un valor predeterminado (por ejemplo, "")
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matrix[i][j] == null) {
+                    matrix[i][j] = ""; // Dejar vacío si no hay texto
+                }
+            }
+        }
+
+        return matrix;
+    }
+
+    private String getWordFromMatrix(String[][] board, int startRow, int startCol, boolean isHorizontal) {
+        StringBuilder word = new StringBuilder();
+
+        // Validar las dimensiones de la matriz
+        int rows = board.length;
+        int cols = (rows > 0) ? board[0].length : 0;
+
+        // Recorrer en la dirección especificada
+        if (isHorizontal) {
+            for (int col = startCol; col < cols; col++) {
+                String cell = board[startRow][col];
+                if (cell == null || cell.isEmpty()) {
+                    break; // Detenerse si se encuentra una celda vacía
+                }
+                word.append(cell);
+            }
+        } else { // Dirección vertical
+            for (int row = startRow; row < rows; row++) {
+                String cell = board[row][startCol];
+                if (cell == null || cell.isEmpty()) {
+                    break; // Detenerse si se encuentra una celda vacía
+                }
+                word.append(cell);
+            }
+        }
+        return word.toString();
+    }
+
+    private void onSendClick(){
+        String[][] tablero = getBoardAsMatrix(board);
+        String palabra = getWordFromMatrix(tablero, fila, columna, horizontal);
+        if (partida.getActualTurn() == 1){
+            partida.ubicarPalabra(palabra, fila, columna, horizontal, partida.getJugador1());
+        } else {
+            partida.ubicarPalabra(palabra, fila, columna, horizontal, partida.getJugador2());
+        }
+        partida.getTablero().mostrarTablero();
+        System.out.println(palabra);
+        partida.alternarTurno();
+        if (partida.getActualTurn() == 1){
+            mostrarFichas(partida.getJugador1());
+        }else {
+            mostrarFichas(partida.getJugador2());
+        }
+
+        for (Node node : playerTiles.getChildren()) {
+            if (node instanceof Button button) {
+                button.setDisable(false);
+            }
+        }
+        usedTilesMap = new HashMap<>();
+    }
+
+    private void mostrarFichas(Jugador jugador){
+        int index=0;
+        juego.FichasJugador fichasJugador = jugador.getPlayerCharacters();
+        ArrayList<juego.Character> fichas = fichasJugador.getFichas();
+            for (Node node : playerTiles.getChildren()) {
+               if (node instanceof Button button){
+                   button.setText(fichas.get(index).getSymbol());
+               }
+               if (index < 6) index +=1;
+            }
+    }
+
+
 }
