@@ -29,7 +29,7 @@ public class UserRegistrationController {
         }
         String email = textCorreoDeUsuario.getText();
         Authentication auth = new Authentication();
-        while (!auth.validateEmail(email)) {
+        if (!auth.validateEmail(email)) {
             showAlert("Error,","Formato de correo invalido");
             return;
         }

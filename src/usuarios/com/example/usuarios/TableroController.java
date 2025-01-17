@@ -207,12 +207,13 @@ public class TableroController {
         partida.getTablero().mostrarTablero();
         System.out.println(palabra);
         partida.alternarTurno();
+        columna = null;
+        fila = null;
         if (partida.getActualTurn() == 1){
             mostrarFichas(partida.getJugador1());
         }else {
             mostrarFichas(partida.getJugador2());
         }
-
         for (Node node : playerTiles.getChildren()) {
             if (node instanceof Button button) {
                 button.setDisable(false);

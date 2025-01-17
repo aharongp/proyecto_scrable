@@ -23,6 +23,7 @@ public abstract class JSONMapper {
      */
     public static String objectoToJson(Object obj) {
         try {
+            System.out.println(obj);
             // Convierte el objeto a una cadena JSON
             return mapper.writeValueAsString(obj);
         }
