@@ -42,6 +42,7 @@ public class Partida {
         this.jugador2 = jugador2;
         this.bag = new SpanishBag();
         this.tablero = new Tablero();
+        tablero.setColocadorDePalabra(new ColocadorDePalabra());
         this.score1 = 0;
         this.score2 = 0;
         this.actualTurn = 1;

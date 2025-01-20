@@ -8,7 +8,7 @@ import java.util.Map;
  * Clase que gestiona la colocación de palabras en un tablero de juego,
  * verifica si una palabra se puede colocar y actualiza el tablero con las palabras jugadas.
  */
-public class ColocadorDePalabra {
+public class ColocadorDePalabra implements ManejadorDePalabraStrategy {
     private int puntosGanados = 0;
     private boolean enlazado = false;
 
@@ -24,6 +24,8 @@ public class ColocadorDePalabra {
      * @param tableroVacio Indica si el tablero está vacío (para un primer movimiento).
      * @return true si la palabra se puede colocar correctamente, false en caso contrario.
      */
+
+    @Override
     public boolean colocarPalabra(String palabra, int fila, int columna, boolean horizontal, Jugador jugador, Character[][] tablero, boolean tableroVacio) {
         ArrayList<Character> fichasUsadas = new ArrayList<>();
         boolean canPlace = canPlaceWord(palabra, fila, columna, jugador.getPlayerCharacters(), horizontal, tablero, tableroVacio);
@@ -60,15 +62,15 @@ public class ColocadorDePalabra {
         int requiredTilesCount = 0;
         for (int i = 0; i < word.length(); ) {
             String tile;
-            if (i < word.length() - 1 && (word.charAt(i) == 'L' && word.charAt(i + 1) == 'L')) {
+            if (i < word.length() - 1 && (word.charAt(i) == 'L' && word.charAt(i + 1) == 'L') && fichasJugador.buscar("LL")!=null) {
                 tile = "LL";
                 requiredTilesCount++;
                 i += 2;
-            } else if (i < word.length() - 1 && (word.charAt(i) == 'R' && word.charAt(i + 1) == 'R')) {
+            } else if (i < word.length() - 1 && (word.charAt(i) == 'R' && word.charAt(i + 1) == 'R') && fichasJugador.buscar("RR")!=null) {
                 tile = "RR";
                 requiredTilesCount++;
                 i += 2;
-            } else if (i < word.length() - 1 && (word.charAt(i) == 'C' && word.charAt(i + 1) == 'H')) {
+            } else if ((i < word.length() - 1) && (word.charAt(i) == 'C' && word.charAt(i + 1) == 'H') && fichasJugador.buscar("CH")!=null) {
                 tile = "CH";
                 requiredTilesCount++;
                 i += 2;
@@ -115,7 +117,7 @@ public class ColocadorDePalabra {
             for (int i = 0; i < word.length(); ) {
                 if (tablero[fila][columna] == null) {
                     String tile;
-                    if (i < word.length() - 1 && (word.charAt(i) == 'L' && word.charAt(i + 1) == 'L')) {
+                    if (i < word.length() - 1 && (word.charAt(i) == 'L' && word.charAt(i + 1) == 'L') && fichasJugador.buscar("LL")!=null) {
                         tile = "LL";
                         Character ficha = fichasJugador.buscar(tile);
                         tablero[fila][columna] = ficha;
@@ -123,7 +125,7 @@ public class ColocadorDePalabra {
                         puntosGanados = puntosGanados + ficha.getPoints();
                         columna++;
                         i += 2;
-                    } else if (i < word.length() - 1 && (word.charAt(i) == 'R' && word.charAt(i + 1) == 'R')) {
+                    } else if (i < word.length() - 1 && (word.charAt(i) == 'R' && word.charAt(i + 1) == 'R') && fichasJugador.buscar("RR")!=null) {
                         tile = "RR";
                         Character ficha = fichasJugador.buscar(tile);
                         tablero[fila][columna] = ficha;
@@ -131,7 +133,7 @@ public class ColocadorDePalabra {
                         puntosGanados = puntosGanados + ficha.getPoints();
                         columna++;
                         i += 2;
-                    } else if (i < word.length() - 1 && (word.charAt(i) == 'C' && word.charAt(i + 1) == 'H')) {
+                    } else if (i < word.length() - 1 && (word.charAt(i) == 'C' && word.charAt(i + 1) == 'H') && fichasJugador.buscar("CH")!=null) {
                         tile = "CH";
                         Character ficha = fichasJugador.buscar(tile);
                         tablero[fila][columna] = ficha;
@@ -162,7 +164,7 @@ public class ColocadorDePalabra {
             for (int i = 0; i < word.length(); ) {
                 if (tablero[fila][columna] == null) {
                     String tile;
-                    if (i < word.length() - 1 && (word.charAt(i) == 'L' && word.charAt(i + 1) == 'L')) {
+                    if (i < word.length() - 1 && (word.charAt(i) == 'L' && word.charAt(i + 1) == 'L') && fichasJugador.buscar("LL")!=null) {
                         tile = "LL";
                         Character ficha = fichasJugador.buscar(tile);
                         tablero[fila][columna] = ficha;
@@ -170,7 +172,7 @@ public class ColocadorDePalabra {
                         puntosGanados = puntosGanados + ficha.getPoints();
                         fila++;
                         i += 2;
-                    } else if (i < word.length() - 1 && (word.charAt(i) == 'R' && word.charAt(i + 1) == 'R')) {
+                    } else if (i < word.length() - 1 && (word.charAt(i) == 'R' && word.charAt(i + 1) == 'R') && fichasJugador.buscar("RR")!=null) {
                         tile = "RR";
                         Character ficha = fichasJugador.buscar(tile);
                         tablero[fila][columna] = ficha;
@@ -178,7 +180,7 @@ public class ColocadorDePalabra {
                         puntosGanados = puntosGanados + ficha.getPoints();
                         fila++;
                         i += 2;
-                    } else if (i < word.length() - 1 && (word.charAt(i) == 'C' && word.charAt(i + 1) == 'H')) {
+                    } else if (i < word.length() - 1 && (word.charAt(i) == 'C' && word.charAt(i + 1) == 'H') && fichasJugador.buscar("CH")!=null) {
                         tile = "CH";
                         Character ficha = fichasJugador.buscar(tile);
                         tablero[fila][columna] = ficha;

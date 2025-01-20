@@ -11,6 +11,7 @@ public class Tablero {
     private static final int MAX_FICHAS = 7;
     private Character[][] tablero;
     private boolean estaVacio;
+    private ManejadorDePalabraStrategy colocadorDePalabra;
 
     /**
      * Constructor de la clase `juego.Tablero`. Inicializa el tablero y lo pone vacío.
@@ -19,6 +20,10 @@ public class Tablero {
         tablero = new Character[TAMANO][TAMANO];
         estaVacio = true;
         inicializarTablero();
+    }
+
+    public void setColocadorDePalabra(ManejadorDePalabraStrategy colocadorDePalabraStrategy) {
+        this.colocadorDePalabra = colocadorDePalabraStrategy;
     }
 
     /**

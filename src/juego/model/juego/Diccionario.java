@@ -21,7 +21,7 @@ public class Diccionario {
     public Diccionario(){
         try{
             palabras = new HashSet<>();
-            cargarDiccionario("src/juego/java/juego/listado-general.txt");
+            cargarDiccionario("src/juego/model/juego/listado-general.txt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

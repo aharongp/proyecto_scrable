@@ -21,6 +21,7 @@ import juego.Character;
 import juego.Tablero;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -189,9 +190,14 @@ public class TableroController {
     // Evento al hacer clic en el tablero
     private void onBoardClick(MouseEvent event, Button boardButton, GridPane board) {
         String currentText = boardButton.getText();
-
+        // Extraer las coordenadas del botón
         if (selectedLetter != null) {
-
+            Integer row = GridPane.getRowIndex(boardButton);
+            Integer col = GridPane.getColumnIndex(boardButton);
+            columna = (columna == null) ? col : columna;
+            System.out.println(columna);
+            fila = (fila == null) ? row : fila;
+            System.out.println(fila);
             if (currentText != null && !currentText.isEmpty()) {
                 // Validar si el botón del tablero ya tiene una ficha
                 System.out.println("El espacio ya está ocupado. No se puede cambiar la ficha.");
@@ -200,21 +206,12 @@ public class TableroController {
             // Cambiar el texto del botón del tablero
             boardButton.setText(selectedLetter);
 
-            // Extraer las coordenadas del botón
-            Integer row = GridPane.getRowIndex(boardButton);
-            Integer col = GridPane.getColumnIndex(boardButton);
-
             // Manejar índices nulos
             row = (row == null) ? 0 : row;
             col = (col == null) ? 0 : col;
 
             horizontal = Objects.equals(fila, row);
             System.out.println(horizontal);
-            columna = (columna == null) ? col : columna;
-            System.out.println(columna);
-
-            fila = (fila == null) ? row : fila;
-            System.out.println(fila);
 
             System.out.println("Letra '" + selectedLetter + "' colocada en fila: " + row + ", columna: " + col);
 
@@ -278,7 +275,7 @@ public class TableroController {
         return matrix;
     }
 
-    private String getWordFromMatrix(String[][] board, int startRow, int startCol, boolean isHorizontal) {
+    /*private String getWordFromMatrix(String[][] board, int startRow, int startCol, boolean isHorizontal) {
         StringBuilder word = new StringBuilder();
 
         // Validar las dimensiones de la matriz
@@ -304,22 +301,64 @@ public class TableroController {
             }
         }
         return word.toString();
+    }*/
+
+    private String getWordFromMatrix(String[][] board, AtomicInteger startRow, AtomicInteger startCol, boolean isHorizontal) {
+        StringBuilder word = new StringBuilder();
+
+        // Validar las dimensiones de la matriz
+        int rows = board.length;
+        int cols = (rows > 0) ? board[0].length : 0;
+
+        // Retroceder al inicio de la palabra
+        if (isHorizontal) {
+            int col = startCol.get();
+            while (col > 0 && board[startRow.get()][col - 1] != null && !board[startRow.get()][col - 1].isEmpty()) {
+                col--; // Moverse hacia atrás
+            }
+            startCol.set(col);
+            // Recorrer la palabra hacia adelante desde el punto inicial
+            while (col < cols && board[startRow.get()][col] != null && !board[startRow.get()][col].isEmpty()) {
+                word.append(board[startRow.get()][col]);
+                col++;
+            }
+        } else { // Vertical
+            int row = startRow.get();
+            while (row > 0 && board[row - 1][startCol.get()] != null && !board[row - 1][startCol.get()].isEmpty()) {
+                row--; // Moverse hacia atrás
+            }
+            startRow.set(row);
+            // Recorrer la palabra hacia adelante desde el punto inicial
+            while (row < rows && board[row][startCol.get()] != null && !board[row][startCol.get()].isEmpty()) {
+                word.append(board[row][startCol.get()]);
+                row++;
+            }
+        }
+        return word.toString();
     }
+
 
     private void onSendClick(){
         String[][] tablero = getBoardAsMatrix(board);
-        String palabra = getWordFromMatrix(tablero, fila, columna, horizontal);
+        AtomicInteger Afila=new AtomicInteger(fila);
+        AtomicInteger Acolumna=new AtomicInteger(columna);
+        String palabra = getWordFromMatrix(tablero, Afila,Acolumna, horizontal);
+        fila=Afila.get();
+        columna=Acolumna.get();
 
         if(!validarPalabra(palabra)){
-            showAlert("Palabra invalida", "La palabra que quieres colocar es invalida, por favor intenta con otra o pasa turno");
+            showAlert("Palabra invalida", "La palabra [" + palabra + "] es invalida, por favor intenta con otra o pasa turno");
+
             return;
         }
 
         if (partida.getActualTurn() == 1){
+            System.out.println(palabra +"   "+ fila+"   " + columna+"   " + horizontal+"   " + partida.getJugador1().toString());
             partida.ubicarPalabra(palabra, fila, columna, horizontal, partida.getJugador1());
             partida.finishGame();
             pass =0;
         } else {
+            System.out.println(palabra +"   "+ fila+"   " + columna+"   " + horizontal+"   " + partida.getJugador2().toString());
             partida.ubicarPalabra(palabra, fila, columna, horizontal, partida.getJugador2());
             partida.finishGame();
             pass =0;
