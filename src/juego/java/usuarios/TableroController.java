@@ -1,6 +1,5 @@
-package com.example.usuarios;
+package usuarios;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,7 +18,6 @@ import java.util.Optional;
 import javafx.stage.Stage;
 import juego.*;
 import juego.Character;
-import juego.Main;
 import juego.Tablero;
 
 import java.util.*;

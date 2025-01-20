@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.usuarios.MenuEstadisticasPartidaController">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="usuarios.MenuEstadisticasPartidaController">
     <!-- Encabezado -->
     <top>
         <Label style="-fx-font-size: 36px; -fx-padding: 20; -fx-alignment: center;" text="Estadísticas de Partidas" BorderPane.alignment="CENTER" />

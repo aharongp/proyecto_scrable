@@ -1,4 +1,4 @@
-package com.example.usuarios;
+package usuarios;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

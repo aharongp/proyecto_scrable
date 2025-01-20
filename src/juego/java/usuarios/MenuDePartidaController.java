@@ -1,4 +1,4 @@
-package com.example.usuarios;
+package usuarios;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import juego.Jugador;
 import juego.Partida;
-import juego.Tablero;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.example.usuarios;
+package usuarios;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
