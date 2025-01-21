@@ -440,8 +440,8 @@ public class TableroController {
             for (Node node : playerTiles.getChildren()) {
                if (node instanceof Button button){
                    button.setText(fichas.get(index).getSymbol());
+                   if (index < 6) index +=1;
                }
-               if (index < 6) index +=1;
             }
     }
 
