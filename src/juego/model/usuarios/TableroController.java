@@ -387,10 +387,10 @@ public class TableroController {
         if(pass == 4){
             if (partida.getScore1() > partida.getScore2()){
                 partida.setWinner(1);
-                showWinner(partida.getJugador1().getAlias(), partida.getScore1(), partida.getScore2(), partida.getJugador1().getPalabrasJugadas(), partida.getJugador2().getPalabrasJugadas(), partida.getTime());
+                showWinner(partida.getJugador1().getAlias(), partida.getJugador1().getScore(), partida.getJugador2().getScore(), partida.getJugador1().getPalabrasJugadas(), partida.getJugador2().getPalabrasJugadas(), partida.getTime());
             }else {
                 partida.setWinner(2);
-                showWinner(partida.getJugador2().getAlias(), partida.getScore1(), partida.getScore2(), partida.getJugador1().getPalabrasJugadas(), partida.getJugador2().getPalabrasJugadas(), partida.getTime());
+                showWinner(partida.getJugador2().getAlias(), partida.getJugador1().getScore(), partida.getJugador2().getScore(), partida.getJugador1().getPalabrasJugadas(), partida.getJugador2().getPalabrasJugadas(), partida.getTime());
             }
 
         }
